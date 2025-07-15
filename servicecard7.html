@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Taif Ziyarah</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          aspectRatio: {
+            'w-16': '16',
+            'h-9': '9',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+   .tab-active {
+     background-color: white;
+      color: #047857;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+    .faq-item.active .faq-icon {
+      transform: rotate(180deg);
+    }
+    
+    /* Navbar transition styles */
+    .navbar {
+      transition: all 0.3s ease;
+      background-color: transparent;
+    }
+    
+    .navbar.scrolled {
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    
+    .navbar-link {
+      color: white;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    
+    .navbar-link:hover {
+      color: rgba(134, 239, 172, 1); /* green-300 */
+    }
+    
+    .navbar.scrolled .navbar-link {
+      color: #1F2937; /* gray-800 */
+    }
+    
+    .navbar.scrolled .navbar-link:hover {
+      color: #047857; /* green-700 */
+    }
+    
+    .navbar-brand {
+      color: white;
+      font-weight: 700;
+      transition: color 0.3s ease;
+    }
+    
+    .navbar.scrolled .navbar-brand {
+      color: #047857; /* green-800 */
+    }
+    
+    .mobile-menu-button {
+      border-color: white;
+      color: white;
+      transition: all 0.3s ease;
+    }
+    
+    .navbar.scrolled .mobile-menu-button {
+      border-color: #047857;
+      color: #047857;
+    }
+    
+    /* Mobile menu styles */
+      
+    /* Mobile menu styles */
+    #mobile-menu {
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(-10px);
+      max-height: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Center align items */
+      position: absolute;
+      width: 100%;
+      left: 0;
+      right: 0;
+      z-index: 1000; /* Much higher z-index to ensure it's above all content */
+      background-color: white; /* Solid white background */
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    
+    #mobile-menu:not(.hidden) {
+      opacity: 1;
+      transform: translateY(0);
+      max-height: 300px;
+    }
+    
+    /* Mobile menu links styling */
+    #mobile-menu a {
+      color: #1F2937; /* Dark text for better readability on white */
+      width: 100%; /* Make links take full width */
+      text-align: center; /* Center text */
+      font-weight: 500;
+    }
+    
+    #mobile-menu a:hover {
+      background-color: #F3F4F6; /* Light gray background on hover */
+      color: #047857; /* Green text on hover */
+    }
+    
+    /* Ensure the mobile menu container has proper width */
+    #mobile-menu > div {
+      width: 100%;
+      background-color: white;
+    }
+    
+    /* Download button styles */
+    .download-btn {
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border: 2px solid transparent;
+    }
+    
+    .download-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.7s ease;
+    }
+    
+    .download-btn:hover::before {
+      left: 100%;
+    }
+    
+    .download-btn:hover {
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+    
+    .download-btn:active {
+      transform: translateY(2px) scale(0.98) !important;
+    }
+    
+    /* Pulse animation for download button */
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(5, 150, 105, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(5, 150, 105, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(5, 150, 105, 0); }
+    }
+    
+    .download-btn:hover {
+      animation: pulse 1.5s infinite;
+    }
+    
+    /* Responsive adjustments for download button */
+    @media (max-width: 640px) {
+      .download-btn {
+        font-size: 0.9rem;
+        padding: 0.75rem 1rem;
+      }
+    }
+    
+    /* Toast notification animations */
+    .animate-fade-in-up {
+      animation: fadeInUp 0.5s ease forwards;
+    }
+    
+    .animate-fade-out {
+      animation: fadeOut 0.5s ease forwards;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeOut {
+      from {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+      }
+    }
+   
+  .poppins-font {
+    font-family: 'Poppins', sans-serif;
+  }
+
+  /* Logo transition styles */
+    .logo-container {
+      height: 80px;
+      width: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    
+    .logo-light {
+     display: block;
+      max-height: 100%;
+      width: auto;
+      transition: opacity 0.3s ease;
+    }
+    
+    .logo-dark {
+      display: none;
+      max-height: 100%;
+      width: auto;
+     transition: opacity 0.3s ease;
+   }
+    
+    .navbar.scrolled .logo-light {
+      display: none;
+    }
+    
+  .navbar.scrolled .logo-dark {
+      display: block;
+     }
+
+  </style>
+
+</head>
+  <body>
+<div class="min-h-screen flex flex-col">
+  <!-- Main Content -->
+
+
+    <!-- Header/Navbar -->
+    <header class="navbar fixed w-full top-0 z-50">
+      <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <a href="index.html" class="flex items-center space-x-2">
+          <div class="logo-container ">
+                 <img src="images/AL Omar logo nav bar 3.png" alt="Al Omar logo" class="h-18 w-auto logo-light   " > <!-- Logo Image --->
+                  <img src="images/AL Omar logo nav bar 2.png" alt="Al Omar logo" class="h-18 w-auto logo-dark   " > <!-- Logo Image --->
+          </div>
+        </a>
+        <nav class="hidden md:flex space-x-8">
+          <a href="index.html" class="navbar-link">Home</a>
+          <a href="packages.html" class="navbar-link">Packages</a>
+          <a href="Services.html" class="navbar-link">Services</a>
+          <a href="aboutus.html" class="navbar-link">About Us</a>
+          <a href="contact_new.html" class="navbar-link">Contact</a>
+        </nav>
+        <button class="md:hidden mobile-menu-button px-4 py-2 rounded" id="mobile-menu-btn">
+          <i class="bx bx-menu text-xl"></i>
+        </button>
+      </div>
+      
+      <!-- Mobile menu, hidden by default -->
+      <div class="md:hidden hidden" id="mobile-menu">
+        <div class="px-2 pt-2 pb-4 shadow-lg rounded-b-lg w-full">
+          <a href="index.html" class="block px-4 py-3 my-1 font-medium hover:bg-green-50 rounded transition-colors duration-300">Home</a>
+          <a href="packages.html" class="block px-4 py-3 my-1 font-medium hover:bg-green-50 rounded transition-colors duration-300">Packages</a>
+          <a href="Services.html" class="block px-4 py-3 my-1 font-medium hover:bg-green-50 rounded transition-colors duration-300">Services</a>
+          <a href="aboutus.html" class="block px-4 py-3 my-1 font-medium hover:bg-green-50 rounded transition-colors duration-300">About Us</a>
+          <a href="contact_new.html" class="block px-4 py-3 my-1 font-medium hover:bg-green-50 rounded transition-colors duration-300">Contact</a>
+        </div>
+      </div>
+    </header>
+    
+    <!-- Hero Section -->
+     <section class="relative  pt-28 pb-20 bg-green-700">
+      <div class="absolute inset-0 z-0 opacity-20 ">
+        <img
+          src="images/Taif bg.jpg"
+          alt="service card background"
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-3xl mx-auto text-center mt-10">        
+          <h1 class="text-3xl font-bold text-white mb-4">Comprehensive Pilgrimage Services</h1>
+          <p class="text-xl text-white mb-0">
+            We're here to answer your questions and help you plan your sacred journey.
+          </p>
+        </div>
+      </div>
+    </section> 
+
+       <!-- Breadcrumb Navigation -->
+    <nav class="container mx-auto px-4 mt-8 mb-4" aria-label="Breadcrumb">
+      <ol class="flex items-center space-x-2 text-sm text-gray-600">
+        <li>
+          <a href="index.html" class="flex items-center font-bold text-lg hover:text-green-700 transition-colors">
+            <i class="bx bx-home mr-2 font-bold"></i> Home
+          </a>
+        </li>
+        <li>
+          <span class="mx-2 text-gray-400">/</span>
+        </li>
+        <li>
+          <a href="Services.html" class="hover:text-green-700 font-bold text-lg transition-colors">
+            Services
+          </a>
+        </li>
+        <li>
+          <span class="mx-2 text-gray-400 ">/</span>
+        </li>
+        <li class="text-green-700 font-bold text-lg">
+          Taif Ziyarah
+        </li>
+      </ol>
+      <button onclick="window.history.back()" class="mt-3 flex items-center text-green-700 font-bold text-lg hover:underline focus:outline-none">
+        <i class="bx bx-arrow-back mr-1 font-bold"></i> Back
+      </button>
+    </nav>
+
+      <main class="max-w-7xl mx-auto px-6 sm:px-8 py-10 flex flex-col items-center ">
+    <!-- Centered Image Section -->
+    <section class="w-full md:w-3/4 lg:w-2/3 space-y-4 mx-auto">
+      <div class="rounded-lg overflow-hidden shadow-lg relative transition-transform hover:scale-105 duration-300">
+        <img src="images/Taif ziyarath.jpg" alt="Meccah Ziyarah"
+          class="w-full h-[420px] object-cover rounded-lg" />
+      </div>
+    </section>
+    
+    <!-- Content Section Below Image -->
+    <section class="w-full md:w-4/5 mt-12 poppins-font   ">
+      <p class="text-sm text-gray-700 mb-1 text-center">AL OMAR HAJJ AND UMRAH SERVICES</p>
+      <h1 class="text-3xl font-extrabold mb-2 text-center">Taif Ziyarah: A Guide to Historical and Religious Sites</h1>
+
+      <p class="text-gray-700 mb-6 max-w-3xl mx-auto text-center">
+     This document provides a guide to some of the most significant historical and religious sites in Taif, Saudi Arabia, offering a glimpse into the city's rich past and its importance in Islamic history. 
+     From mosques and historical houses to gardens and natural landmarks, this guide aims to highlight the key places to visit during a ziyarah  to Taif.
+      </p>
+      
+      <!-- Download Button -->
+      <div class="flex justify-center mb-8">
+        <a href="Taif Ziyarah - Complete Guide.pdf" download="Al-Omar-Makkah-Ziyarah-Guide.pdf" class="download-btn flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+          <i class="bx bx-download text-xl"></i>
+          <span class="hidden sm:inline">Download Complete Guide PDF</span>
+          <span class="sm:hidden">Download PDF</span>
+          <div class="absolute top-0 right-0 bg-green-800 text-xs text-white px-2 py-1 rounded-bl-lg">Free</div>
+        </a>
+      </div>
+
+      <hr class="border-gray-300 mb-6 max-w-4xl mx-auto" />
+
+      <h2 class="font-bold text-xl mb-4 text-center ">Historical and Religious Sites in Taif</h2>
+      <ul class="space-y-4 max-w-3xl mx-auto text-gray-900 text-sm">
+
+
+               <!--  Taif Important Sites for Ziyarah section-->
+
+              <ul class="list-none pl-5 space-y-3">
+                <li class="italic text-gray-600 ">
+                        Taif, located in the Makkah Province of Saudi Arabia, is a city steeped in history and religious significance. Its cooler climate and fertile lands have made it a popular destination throughout the ages. 
+                        For Muslims, Taif holds a special place due to its connection with  Our Prophet Mohammed صَلَّى ٱللَّٰهُ عَلَيْهِ وَسَلَّمَ . Here are some notable sites to consider visiting:
+                </li>
+             </ul>   
+         <!--1st item-->
+       <ul class="list-none pl-5 space-y-3">
+          <strong class="text-lg">1. Masjid Abdullah Ibn Abbas –</strong> 
+           <li class="italic text-gray-600">
+             This mosque is one of the most prominent landmarks in Taif. It is named after Abdullah Ibn Abbas, a cousin of  Our Prophet Mohammed صَلَّى ٱللَّٰهُ عَلَيْهِ وَسَلَّمَ  and a renowned scholar of the Quran.
+              He is buried within the mosque complex.
+            </li>
+            <ul class="list-none pl-5 space-y-3">
+
+                     <li class="list-disc"> 
+                      <strong>
+                              Significance: 
+                      </strong>
+                      The mosque is a place of great historical and religious importance. 
+                      Abdullah Ibn Abbas's (R.A) knowledge and contributions to Islamic jurisprudence make this site a significant place for reflection and learning.
+                    </li>
+                    <li class="list-disc"> 
+                      <strong>
+                              Features: 
+                      </strong>
+                      The mosque features traditional Islamic architecture, with a large prayer hall, a minaret, and a courtyard. The tomb of Abdullah Ibn Abbas (R.A) is a focal point for visitors.
+                    </li>
+                    <li class="list-disc"> 
+                      <strong>
+                              Visiting: 
+                      </strong>
+                     The mosque is open to visitors for prayers and to pay respects to Abdullah Ibn Abbas (R.A) . It is advisable to dress modestly and maintain a respectful demeanor.
+                    </li>
+           </ul> 
+       </ul>
+               
+
+       <!--2nd item-->
+      <ul class="list-none pl-5 space-y-3">
+          <strong class="text-lg">2. Addas Farm (Garden of the Grapes) –</strong> 
+           <li class="italic text-gray-600">
+            This farm is believed to be the location where the Prophet Muhammad (peace be upon him) sought refuge after facing persecution in Makkah.
+             He was offered grapes by Addas, a Christian servant, who was moved by the Prophet's message and character
+            </li>
+            <ul class="list-none pl-5 space-y-3">
+              
+                     <li class="list-disc"> 
+                      <strong>
+                              Significance: 
+                      </strong>
+                       This site represents a pivotal moment in the Prophet's life, highlighting his resilience and the early challenges faced in spreading Islam. 
+                       It also symbolizes the potential for understanding and acceptance between different faiths.
+                    </li>
+                    
+                    <li class="list-disc"> 
+                      <strong>
+                              Visiting: 
+                      </strong>
+                      Visitors can walk through the garden, reflect on the Prophet's journey, and appreciate the natural beauty of the area.
+                    </li>
+           </ul> 
+       </ul>
+
+        <!--3rd item-->
+         <ul class="list-none pl-5 space-y-3">
+          <strong class="text-lg"> 3. Old City of Taif –</strong> 
+           <li class="italic text-gray-600">
+            Taif Old City is a historic and culturally rich area located in the mountainous region of Taif, Saudi Arabia. Known for its cool climate, beautiful landscapes,
+             and traditional architecture, it has long been an important center for trade, agriculture, and pilgrimage.
+            </li>
+          </ul>
+
+          <!-- 4th item-->
+            <ul class="list-none pl-5 space-y-3">
+          <strong class="text-lg"> 4. Camel Milk Farm –</strong> 
+           <li class="italic text-gray-600">
+           One well-known place is the Taif Camel Farm, which offers fresh camel milk and sometimes allows visitors to see camels and learn about camel farming.
+            </li>
+          </ul>
+          <!-- 5th item-->
+          <ul class="list-none pl-5 space-y-3">
+            <strong class="text-lg">5. Amudhi Museum –</strong>
+            <li class="italic text-gray-600">
+             The museum offers visitors an immersive experience to understand the cultural and historical museum that showcases the rich heritage, traditions, and history of the Taif region and Saudi Arabia more broadly.
+              It typically features displays related to traditional Saudi life, including artifacts, antiques, old tools, clothing, and sometimes exhibits on agriculture, commerce, and the lifestyle of the local people
+          </ul>
+          <!-- 6th item-->
+            <ul class="list-none pl-5 space-y-3">
+          <strong class="text-lg"> 6. Treaty of Hudaybiyyah –</strong> 
+           <li class="italic text-gray-600">
+            Hudaybiyyah is known as a historical site near Mecca, famous for the Treaty of Hudaybiyyah during the time of Our Prophet Mohammed صَلَّى ٱللَّٰهُ عَلَيْهِ وَسَلَّمَ 
+            </li>
+          </ul>
+
+          <!-- 7th item-->
+            <ul class="list-none pl-5 space-y-3">
+          <strong class="text-lg"> 7. Masjid al-Qantara –</strong> 
+           <li class="italic text-gray-600">
+           historic mosque located in Taif, Saudi Arabia. The name "al-Qantara" means "the bridge" or "the arch," which often refers to a structure with an arch or a bridge nearby, indicating either the architectural style or its location near an old bridge or water channel.
+            </li>
+          </ul>
+
+          <!-- 8th item-->
+            <ul class="list-none pl-5 space-y-3">
+          <strong class="text-lg"> 8. Masjid Ash Shajara –</strong> 
+           <li class="italic text-gray-600">
+            This mosque marks the spot where Prophet Muhammad (PBUH) rested after the harsh treatment he received when he went to Taif to invite its people to Islam. The people of Taif initially rejected and physically attacked him, forcing him to seek refuge under a tree outside the city.
+            </li>
+          </ul>
+
+          <!-- 9th item-->
+            <ul class="list-none pl-5 space-y-3">
+          <strong class="text-lg">9. Masjid Al Rasool –</strong> 
+           <li class="italic text-gray-600">
+          one of the notable mosques in the city. The name "Al Rasool" means "The Prophet," referring to Prophet Muhammad (PBUH). The mosque serves as a local place of worship for residents and visitors in Taif.
+            </li>
+          </ul>
+
+
+          <!-- 10th item-->
+            <ul class="list-none pl-5 space-y-3">
+          <strong class="text-lg"> 10. Masjid al-Kou –</strong> 
+           <li class="italic text-gray-600">
+           The mosque's name, "Al-Kou'," refers to the stone with the Prophet's alleged elbow mark, highlighting a specific connection to the Prophet's presence. 
+            </li>
+          </ul>
+
+          <!-- 11th item-->
+            <ul class="list-none pl-5 space-y-3">
+          <strong class="text-lg"> 11. Ikrima Dam –</strong> 
+           <li class="italic text-gray-600">
+            This dam is one of several infrastructure projects in the region aimed at water conservation, flood control, and sometimes irrigation support.
+            </li>
+          </ul>
+
+
+          <!-- 12th item-->
+            <ul class="list-none pl-5 space-y-3">
+          <strong class="text-lg">12. Miqat at Qarn al-Manazil and Al Sail Al Kabir –</strong> 
+          
+            <ul class="list-none pl-5 space-y-3">
+
+                     <li class="list-disc"> 
+                      <strong>
+                             Qarn al-Manazil : 
+                      </strong>
+                     one of the five major Miqats established by the Our Prophet Mohammed صَلَّى ٱللَّٰهُ عَلَيْهِ وَسَلَّمَ . 
+                     It is the Miqat for people coming from the direction of Najd (central Saudi Arabia). Located about 94 km from Makkah on the road from Taif or Najd.
+                    </li>
+                    <li class="list-disc"> 
+                      <strong>
+                              Al Sail al Kabir : 
+                      </strong>
+                      This Miqat is for pilgrims coming from the direction of Medina (north). Located about 18 km from Medina city.
+                    </li>
+
+
+
+          
+              <!--Etiquette of Ziyarah section -->
+
+                  <li class="text-center ">
+                   <strong class="text-xl ">Etiquette of Ziyarah </strong> 
+                </li>
+              <ul class="list-none pl-5 space-y-5">
+                       <li class=" text-gray-600 text-center ">
+                          When performing Ziyarah, it is essential to observe proper Islamic etiquette to show respect for the sacred sites and enhance the spiritual experience. Here are some guidelines:   
+                      </li>
+                    <li class="list-disc"> 
+                      <strong>
+                              Maintain Cleanliness: 
+                      </strong>
+                     Ensure personal hygiene and avoid littering. Keep the sacred sites clean and pristine. 
+                    </li>
+                     
+                    <li class="list-disc">
+                      <strong>
+                           Lower Your Voice: 
+                      </strong>
+                     Speak softly and avoid loud conversations or arguments. Maintain a respectful and reverent atmosphere. 
+                    </li>
+
+                      <li class="list-disc">
+                      <strong>
+                           Dress Modestly: 
+                      </strong>
+                      Wear modest clothing that covers the body appropriately. Avoid revealing or tight-fitting garments.  
+                    </li>
+
+                      <li class="list-disc">
+                      <strong>
+                            Avoid Photography and Videography: 
+                      </strong>
+                        In some areas, photography and videography may be restricted or discouraged. Respect these guidelines and avoid taking pictures that may disturb others.  
+                    </li>
+
+                    <li class="list-disc">
+                      <strong>
+                            Be Mindful of Others: 
+                      </strong>
+                     Be considerate of other pilgrims and avoid pushing or shoving. Offer assistance to those in need  
+                    </li>
+
+                    <li class="list-disc">
+                      <strong>
+                            Refrain from Worldly Discussions:
+                      </strong>
+                     Focus on remembrance of Allah (SWT) and reflection on the significance of the sites. Avoid engaging in idle gossip or worldly discussions. 
+                    </li>
+
+                    <li class="list-disc">
+                      <strong>
+                           Make Dua (Supplication):
+                      </strong>
+                     Take advantage of the opportunity to make sincere supplications to Allah (SWT) at these blessed locations 
+                    </li>
+
+                     <li class="list-disc">
+                      <strong>
+                           Avoid Innovations (Bid'ah): 
+                      </strong>
+                     Stick to the practices that are authentically prescribed in the Quran and Sunnah. Avoid engaging in rituals or practices that have no basis in Islamic teachings. 
+                    </li>
+                    <li>
+                        
+                    </li>
+
+            </ul> 
+
+            <!--Preparing for Ziyarah section-->
+
+            <li class="text-center">
+                   <strong class="text-xl "> Preparing for Ziyarah </strong> 
+                </li>
+            <ul class="list-none pl-5 space-y-5">      
+                <li class=" text-gray-600 text-center ">
+                     Before embarking on the Ziyarah, it is important to prepare both physically and spiritually. This includes:
+                   </li>
+                    <li class="list-disc"> 
+                      <strong>
+                              Learning about the rituals and sites:
+                      </strong>
+                       Familiarize yourself with the rituals of Umrah and the history and significance of the sites you plan to visit. 
+                       Please checkout our website, we provide complete umrah guide
+                    </li>
+                     
+                    <li class="list-disc">
+                      <strong>
+                                 Packing appropriately:
+                      </strong>
+                       Pack comfortable and modest clothing, as well as any necessary medications.
+                    </li>
+                      <li class="list-disc">
+                      <strong>
+                                   Making intentions:
+                      </strong>
+                     Make a sincere intention to perform the Ziyarah for the sake of Allah and to seek His pleasure.
+                    </li>
+
+                     <li class="list-disc">
+                      <strong>
+                                   Repenting for sins: 
+                      </strong>
+                   Seek forgiveness for any sins you may have committed and resolve to live a better life.
+                    </li>
+                     <li class="list-disc">
+                      <strong>
+                                Learning basic Arabic phrases: 
+                      </strong>
+                     Knowing some basic Arabic phrases can be helpful for communication.
+                    </li>
+                     <li class="list-disc">
+                      <strong>
+                          Stay Hydrated: 
+                      </strong>
+                   Drink plenty of water, especially when visiting outdoor sites during hot weather.
+
+                   <li class="list-disc">
+                      <strong>
+                          Wear Comfortable Shoes: 
+                      </strong>
+                   Wear comfortable shoes suitable for walking and climbing.
+            </ul> 
+ 
+            <!--Conclusion -->
+
+                  <li class="text-center ">
+                   <strong class="text-xl "> Conclusion</strong> 
+                </li>
+            <ul class="list-none pl-5 space-y-2">
+                    <li class="italic text-gray-600 ">
+                    A ziyarah to Taif offers a unique opportunity to connect with Islamic history and appreciate the natural beauty of the region.
+                     By visiting these historical and religious sites, one can gain a deeper understanding of the challenges faced by the Prophet Muhammad (peace be upon him) and the early Muslims, as well as the rich cultural heritage of Taif. 
+                    This guide provides a starting point for planning a meaningful and enriching visit to this significant city.
+            </ul> 
+          
+    </section>
+    </main>
+
+
+        <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <div class="flex items-center space-x-2 mb-4">
+              <img src="images/AL Omar logo nav bar.png" alt="Al Omar logo" class="h-16 w-auto logo-light   " > <!-- Logo Image --->
+            </div>
+            <p class="text-gray-400 mb-4">
+              Providing comprehensive Hajj and Umrah services to help you focus on your spiritual journey.
+            </p>
+            <div class="flex space-x-4">
+              <a href="#" class="text-gray-400 hover:text-white">
+                <i class="bx bxl-facebook text-xl"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white">
+                <i class="bx bxl-twitter text-xl"></i>
+              </a>
+              <a href="https://instagram.com/alomar_hajjumrah" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white">
+                <i class="bx bxl-instagram text-xl"></i>
+              </a>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+            <ul class="space-y-2">
+              <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
+              <li><a href="packages.html" class="text-gray-400 hover:text-white">Packages</a></li>
+              <li><a href="Services.html" class="text-gray-400 hover:text-white">Services</a></li>
+              <li><a href="aboutus.html" class="text-gray-400 hover:text-white">About Us</a></li>
+              <li><a href="contact_new.html" class="text-gray-400 hover:text-white">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Our Services</h3>
+            <ul class="space-y-2">
+                <li><a href="packages.html" class="text-gray-400 hover:text-white">Hajj Packages</a></li>
+              <li><a href="packages.html" class="text-gray-400 hover:text-white">Umrah Packages</a></li>
+              <li><a href="Services.html" class="text-gray-400 hover:text-white">Hajj Complete guide</a></li>
+              <li><a href="Services.html" class="text-gray-400 hover:text-white">Umrah guide</a></li>
+              <li><a href="Services.html" class="text-gray-400 hover:text-white">Ziyarah Services</a></li>
+            </ul>
+          </div>
+           <div>
+            <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+            <ul class="space-y-2">
+              <li class="flex items-start">
+                <i class="bx bx-map text-green-500 mr-3 text-xl mt-1"></i>
+                <a href="contact_new.html" class="text-gray-400 hover:text-white">No 06 Purasaiwakkam High Road,<br/> Chennai - 600007 </a></li>
+              <li class="flex items-start">
+                <i class="bx bx-phone text-green-500 mr-3 text-xl mt-1"></i>
+                <a href="contact_new.html" class="text-gray-400 hover:text-white">+91 908080330</a></li>
+              <li class="flex items-start">
+                <i class="bx bx-envelope text-green-500 mr-3 text-xl mt-1"></i>
+                <a href="contact_new.html" class="text-gray-400 hover:text-white">alomaroffice1@gmail.com</a></li>
+              <li class="flex items-center">
+                <i class="bx bx-time text-green-500 mr-3 text-xl mt-1"></i>
+                <a href="contact_new.html" class="text-gray-400 hover:text-white">Mon - Fri: 10:00 AM - 6:00 PM <br/>Sat: 11:00 AM - 5:00 PM</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
+          <p>© <script>document.write(new Date().getFullYear())</script> Al Omar Hajj & Umrah Services. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+   </div>
+  
+
+<script>
+    // Function to show success message
+    function showSuccessMessage() {
+      document.getElementById('contactForm').classList.add('hidden');
+      document.getElementById('successMessage').classList.remove('hidden');
+      
+      // Reset form after successful submission
+      setTimeout(function() {
+        document.getElementById('contactForm').reset();
+      }, 500);
+    }
+    
+    // Initialize Lucide icons
+    document.addEventListener('DOMContentLoaded', function() {
+      lucide.createIcons();
+      
+      // Add form submission handling
+      const form = document.getElementById('contactForm');
+      form.addEventListener('submit', function(e) {
+        // Form will submit normally to Web3Forms
+        // The success message will be shown after a short delay
+        // This allows time for the form to be submitted
+      });
+    });
+    
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+    
+    // Initialize navbar state and mobile menu on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      }
+      
+      // Download button interaction
+      const downloadBtn = document.querySelector('.download-btn');
+      if (downloadBtn) {
+        downloadBtn.addEventListener('mouseenter', function() {
+          this.querySelector('i').classList.add('bx-tada');
+        });
+        
+        downloadBtn.addEventListener('mouseleave', function() {
+          this.querySelector('i').classList.remove('bx-tada');
+        });
+        
+        downloadBtn.addEventListener('click', function() {
+          // Optional: Add analytics tracking or show a thank you message
+          setTimeout(() => {
+            const thankYouToast = document.createElement('div');
+            thankYouToast.className = 'fixed bottom-4 right-4 bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg z-50 animate-fade-in-up';
+            thankYouToast.innerHTML = 'Thank you for downloading our guide!';
+            document.body.appendChild(thankYouToast);
+            
+            setTimeout(() => {
+              thankYouToast.classList.add('animate-fade-out');
+              setTimeout(() => {
+                document.body.removeChild(thankYouToast);
+              }, 500);
+            }, 3000);
+          }, 1000);
+        });
+      }
+      
+      // Mobile menu toggle
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      
+      // Add event listeners to all mobile menu links
+      const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+      mobileMenuLinks.forEach(link => {
+        // Make sure links are clickable by stopping propagation
+        link.addEventListener('click', function(e) {
+          e.stopPropagation();
+        });
+      });
+      
+      mobileMenuBtn.addEventListener('click', function(e) {
+        e.stopPropagation(); // Prevent event from bubbling up
+        mobileMenu.classList.toggle('hidden');
+        
+        // Change icon based on menu state
+        const menuIcon = mobileMenuBtn.querySelector('i');
+        if (mobileMenu.classList.contains('hidden')) {
+          menuIcon.classList.remove('bx-x');
+          menuIcon.classList.add('bx-menu');
+        } else {
+          menuIcon.classList.remove('bx-menu');
+          menuIcon.classList.add('bx-x');
+        }
+      });
+      
+      // Prevent menu from closing when clicking inside it
+      mobileMenu.addEventListener('click', function(e) {
+        e.stopPropagation();
+      });
+      
+      // Close mobile menu when clicking outside
+      document.addEventListener('click', function(event) {
+        if (!mobileMenuBtn.contains(event.target) && !mobileMenu.contains(event.target)) {
+          if (!mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+            const menuIcon = mobileMenuBtn.querySelector('i');
+            menuIcon.classList.remove('bx-x');
+            menuIcon.classList.add('bx-menu');
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

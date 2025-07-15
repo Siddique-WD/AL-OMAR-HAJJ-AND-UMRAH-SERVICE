@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Umrah Guide</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          aspectRatio: {
+            'w-16': '16',
+            'h-9': '9',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+   .tab-active {
+     background-color: white;
+      color: #047857;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+    .faq-item.active .faq-icon {
+      transform: rotate(180deg);
+    }
+    
+    /* Navbar transition styles */
+    .navbar {
+      transition: all 0.3s ease;
+      background-color: transparent;
+    }
+    
+    .navbar.scrolled {
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    
+    .navbar-link {
+      color: white;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    
+    .navbar-link:hover {
+      color: rgba(134, 239, 172, 1); /* green-300 */
+    }
+    
+    .navbar.scrolled .navbar-link {
+      color: #1F2937; /* gray-800 */
+    }
+    
+    .navbar.scrolled .navbar-link:hover {
+      color: #047857; /* green-700 */
+    }
+    
+    .navbar-brand {
+      color: white;
+      font-weight: 700;
+      transition: color 0.3s ease;
+    }
+    
+    .navbar.scrolled .navbar-brand {
+      color: #047857; /* green-800 */
+    }
+    
+    .mobile-menu-button {
+      border-color: white;
+      color: white;
+      transition: all 0.3s ease;
+    }
+    
+    .navbar.scrolled .mobile-menu-button {
+      border-color: #047857;
+      color: #047857;
+    }
+    
+    /* Mobile menu styles */
+      
+    /* Mobile menu styles */
+    #mobile-menu {
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(-10px);
+      max-height: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Center align items */
+      position: absolute;
+      width: 100%;
+      left: 0;
+      right: 0;
+      z-index: 1000; /* Much higher z-index to ensure it's above all content */
+      background-color: white; /* Solid white background */
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    
+    #mobile-menu:not(.hidden) {
+      opacity: 1;
+      transform: translateY(0);
+      max-height: 300px;
+    }
+    
+    /* Mobile menu links styling */
+    #mobile-menu a {
+      color: #1F2937; /* Dark text for better readability on white */
+      width: 100%; /* Make links take full width */
+      text-align: center; /* Center text */
+      font-weight: 500;
+    }
+    
+    #mobile-menu a:hover {
+      background-color: #F3F4F6; /* Light gray background on hover */
+      color: #047857; /* Green text on hover */
+    }
+    
+    /* Ensure the mobile menu container has proper width */
+    #mobile-menu > div {
+      width: 100%;
+      background-color: white;
+    }
+    
+    /* Download button styles */
+    .download-btn {
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border: 2px solid transparent;
+    }
+    
+    .download-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.7s ease;
+    }
+    
+    .download-btn:hover::before {
+      left: 100%;
+    }
+    
+    .download-btn:hover {
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+    
+    .download-btn:active {
+      transform: translateY(2px) scale(0.98) !important;
+    }
+    
+    /* Pulse animation for download button */
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(5, 150, 105, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(5, 150, 105, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(5, 150, 105, 0); }
+    }
+    
+    .download-btn:hover {
+      animation: pulse 1.5s infinite;
+    }
+    
+    /* Responsive adjustments for download button */
+    @media (max-width: 640px) {
+      .download-btn {
+        font-size: 0.9rem;
+        padding: 0.75rem 1rem;
+      }
+    }
+    
+    /* Toast notification animations */
+    .animate-fade-in-up {
+      animation: fadeInUp 0.5s ease forwards;
+    }
+    
+    .animate-fade-out {
+      animation: fadeOut 0.5s ease forwards;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeOut {
+      from {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+      }
+    }
+   
+  .poppins-font {
+    font-family: 'Poppins', sans-serif;
+  }
+
+  /* Logo transition styles */
+    .logo-container {
+      height: 80px;
+      width: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    
+    .logo-light {
+     display: block;
+      max-height: 100%;
+      width: auto;
+      transition: opacity 0.3s ease;
+    }
+    
+    .logo-dark {
+      display: none;
+      max-height: 100%;
+      width: auto;
+     transition: opacity 0.3s ease;
+   }
+    
+    .navbar.scrolled .logo-light {
+      display: none;
+    }
+    
+  .navbar.scrolled .logo-dark {
+      display: block;
+     }
+  </style>
+
+</head>
+  <body>
+<div class="min-h-screen flex flex-col">
+  <!-- Main Content -->
+
+
+    <!-- Header/Navbar -->
+    <header class="navbar fixed w-full top-0 z-50">
+      <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <a href="index.html" class="flex items-center space-x-2">
+          <div class="logo-container ">
+                 <img src="images/AL Omar logo nav bar 3.png" alt="Al Omar logo" class="h-18 w-auto logo-light   " > <!-- Logo Image --->
+                  <img src="images/AL Omar logo nav bar 2.png" alt="Al Omar logo" class="h-18 w-auto logo-dark   " > <!-- Logo Image --->
+          </div>
+        </a>
+        <nav class="hidden md:flex space-x-8">
+          <a href="index.html" class="navbar-link">Home</a>
+          <a href="packages.html" class="navbar-link">Packages</a>
+          <a href="Services.html" class="navbar-link">Services</a>
+          <a href="aboutus.html" class="navbar-link">About Us</a>
+          <a href="contact_new.html" class="navbar-link">Contact</a>
+        </nav>
+        <button class="md:hidden mobile-menu-button px-4 py-2 rounded" id="mobile-menu-btn">
+          <i class="bx bx-menu text-xl"></i>
+        </button>
+      </div>
+      
+      <!-- Mobile menu, hidden by default -->
+      <div class="md:hidden hidden" id="mobile-menu">
+        <div class="px-2 pt-2 pb-4 shadow-lg rounded-b-lg w-full">
+          <a href="index.html" class="block px-4 py-3 my-1 font-medium hover:bg-green-50 rounded transition-colors duration-300">Home</a>
+          <a href="packages.html" class="block px-4 py-3 my-1 font-medium hover:bg-green-50 rounded transition-colors duration-300">Packages</a>
+          <a href="Services.html" class="block px-4 py-3 my-1 font-medium hover:bg-green-50 rounded transition-colors duration-300">Services</a>
+          <a href="aboutus.html" class="block px-4 py-3 my-1 font-medium hover:bg-green-50 rounded transition-colors duration-300">About Us</a>
+          <a href="contact_new.html" class="block px-4 py-3 my-1 font-medium hover:bg-green-50 rounded transition-colors duration-300">Contact</a>
+        </div>
+      </div>
+    </header>
+    
+    <!-- Hero Section -->
+     <section class="relative  pt-28 pb-20 bg-green-700">
+      <div class="absolute inset-0 z-0 opacity-20 ">
+        <img
+          src="images/umrah guide bg.jpg"
+          alt="service card background"
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-3xl mx-auto text-center mt-10">
+        
+          <h1 class="text-3xl font-bold text-white mb-4">Comprehensive Pilgrimage Services</h1>
+          <p class="text-xl text-white mb-0">
+            We're here to answer your questions and help you plan your sacred journey.
+          </p>
+        </div>
+      </div>
+      </section> 
+
+       <!-- Breadcrumb Navigation -->
+    <nav class="container mx-auto px-4 mt-8 mb-4" aria-label="Breadcrumb">
+      <ol class="flex items-center space-x-2 text-sm text-gray-600">
+        <li>
+          <a href="index.html" class="flex items-center font-bold text-lg hover:text-green-700 transition-colors">
+            <i class="bx bx-home mr-2 font-bold"></i> Home
+          </a>
+        </li>
+        <li>
+          <span class="mx-2 text-gray-400">/</span>
+        </li>
+        <li>
+          <a href="Services.html" class="hover:text-green-700 font-bold text-lg transition-colors">
+            Services
+          </a>
+        </li>
+        <li>
+          <span class="mx-2 text-gray-400">/</span>
+        </li>
+        <li class="text-green-700 font-bold text-lg ">
+          Umrah Pilgrimage Guide
+        </li>
+      </ol>
+      <button onclick="window.history.back()" class="mt-3 flex items-center text-green-700 font-bold text-lg hover:underline focus:outline-none">
+        <i class="bx bx-arrow-back mr-1 font-bold"></i> Back
+      </button>
+    </nav>
+
+      <main class="max-w-7xl mx-auto px-6 sm:px-8 py-10 flex flex-col items-center ">
+    <!-- Centered Image Section -->
+    <section class="w-full md:w-3/4 lg:w-2/3 space-y-4 mx-auto">
+      <div class="rounded-lg overflow-hidden shadow-lg relative transition-transform hover:scale-105 duration-300">
+        <img src="images/umrah.jpg" alt="Madinah Mosque"
+          class="w-full h-[420px] object-cover rounded-lg" />
+      </div>
+    </section>
+    
+    <!-- Content Section Below Image -->
+    <section class="w-full md:w-4/5 mt-12 poppins-font   ">
+      <p class="text-sm text-gray-700 mb-1 text-center">AL OMAR HAJJ AND UMRAH SERVICES</p>
+      <h1 class="text-3xl font-extrabold mb-2 text-center">Umrah Pilgrimage Guide </h1>
+
+      <p class="text-gray-700 mb-6 max-w-3xl mx-auto text-center">
+       Umrah is a significant pilgrimage in Islam that can be undertaken at any time of the year. Unlike Hajj, which has specific dates, Umrah allows Muslims to seek spiritual fulfillment and closeness to Allah at their convenience. 
+       This document outlines the essential procedures for Umrah service, providing guidance for pilgrims to ensure a smooth and fulfilling experience.
+      </p>
+      
+      <!-- Download Button -->
+      <div class="flex justify-center mb-8">
+        <a href="Umrah Pilgrimage in Islam - Complete Guide.pdf" download="Al-Omar-Umrah-Guide.pdf" class="download-btn flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+          <i class="bx bx-download text-xl"></i>
+          <span class="hidden sm:inline">Download Complete Guide PDF</span>
+          <span class="sm:hidden">Download PDF</span>
+          <div class="absolute top-0 right-0 bg-green-800 text-xs text-white px-2 py-1 rounded-bl-lg">Free</div>
+        </a>
+      </div>
+
+      <hr class="border-gray-300 mb-6 max-w-4xl mx-auto" />
+
+      <h2 class="font-bold text-xl mb-4 text-center ">Procedures for Umrah Pilgrimage</h2>
+      <ul class="space-y-4 max-w-3xl mx-auto text-gray-900 text-sm">
+
+
+         <!--Documentation-->
+
+          <li>
+          <strong class="text-lg"> 1. Documentation –</strong> 
+       </li>
+            <ul class="list-none pl-5 space-y-2">
+
+                   <li >
+                    <strong>Ensure that all necessary documents are in order, including: </strong>
+                   </li>
+                    <li class="list-disc">
+                      Valid passport
+                    </li>
+                    <li class="list-disc">
+                      Visa for Umrah
+                    </li>
+                    <li class="list-disc">
+                      Vaccination certificates (if required)
+                    </li>
+                    <li class="list-disc">
+                      Valid ID card issued by AL Omar Hajj and Umrah Services
+                    </li>
+                    <li class="list-disc">
+                       Saudi sim card for communication purposes.
+                      </li>
+                    <li class="list-disc">
+                     Travel insurance coverage for medical emergencies.
+                    </li>
+            </ul> 
+              <ul class="list-none pl-5 space-y-2">
+                      <li class="italic text-gray-600 ">
+                          Emergency contact information of family members or friends who will accompany them during the pilgrimage.
+                          Copies of vaccination records if applicable.
+                          Any additional documentation requested by AL Omar Hajj and Umrah Services.
+                      </li>      
+             </ul>
+                          
+            <!--Prep for Umrah-->
+                  
+                   <li>
+                      <strong class="text-lg"> 2. Preparation for Umrah –</strong> 
+                  </li>
+            <ul class="list-none pl-5 space-y-2">
+                  <li class="italic text-gray-600 " >
+                  Preparing for Umrah involves both physical and spiritual readiness. Key steps include purifying  intentions, learning the rituals, and ensuring financial and physical fitness
+                 </li>
+                  <br>
+                   <li >
+                    <strong>Intention (Niyyah): </strong>
+                     Men wear two unstitched white cloths, one wrapped around the waist and the other draped over the shoulder. Women wear simple, loose-fitting clothing that covers the entire body except for the face and hands.
+                  </li>
+           </ul> 
+       
+
+           <!--Sacred Journey-->
+
+               <li>
+                      <strong class="text-lg"> 3.The Journey to Mecca –</strong> 
+                  </li>
+           <ul class="list-none pl-5 space-y-2">
+                   <li >
+                    <strong>Arrival in Saudi Arabia : </strong>
+                    Upon arrival, pilgrims should proceed to the designated area for Umrah pilgrims. Ensure that all documents are ready for inspection.
+                   </li>
+                  <li >
+                    <strong>Transportation to Mecca : </strong>
+                     We pre-arranged transportation to travel from the airport to Mecca. Our Al Omar Hajj and Umrah Services provides shuttle services and accommodations for convenience .
+                  </li>
+           </ul> 
+
+
+        <!-- About Miqat  -->
+        <li>
+          <strong class="text-lg"> 4. Miqat: Entering the State of Ihram –</strong> 
+       </li>
+            <ul class="list-none pl-5 space-y-2">
+                  <li class="italic text-gray-600 " >
+                  The Hajj journey begins at the Miqat, designated boundary points surrounding Mecca. These are specific locations where pilgrims intending to perform Hajj or Umrah must enter the state of Ihram. Ihram is a sacred state of purity and devotion, marked by specific dress codes and prohibitions.
+                  </li>
+                  <br>
+                   <li >
+                    <strong>Dress Code:</strong>
+                     Men wear two unstitched white cloths, one wrapped around the waist and the other draped over the shoulder. Women wear simple, loose-fitting clothing that covers the entire body except for the face and hands.
+                  </li>
+                   <li>
+                    <strong>Prohibitions:</strong>
+                     While in Ihram, pilgrims are forbidden from cutting their hair or nails, using perfumes, engaging in sexual relations, hunting, or harming any living creature.
+                  </li> 
+           </ul> 
+              <ul class="list-none pl-5 space-y-3  ">
+                <li class="italic text-gray-600">
+              Upon reaching the Miqat, pilgrims perform ablution (Wudu), declare their intention (Niyyah) to perform Hajj or Umrah, and recite the Talbiyah, a prayer proclaiming their devotion to Allah swt :
+                </li>
+             <li class="text-yellow-500 font-bold text-2xl">
+              لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّيْكَ لاَ شَرِيْكَ لَكَ لَبَّيْكَ، إِنَّ الْحَمْدَ وَالنِّعْمَةَ لَكَ وَالْمُلْكَ لاَ شَرِيْكَ لَكَ. 
+             </li>
+             <li class="italic text-black">
+              "Labbaik Allahumma Labbaik, Labbaik Laa Shareeka Laka Labbaik, Innal Hamda Wan Ni'mata Laka Wal Mulk, Laa Shareeka Lak"
+             </li>
+            <li class="italic text-black">
+              (Here I am at Your service, O Allah, here I am. Here I am, You have no partner, here I am. Truly, the praise, the favor, and the dominion belong to You. You have no partner.)
+             </li>
+         </ul>
+
+         <!-- About Reaching Meccah  -->
+ 
+         <li>
+          <strong class="text-lg">5. Mecca: The Heart of Islam –</strong> 
+                 </li>
+               <ul class="list-none pl-5 space-y-3">
+                 <li class="italic text-gray-600 ">
+                   After entering Ihram, pilgrims proceed to Mecca, the holiest city in Islam. Mecca is home to the Kaaba, the sacred cube-shaped structure at the center of the Masjid al-Haram (Grand Mosque).
+                 </li>
+                   <li>
+                    <strong>Masjid al-Haram (Grand Mosque): </strong> The largest mosque in the world, encompassing the Kaaba and the surrounding courtyard. It is the focal point of Muslim prayer, with Muslims around the world facing the Kaaba during their daily prayers.
+                  </li>
+              </ul> 
+
+          <!-- About Tawaf   -->
+
+          <li>
+          <strong class="text-lg"> 6. Tawaf: Circling the Kaaba –</strong> 
+                 </li>
+          <ul class="list-none pl-5 space-y-3">
+                 <li class="italic text-gray-600 ">
+                  Upon arriving at the Masjid al-Haram, pilgrims perform Tawaf, circling the Kaaba seven times in a counter-clockwise direction. Tawaf symbolizes the unity of Muslims and their devotion to Allah.                 </li>
+                   <li>
+                    <strong>Starting Point: </strong> Tawaf begins at the Hajar al-Aswad (Black Stone), a sacred stone embedded in the eastern corner of the Kaaba. If possible, pilgrims try to kiss or touch the Hajar al-Aswad. If not, they can point towards it and say "Allahu Akbar" (Allah is the Greatest).                  </li>
+                  <li>
+                      <strong>Raml: </strong> During the first three rounds of Tawaf al-Qudum (the arrival Tawaf), men are encouraged to perform Raml, a brisk, shoulder-shaking walk.
+                  </li>
+                  <li>
+                    <strong>In Tawaf: </strong>  Throughout Tawaf, He/she may say any Zikr (remembrance) of Allah that he/she wishes to say.
+                  </li>
+                  <li>
+                    <strong>Dua: </strong>once reached to Yemeni corner from there onwards untill reaching the blackstone, he/she would read this  following dua:
+                  </li>
+                  <li class="text-yellow-500 font-bold text-2xl">
+                          رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ 
+                  </li>
+                  <li class="italic text-black">
+                       “Rabbana atina fid dunya hasanatan wa fil Aakhirati hasanatan waqina ‘adhaban-nar” 
+                  </li>
+                  <li class="italic text-black">
+                       (Our Lord, grant us good in this world and good in the Hereafter, and save us from the punishment of the Fire.)   
+                  </li>
+                  <li class="italic text-gray-600 " >
+                       After circling the Kaaba seven times in a counter-clockwise direction. At the end of the seventh circuit, you should not raise hand as it done at the start of the circle. and perform two rakah of tawaf behind Maqam Ibrahim (the standing place of Ibrahim) by covering his right shoulder.
+                       One can recite Surah Al - Kafiroon in the first rakah & Surah Al- Ikhlas in the 2nd Rakah. Our Prophet Mohammed صَلَّى ٱللَّٰهُ عَلَيْهِ وَسَلَّمَ instructed after praying the two rakahs, On their way, they drank Zamzam water.                
+            </li>
+        </ul> 
+              
+         <!--About Sa'i-->
+
+                  <li>
+          <strong class="text-lg"> 7. Sa'i: Walking Between Safa and Marwa –</strong> 
+                 </li>
+          <ul class="list-none pl-5 space-y-3">
+                 <li class="italic text-gray-600 ">
+                 After completing Tawaf, pilgrims perform Sa'i, walking seven times between the hills of Safa and Marwa, located within the Masjid al-Haram. Sa'i commemorates Hagar's desperate search for water for her son Ismail عَلَيْهِ ٱلسَّلَامُ. 
+                 </li>
+                 <li>
+                   <strong> Green Markers: </strong> Green markers indicate the areas where Hagar ran with more urgency. Men are encouraged to run (jog) between these markers.
+                 </li>
+                 <li>
+                  <strong>Dua:</strong>  These are supplications to recite during Sa'i  
+                 </li>
+                 <li class="italic text-gray-600 ">
+                 After Our Prophet Mohammed صَلَّى ٱللَّٰهُ عَلَيْهِ وَسَلَّمَ  approached to As- Safa he recited the verse in which allah almighty says: In surah al- Baqarah ayah 159 -
+                 </li>
+                 <li class="text-yellow-500 font-bold text-2xl">
+                          رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ 
+                  </li>
+                    <li class="italic text-black">
+                       “Inna As-Safa wal-Marwah min sha'a'irillah”
+                  </li>
+                  <li class="italic text-black">
+                         (Indeed, Safa and Marwa are among the symbols of Allah.)
+                  </li>
+                   <li class="text-yellow-500 font-bold text-2xl">
+                          رأَبْدَأُ بِمَا بَدَأَ اللهُ بِهِ
+                  </li>
+                    <li class="italic text-black">
+                       “Abda-o bima badaal-lahu bih.”
+                  </li>
+                  <li class="italic text-black">
+                        (I begin with what Allah began with)
+                  </li>
+                   <li class="italic text-gray-600 ">
+                 Our Prophet Mohammed صَلَّى ٱللَّٰهُ عَلَيْهِ وَسَلَّمَ  started with Safa and climed it until he could see the Kaabah, he then faced it and said:
+                 </li>
+                 <li class="text-yellow-500 font-bold text-2xl">
+                        اللهُ أكْبَرُ، اللهُ أَكْبَرُ، اللهُ أَكْبَرُ
+                  </li>
+                    <li class="italic text-black">
+                       “Allahu akbar, Allahu akbar, Allahu akbar.”
+                  </li>
+                  <li class="italic text-black">
+                        (Allah is the greatest, Allah is the greatest, Allah is the greatest.)
+                  </li>
+                   <li class="italic text-gray-600 ">
+                   and then he would say the following three times making a supplication (one should make a personal supplication) after each time:
+                 </li>
+                 <li class="text-yellow-500 font-bold text-2xl">                      
+                     لَا إِلهَ إِلَّا اللهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ المُلْكُ وَلَهُ الحَمْدُ وهُوَ عَلى كُلِّ شَيءٍ قَديرٌ، لَا إِلَهَ إِلَّا اللهُ وَحْدَهُ أَنْجَزَ وَعْدَهُ، وَنَصَرَ عَبْدَهُ وَهَزَمَ الأَحْزَابَ وَحْدَهُ.     
+                  </li>
+                    <li class="italic text-black">
+                        "La ilaha illal-lahu wahdahu la shareeka lah, lahul-mulku walahul-hamd, wahuwa AAala kulli shayin qadeer, la ilaha illal-lahu wahdah, anjaza waAAdah, wanasara AAabdah, wahazamal - ahzaba wahdah."
+                  </li>
+                  <li class="italic text-black">
+                       (None has the right to be worshipped except Allah, alone, without partner. To Him belongs all sovereignty and praise and He is over all things amnipotent. None has the right to be worshipped except Allah alone.  He fulfilled His promise, aided His Servant and single-handedly defeated the allies.) 
+                  </li>
+                  <li class="italic text-gray-600">
+                   Our Prophet Mohammed صَلَّى ٱللَّٰهُ عَلَيْهِ وَسَلَّمَ repeat this action at Mount Marwah.
+                  </li>
+            </ul>
+             <!--Shaving head-->
+               <li>
+          <strong class="text-lg"> 4. Shaving or Trimming Hair  –</strong> 
+                 </li>
+              <ul class="list-none pl-5 space-y-3">
+                 <li class="italic text-gray-600">
+                      Men should shave their heads or trim their hair, while women should cut a small portion of their hair. This act symbolizes the completion of Umrah.
+                 </li>
+              </ul>
+               <!--Post-Umrah -->
+
+                <li>
+                  <strong class="text-lg" >5. Post-Umrah Activities – </strong>
+                </li>
+                <ul class="list-none pl-5 space-y-3">
+                    <li>
+                         <strong>
+                               Prayers and Reflection:
+                         </strong>
+                         After completing Umrah, pilgrims are encouraged to engage in prayers and reflection at the Haram. This is a time for personal supplication and gratitude.
+                    </li>
+                    <li>
+                         <strong>
+                              Visiting Other Sacred Sites : 
+                         </strong>
+                             Consider joining in the Meccah and Madinah Ziyarah provided by Al omar hajj and umrah services.
+                        </li>
+                </ul>
+            
+                     <!--About Departure -->
+
+                  <li>
+                  <strong class="text-lg" >7. Departure   – </strong>
+                </li>
+                <ul class="list-none pl-5 space-y-3">
+                    <li>
+                         <strong>
+                              Returning Home :
+                         </strong>
+                         Pilgrims spend the night in Muzdalifah and collect pebbles for the Ramy al-Jamarat (Stoning of the Pillars) ritual in Mina.
+                    </li>
+                    <li>
+                         <strong>
+                              Sharing Experiences : 
+                         </strong>
+                         Upon returning home, share your experiences with family and friends. This can inspire others to undertake the pilgrimage and deepen their faith.
+                        </li>
+                </ul>
+                 
+
+                 <ul class="list-none pl-5 space-y-3 ">
+                     <li class="italic text-gray-600 ">
+
+                                 Here's a more detailed breakdown:
+                       </li>
+                </ul>
+                  
+                
+                 <!--Spiritual Preparation -->
+
+                  <li class="text-center">
+                   <strong class="text-lg "> Spiritual Preparation –</strong> 
+                </li>
+            <ul class="list-none pl-5 space-y-2">
+
+                    <li class="list-disc"> 
+                      <strong>
+                              Purify Intentions: 
+                      </strong>
+                      Make sincere intentions for performing Umrah solely for Allah's sake.
+                    </li>
+                     
+                    <li class="list-disc">
+                      <strong>
+                                    Repentance: 
+                      </strong>
+                      Seek forgiveness for past sins and resolve to avoid them in the future.
+                    </li>
+                      <li class="list-disc">
+                      <strong>
+                                    Learn the Rituals:  
+                      </strong>
+                      Familiarize yourself with the steps of Umrah, including Tawaf (circumambulating the Kaaba) and Sa'i (walking between Safa and Marwa). 
+                    </li>
+                      <li class="list-disc">
+                      <strong>
+                                    Seek Knowledge: 
+                      </strong>
+                      Understand the meaning and significance of each ritual to enhance your spiritual experience. 
+                    </li>
+            </ul> 
+
+              <!--Spiritual Preparation -->
+
+                  <li class="text-center">
+                   <strong class="text-lg "> Physical  Preparation –</strong> 
+                </li>
+            <ul class="list-none pl-5 space-y-2">
+
+                    <li class="list-disc"> 
+                      <strong>
+                              Fitness: 
+                      </strong>
+                      Begin walking and exercising to build stamina for the physical demands of Umrah.
+                    </li>
+                     
+                    <li class="list-disc">
+                      <strong>
+                            Diet:
+                      </strong>
+                      Maintain a balanced diet to ensure you have enough energy. 
+                    </li>
+                      <li class="list-disc">
+                      <strong>
+                            Rest:   
+                      </strong>
+                      Get adequate sleep to feel refreshed and prepared for the journey. 
+                    </li>
+                      <li class="list-disc">
+                      <strong>
+                             Ihram: 
+                      </strong>
+                      For men, prepare the two-piece white Ihram garments; women wear modest, clean clothing.  
+                    </li>
+                    <li class="list-disc">
+                      <strong>
+                             Footwear: 
+                      </strong>
+                      Pack comfortable and supportive shoes for walking long distances.   
+                    </li>
+                    <li class="list-disc">
+                      <strong>
+                             Essentials: 
+                      </strong>
+                      Pack items like a prayer mat, personal hygiene products, and any necessary medications. 
+                    </li>
+                    <li class="list-disc">
+                      <strong>
+                             Hydration: 
+                      </strong>
+                      Stay hydrated, especially in the hot climate of Saudi Arabia. 
+                    </li>
+            </ul> 
+
+            <!--Financial  Preparation -->
+
+            <li class="text-center">
+                   <strong class="text-lg "> Financial  Preparation –</strong> 
+                </li>
+            <ul class="list-none pl-5 space-y-2">
+
+                    <li class="list-disc"> 
+                      <strong>
+                              Halal Funds: 
+                      </strong>
+                      Ensure all expenses are covered through permissible means.
+                    </li>
+                     
+                    <li class="list-disc">
+                      <strong>
+                                   Travel Arrangements:
+                      </strong>
+                       Make necessary travel and accommodation arrangements in advance.
+                    </li>
+                      <li class="list-disc">
+                      <strong>
+                                    Debts:  
+                      </strong>
+                      Settle any outstanding debts before embarking on the journey. 
+                    </li>
+            </ul> 
+
+              <!--Important Considerations -->
+
+            <li class="text-center">
+                   <strong class="text-lg "> Other Important Considerations –</strong> 
+                </li>
+            <ul class="list-none pl-5 space-y-2">
+
+                    <li class="list-disc"> 
+                      <strong>
+                              Pack Wisely: 
+                      </strong>
+                      Pack essential items for Umrah, including Ihram garments (for men), comfortable clothing, a prayer mat, personal hygiene products, and any necessary medications. 
+                    </li>
+                     
+                    <li class="list-disc">
+                      <strong>
+                                  Learn Duas and Zikr:
+                      </strong>
+                       Start learning the necessary supplications and remembrance of Allah. 
+                    </li>
+                      <li class="list-disc">
+                      <strong>
+                                    Leave a Will:  
+                      </strong>
+                      Make a will and inform close relatives about your travel plans. 
+                    </li>
+                     <li class="list-disc">
+                      <strong>
+                                    Dependents:  
+                      </strong>
+                     Make arrangements for your dependents who will be left behind. . 
+                    </li>
+            </ul> 
+            <!--Conclusion -->
+
+                  <li class="text-center">
+                   <strong class="text-lg "> Conclusion</strong> 
+                </li>
+            <ul class="list-none pl-5 space-y-2">
+                    <li class="italic text-gray-600 ">
+                      Performing Umrah is a deeply spiritual experience that requires preparation and dedication.
+                      By following these procedures, pilgrims can ensure that their journey is smooth and fulfilling, 
+                      allowing them to focus on their spiritual goals and connection with Allah.
+                 </li>
+            </ul> 
+    </section>
+    </main>
+
+
+        <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <div class="flex items-center space-x-2 mb-4">
+               <img src="images/AL Omar logo nav bar.png" alt="Al Omar logo" class="h-16 w-auto logo-light   " > <!-- Logo Image --->
+            </div>
+            <p class="text-gray-400 mb-4">
+              Providing comprehensive Hajj and Umrah services to help you focus on your spiritual journey.
+            </p>
+            <div class="flex space-x-4">
+              <a href="#" class="text-gray-400 hover:text-white">
+                <i class="bx bxl-facebook text-xl"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white">
+                <i class="bx bxl-twitter text-xl"></i>
+              </a>
+              <a href="https://instagram.com/alomar_hajjumrah" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white">
+                <i class="bx bxl-instagram text-xl"></i>
+              </a>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+            <ul class="space-y-2">
+              <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
+              <li><a href="packages.html" class="text-gray-400 hover:text-white">Packages</a></li>
+              <li><a href="Services.html" class="text-gray-400 hover:text-white">Services</a></li>
+              <li><a href="aboutus.html" class="text-gray-400 hover:text-white">About Us</a></li>
+              <li><a href="contact_new.html" class="text-gray-400 hover:text-white">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Our Services</h3>
+            <ul class="space-y-2">
+              <li><a href="packages.html" class="text-gray-400 hover:text-white">Hajj Packages</a></li>
+              <li><a href="packages.html" class="text-gray-400 hover:text-white">Umrah Packages</a></li>
+              <li><a href="Services.html" class="text-gray-400 hover:text-white">Hajj Complete guide</a></li>
+              <li><a href="Services.html" class="text-gray-400 hover:text-white">Umrah guide</a></li>
+              <li><a href="Services.html" class="text-gray-400 hover:text-white">Ziyarah Services</a></li>
+            </ul>
+          </div>
+           <div>
+            <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+            <ul class="space-y-2">
+              <li class="flex items-start">
+                <i class="bx bx-map text-green-500 mr-3 text-xl mt-1"></i>
+                <a href="contact_new.html" class="text-gray-400 hover:text-white">No 06 Purasaiwakkam High Road,<br/> Chennai - 600007 </a></li>
+              <li class="flex items-start">
+                <i class="bx bx-phone text-green-500 mr-3 text-xl mt-1"></i>
+                <a href="contact_new.html" class="text-gray-400 hover:text-white">+91 908080330</a></li>
+              <li class="flex items-start">
+                <i class="bx bx-envelope text-green-500 mr-3 text-xl mt-1"></i>
+                <a href="contact_new.html" class="text-gray-400 hover:text-white">alomaroffice1@gmail.com</a></li>
+              <li class="flex items-center">
+                <i class="bx bx-time text-green-500 mr-3 text-xl mt-1"></i>
+                <a href="contact_new.html" class="text-gray-400 hover:text-white">Mon - Fri: 10:00 AM - 6:00 PM <br/>Sat: 11:00 AM - 5:00 PM</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
+          <p>© <script>document.write(new Date().getFullYear())</script> Al Omar Hajj & Umrah Services. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+   </div>
+  
+
+<script>
+    // Function to show success message
+    function showSuccessMessage() {
+      document.getElementById('contactForm').classList.add('hidden');
+      document.getElementById('successMessage').classList.remove('hidden');
+      
+      // Reset form after successful submission
+      setTimeout(function() {
+        document.getElementById('contactForm').reset();
+      }, 500);
+    }
+    
+    // Initialize Lucide icons
+    document.addEventListener('DOMContentLoaded', function() {
+      lucide.createIcons();
+      
+      // Add form submission handling
+      const form = document.getElementById('contactForm');
+      form.addEventListener('submit', function(e) {
+        // Form will submit normally to Web3Forms
+        // The success message will be shown after a short delay
+        // This allows time for the form to be submitted
+      });
+    });
+    
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+    
+    // Initialize navbar state and mobile menu on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      }
+      
+      // Download button interaction
+      const downloadBtn = document.querySelector('.download-btn');
+      if (downloadBtn) {
+        downloadBtn.addEventListener('mouseenter', function() {
+          this.querySelector('i').classList.add('bx-tada');
+        });
+        
+        downloadBtn.addEventListener('mouseleave', function() {
+          this.querySelector('i').classList.remove('bx-tada');
+        });
+        
+        downloadBtn.addEventListener('click', function() {
+          // Optional: Add analytics tracking or show a thank you message
+          setTimeout(() => {
+            const thankYouToast = document.createElement('div');
+            thankYouToast.className = 'fixed bottom-4 right-4 bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg z-50 animate-fade-in-up';
+            thankYouToast.innerHTML = 'Thank you for downloading our guide!';
+            document.body.appendChild(thankYouToast);
+            
+            setTimeout(() => {
+              thankYouToast.classList.add('animate-fade-out');
+              setTimeout(() => {
+                document.body.removeChild(thankYouToast);
+              }, 500);
+            }, 3000);
+          }, 1000);
+        });
+      }
+      
+      // Mobile menu toggle
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      
+      // Add event listeners to all mobile menu links
+      const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+      mobileMenuLinks.forEach(link => {
+        // Make sure links are clickable by stopping propagation
+        link.addEventListener('click', function(e) {
+          e.stopPropagation();
+        });
+      });
+      
+      mobileMenuBtn.addEventListener('click', function(e) {
+        e.stopPropagation(); // Prevent event from bubbling up
+        mobileMenu.classList.toggle('hidden');
+        
+        // Change icon based on menu state
+        const menuIcon = mobileMenuBtn.querySelector('i');
+        if (mobileMenu.classList.contains('hidden')) {
+          menuIcon.classList.remove('bx-x');
+          menuIcon.classList.add('bx-menu');
+        } else {
+          menuIcon.classList.remove('bx-menu');
+          menuIcon.classList.add('bx-x');
+        }
+      });
+      
+      // Prevent menu from closing when clicking inside it
+      mobileMenu.addEventListener('click', function(e) {
+        e.stopPropagation();
+      });
+      
+      // Close mobile menu when clicking outside
+      document.addEventListener('click', function(event) {
+        if (!mobileMenuBtn.contains(event.target) && !mobileMenu.contains(event.target)) {
+          if (!mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+            const menuIcon = mobileMenuBtn.querySelector('i');
+            menuIcon.classList.remove('bx-x');
+            menuIcon.classList.add('bx-menu');
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,2130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AL OMAR HAJJ AND UMRAH SERVICES</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="shortcut icon" href="images/AL Omar logo web.svg" type="image/x-icon">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          aspectRatio: {
+            'w-16': '16',
+            'h-9': '9',
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Instagram Embed Script -->
+  <script async defer src="https://www.instagram.com/embed.js"></script>
+  
+  <!-- Add custom styles for Instagram embeds -->
+  <style>
+    .instagram-container {
+      position: relative;
+      height: 600px;
+      overflow: hidden;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      background-color: #fff;
+    }
+    
+    .instagram-container .instagram-media {
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      border: none !important;
+      margin: 0 !important;
+      min-width: 0 !important;
+      max-width: none !important;
+    }
+    
+    @media (max-width: 640px) {
+      .instagram-container {
+        height: 500px;
+      }
+    }
+  </style>
+
+  <style>
+ 
+   .tab-active {
+     background-color: white;
+      color: #047857;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+    .faq-item.active .faq-icon {
+      transform: rotate(180deg);
+    }
+    
+    /* Floating Contact Icons Styles */
+    .floating-contact {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 16px;
+    }
+    
+    .floating-caller {
+      animation: entrance 0.5s ease-out, pulse 2s infinite 0.5s;
+      transform-origin: center;
+    }
+    
+    .floating-whatsapp {
+      animation: entrance 0.5s ease-out 0.2s both, pulse 2s infinite 0.7s;
+      transform-origin: center;
+    }
+    
+    .contact-button {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .caller-button {
+      background-color: #047857;
+    }
+    
+    .whatsapp-button {
+      background-color: #25D366;
+    }
+    
+    .contact-button:hover {
+      transform: scale(1.1);
+    }
+    
+    .caller-button:hover {
+      background-color: #065f46;
+    }
+    
+    .whatsapp-button:hover {
+      background-color: #128C7E;
+    }
+    
+    /* Contact icons animations on hover */
+    .contact-button:hover i {
+      animation: shake 0.5s ease-in-out;
+    }
+    
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(4, 120, 87, 0.7);
+      }
+      70% {
+        box-shadow: 0 0 0 10px rgba(4, 120, 87, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(4, 120, 87, 0);
+      }
+    }
+    
+    @keyframes entrance {
+      0% {
+        opacity: 0;
+        transform: scale(0) rotate(-90deg);
+      }
+      60% {
+        transform: scale(1.2) rotate(10deg);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+      }
+    }
+    
+    @keyframes shake {
+      0%, 100% { transform: rotate(0); }
+      20% { transform: rotate(-10deg); }
+      40% { transform: rotate(10deg); }
+      60% { transform: rotate(-10deg); }
+      80% { transform: rotate(10deg); }
+    }
+    
+    /* Hide on small screens in landscape mode */
+    @media (max-height: 500px) and (orientation: landscape) {
+      .floating-caller {
+        bottom: 10px;
+        right: 10px;
+      }
+      
+      .caller-button {
+        width: 45px;
+        height: 45px;
+      }
+    }
+    
+    /* Google Review Panel Hover Effects */
+    .review-panel {
+      position: relative;
+      transition: all 0.3s ease;
+      z-index: 1;
+      overflow: hidden;
+    }
+    
+    .review-panel::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7F7FD5 100%);
+      opacity: 0;
+      z-index: -1;
+      transition: opacity 0.3s ease;
+      border-radius: 0.5rem;
+    }
+    
+    .review-panel:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .review-panel:hover::before {
+      opacity: 0.9;
+    }
+    
+    .review-panel:hover h3,
+    .review-panel:hover p {
+      color: white;
+    }
+    
+    .review-panel:hover .text-blue-500 {
+      color: #a5f3fc !important; /* Light cyan color for better visibility */
+      text-decoration: underline;
+      font-weight: 500;
+    }
+    
+    .review-panel .bxs-star {
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+    
+    .review-panel:hover .bxs-star {
+      color: #ffd700 !important; /* Brighter gold color */
+      transform: scale(1.2);
+      text-shadow: 0 0 5px rgba(255, 215, 0, 0.7);
+    }
+    
+    /* Add glow effect on hover */
+    .review-panel:hover {
+      box-shadow: 0 0 15px rgba(59, 130, 246, 0.5), 0 0 30px rgba(59, 130, 246, 0.3);
+      animation: glowPulse 1.5s infinite alternate;
+    }
+    
+    @keyframes glowPulse {
+      0% {
+        box-shadow: 0 0 15px rgba(59, 130, 246, 0.5), 0 0 30px rgba(59, 130, 246, 0.3);
+      }
+      100% {
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.7), 0 0 40px rgba(59, 130, 246, 0.5);
+      }
+    }
+    
+    /* Package Card Hover Effects */
+    .package-card {
+      position: relative;
+      transition: all 0.3s ease;
+      z-index: 1;
+      overflow: hidden;
+    }
+    
+    .package-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, #065f46 0%, #047857 50%, #10b981 100%);
+      opacity: 0;
+      z-index: -1;
+      transition: opacity 0.3s ease;
+      border-radius: 0.5rem;
+    }
+    
+    .package-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .package-card:hover::before {
+      opacity: 0.9;
+    }
+    
+    .package-card:hover h3,
+    .package-card:hover span:not(.bg-green-100),
+    .package-card:hover li span {
+      color: white;
+    }
+    
+    .package-card:hover .bg-green-100 {
+      background-color: rgba(255, 255, 255, 0.9) !important;
+      color: #065f46 !important;
+      font-weight: 600;
+    }
+    
+    .package-card:hover .bx-check {
+      color: #a7f3d0 !important; /* Light green color */
+    }
+    
+    .package-card a.bg-green-600 {
+      transition: all 0.3s ease;
+    }
+    
+    .package-card:hover a.bg-green-600 {
+      background-color: white !important;
+      color: #047857 !important;
+      font-weight: 600;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+    
+    /* Add glow effect on hover */
+    .package-card:hover {
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.5), 0 0 30px rgba(16, 185, 129, 0.3);
+      animation: greenGlowPulse 1.5s infinite alternate;
+    }
+    
+    @keyframes greenGlowPulse {
+      0% {
+        box-shadow: 0 0 15px rgba(16, 185, 129, 0.5), 0 0 30px rgba(16, 185, 129, 0.3);
+      }
+      100% {
+        box-shadow: 0 0 20px rgba(16, 185, 129, 0.7), 0 0 40px rgba(16, 185, 129, 0.5);
+      }
+    }
+    
+    /* Popup styles */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .popup-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .popup-content {
+      background-color: white;
+      border-radius: 0.5rem;
+      max-width: 500px;
+      width: 90%;
+      position: relative;
+      transform: translateY(-20px);
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+    
+    .popup-overlay.active .popup-content {
+      transform: translateY(0);
+    }
+    
+    .popup-header {
+      background-color: #047857;
+      padding: 1rem;
+      color: white;
+      position: relative;
+    }
+    
+    .popup-close {
+      position: absolute;
+      top: 0.75rem;
+      right: 1rem;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    
+    .popup-close:hover {
+      transform: scale(1.1);
+    }
+    
+    .popup-body {
+      padding: 1.5rem;
+    }
+    
+    .popup-footer {
+      padding: 1rem;
+      border-top: 1px solid #e5e7eb;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    /* Navbar transition styles */
+    .navbar {
+      transition: all 0.3s ease;
+      background-color: transparent;
+    }
+    
+    .navbar.scrolled {
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    
+    .navbar-link {
+      color: white;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    
+    .navbar-link:hover {
+      color: rgba(134, 239, 172, 1); /* green-300 */
+    }
+    
+    .navbar.scrolled .navbar-link {
+      color: #1F2937; /* gray-800 */
+    }
+    
+    .navbar.scrolled .navbar-link:hover {
+      color: #047857; /* green-700 */
+    }
+    
+    .navbar-brand {
+      color: white;
+      font-weight: 700;
+      transition: color 0.3s ease;
+    }
+    
+    .navbar.scrolled .navbar-brand {
+      color: #047857; /* green-800 */
+    }
+    
+    .mobile-menu-button {
+      border-color: white;
+      color: white;
+      transition: all 0.3s ease;
+    }
+    
+    .navbar.scrolled .mobile-menu-button {
+      border-color: #047857;
+      color: #047857;
+    }
+    
+   /* Mobile menu styles */
+    #mobile-menu {
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(-10px);
+      max-height: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Center align items */
+      position: absolute;
+      width: 100%;
+      left: 0;
+      right: 0;
+      z-index: 1000; /* Much higher z-index to ensure it's above all content */
+      background-color: white; /* Solid white background */
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    
+    #mobile-menu:not(.hidden) {
+      opacity: 1;
+      transform: translateY(0);
+      max-height: 300px;
+    }
+    
+    /* Mobile menu links styling */
+    #mobile-menu a {
+      color: #1F2937; /* Dark text for better readability on white */
+      width: 100%; /* Make links take full width */
+      text-align: center; /* Center text */
+      font-weight: 500;
+    }
+    
+    #mobile-menu a:hover {
+      background-color: #F3F4F6; /* Light gray background on hover */
+      color: #047857; /* Green text on hover */
+    }
+    
+    /* Ensure the mobile menu container has proper width */
+    #mobile-menu > div {
+      width: 100%;
+      background-color: white;
+    }
+    
+    /* Aspect ratio container for videos */
+    .aspect-w-16 {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+      height: 0;
+      overflow: hidden;
+    }
+    
+    .aspect-w-16 iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    
+    /* Gallery Modal Styles */
+    .gallery-item {
+      transition: all 0.3s ease;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .gallery-item img {
+      image-rendering: -webkit-optimize-contrast; /* For Chrome */
+      image-rendering: crisp-edges; /* For Firefox */
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
+    }
+    
+    #imageModal {
+      transition: opacity 0.3s ease;
+    }
+    
+    #imageModal.active {
+      display: flex;
+      animation: fadeIn 0.3s ease forwards;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    #modalImage {
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      image-rendering: -webkit-optimize-contrast; /* For Chrome */
+      image-rendering: crisp-edges; /* For Firefox */
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
+    }
+    
+    /* Zoom animation */
+    .zoom-in {
+      animation: zoomIn 0.3s ease forwards;
+    }
+    
+    .zoom-out {
+      animation: zoomOut 0.3s ease forwards;
+    }
+    
+    @keyframes zoomIn {
+      from { transform: scale(1); }
+      to { transform: scale(1.5); }
+    }
+    
+    @keyframes zoomOut {
+      from { transform: scale(1.5); }
+      to { transform: scale(1); }
+    }
+
+    /* Logo transition styles */
+    .logo-container {
+      height: 80px;
+      width: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    
+    .logo-light {
+     display: block;
+      max-height: 100%;
+      width: auto;
+      transition: opacity 0.3s ease;
+    }
+    
+    .logo-dark {
+      display: none;
+      max-height: 100%;
+      width: auto;
+     transition: opacity 0.3s ease;
+   }
+    
+    .navbar.scrolled .logo-light {
+      display: none;
+    }
+    
+  .navbar.scrolled .logo-dark {
+      display: block;
+     }
+     
+    
+  </style>
+</head>
+<body>
+  <!-- Floating Contact Icons -->
+  <div class="floating-contact">
+    <!-- WhatsApp Icon -->
+    <div class="floating-whatsapp group">
+      <a href="https://wa.me/919080809330" target="_blank" aria-label="Chat on WhatsApp" class="contact-button whatsapp-button">
+        <i class="bx bxl-whatsapp text-white text-2xl"></i>
+      </a>
+      <div class="absolute bottom-full right-0 mb-2 w-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <div class="bg-gray-800 text-white text-sm py-1 px-3 rounded-md shadow-lg whitespace-nowrap">
+          WhatsApp: +91 9080809330
+          <div class="absolute top-full right-5 w-3 h-3 -mt-1.5 bg-gray-800 transform rotate-45"></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Phone Icon -->
+    <div class="floating-caller group">
+      <a href="tel:+919080809330" aria-label="Call us" class="contact-button caller-button">
+        <i class="bx bx-phone text-white text-2xl"></i>
+      </a>
+      <div class="absolute bottom-full right-0 mb-2 w-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <div class="bg-gray-800 text-white text-sm py-1 px-3 rounded-md shadow-lg whitespace-nowrap">
+          Call Us: +91 9080809330
+          <div class="absolute top-full right-5 w-3 h-3 -mt-1.5 bg-gray-800 transform rotate-45"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Popup for Latest Offers and Updates -->
+  <div id="offerPopup" class="popup-overlay">
+    <div class="popup-content shadow-xl">
+      <div class="popup-header">
+        <h3 class="text-xl font-bold">Latest Offers & Updates</h3>
+        <span class="popup-close" id="popupClose">&times;</span>
+      </div>
+      <div class="popup-body">
+        <div class="mb-4">
+          <div class="flex items-center mb-3">
+            <div class="h-8 w-8 bg-green-100 rounded-full flex items-center justify-center mr-3">
+              <i class="bx bx-gift text-green-600 text-xl"></i>
+            </div>
+            <h4 class="text-lg font-semibold text-red-600">Best August Umrah Package available Now!!!!</h4>
+          </div>
+          <p class="text-gray-600">Book our Best August Umrah package before the end of the month and Hurry up! Book now to get the best deal!</p>
+        </div>
+        
+        <div class="mb-4">
+          <div class="flex items-center mb-3">
+            <div class="h-8 w-8 bg-green-100 rounded-full flex items-center justify-center mr-3">
+              <i class="bx bx-calendar-star text-green-600 text-xl"></i>
+            </div>
+            <h4 class="text-lg font-semibold text-gray-900">Hajj 2026 Registration Open</h4>
+          </div>
+          <p class="text-gray-600">Hajj 2026 registration is now open! Limited spots available. Book early to secure your place.</p>
+        </div>
+        
+        <div>
+          <div class="flex items-center mb-3">
+            <div class="h-8 w-8 bg-green-100 rounded-full flex items-center justify-center mr-3">
+              <i class="bx bx-news text-green-600 text-xl"></i>
+            </div>
+            <h4 class="text-lg font-semibold text-gray-900">New Luxury Accommodation Options</h4>
+          </div>
+          <p class="text-gray-600">We've added Clock tower luxury accommodation options near Haram. Check out our updated packages!</p>
+        </div>
+      </div>
+      <div class="popup-footer">
+        <label class="flex items-center text-sm text-gray-600">
+          <input type="checkbox" id="dontShowAgain" class="mr-2 h-4 w-4 text-green-600 focus:ring-green-500">
+          Don't show for 7 days
+        </label>
+        <button id="popupBtn" class="px-4 py-2 bg-green-700 text-white rounded-md hover:bg-green-600 transition-colors">
+          View Packages
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="min-h-screen flex flex-col">
+    
+    <!-- Header/Navbar -->
+    <header class="navbar fixed w-full top-0 z-10">
+      <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <a href="index.html" class="flex items-center space-x-2">
+          <div class="logo-container ">
+                 <img src="images/AL Omar logo nav bar.png" alt="Al Omar logo" class="h-18 w-auto logo-light   " > <!-- Logo Image --->
+                  <img src="images/AL Omar logo nav bar 2.png" alt="Al Omar logo" class="h-18 w-auto logo-dark   " > <!-- Logo Image --->
+
+          </div>
+        </a>
+
+        <nav class="hidden md:flex space-x-8">
+          <a href="index.html" class="navbar-link">Home</a>
+          <a href="packages.html" class="navbar-link">Packages</a>
+          <a href="Services.html" class="navbar-link">Services</a>
+          <a href="aboutus.html" class="navbar-link">About Us</a>
+          <a href="contact_new.html" class="navbar-link">Contact</a>
+        </nav>
+        <button class="md:hidden mobile-menu-button px-4 py-2 rounded" id="mobile-menu-btn">
+          <i class="bx bx-menu text-xl"></i>
+        </button>
+      </div>
+
+      
+      <!-- Mobile menu, hidden by default -->
+      <div class="md:hidden hidden" id="mobile-menu">
+        <div class="px-2 pt-2 pb-4 shadow-lg rounded-b-lg w-full bg-white">
+          <a href="index.html" class="block px-4 py-3 my-1 font-medium hover:bg-green-50 rounded transition-colors duration-300 text-gray-800">Home</a>
+          <a href="packages.html" class="block px-4 py-3 my-1 font-medium hover:bg-green-50 rounded transition-colors duration-300 text-gray-800">Packages</a>
+          <a href="Services.html" class="block px-4 py-3 my-1 font-medium hover:bg-green-50 rounded transition-colors duration-300 text-gray-800">Services</a>
+          <a href="aboutus.html" class="block px-4 py-3 my-1 font-medium hover:bg-green-50 rounded transition-colors duration-300 text-gray-800">About Us</a>
+          <a href="contact_new.html" class="block px-4 py-3 my-1 font-medium hover:bg-green-50 rounded transition-colors duration-300 text-gray-800">Contact</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-cover bg-center h-screen" style="background-image: url('images/home page bg.jpg')">
+      <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+      <div class="relative container mx-auto px-4 h-full flex flex-col justify-center pt-16">
+     
+        <div class="max-w-2xl">
+          <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">Experience the Sacred Journey of Hajj & Umrah</h1>
+          <p class="text-xl text-white mb-8">Professional and trusted service for your spiritual journey to the holy cities of Makkah and Madinah.</p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="packages.html" class="inline-block">
+              <button class="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-full font-medium transition-transform hover:scale-105 duration-300">
+                Explore Packages
+              </button>
+            </a>
+            <a href="contact_new.html" class="inline-block">
+              <button class="bg-white hover:bg-gray-200 text-green-800 px-8 py-3 rounded-full font-medium transition-transform hover:scale-105 duration-300">
+                Contact Us
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Our Services</h2>
+          <p class="text-lg text-gray-600 max-w-3xl mx-auto">We offer comprehensive Hajj and Umrah services to make your spiritual journey comfortable and memorable.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Service Card 1 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col h-full ">
+                    <div class="h-80 overflow-hidden">
+                        <img src="images/hajj.jpg" alt="Complete Hajj Packages" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6 flex-grow ">
+                        <div class="flex items-center mb-4 ">
+                           
+                            <h3 class="text-xl font-bold text-gray-900 mx-auto text-center">Complete Hajj Guide</h3>
+                        </div>
+                        <p class="text-gray-700">A detailed overview of the rituals, preparations, and essential steps to perform Hajj, ensuring a smooth and spiritually rewarding pilgrimage.</p>
+                      <a href="servicecard1.html" class="text-green-600 hover:text-green-700 font-medium flex items-center mt-3">
+                        Learn More
+                       <i class="bx bx-right-arrow-alt ml-1"></i>
+                     </a>
+                    </div>
+                </div>
+
+         <!-- Service Card 2 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col h-full">
+                    <div class="h-80 overflow-hidden">
+                        <img src="images/umrah.jpg" alt="Umrah Services" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <div class="flex items-center mb-4">
+                            <h3 class="text-xl font-bold text-gray-900 mx-auto text-center ">Umrah Services</h3>
+                        </div>
+                        <p class="text-gray-700">Step-by-step instructions and tips for performing Umrah, including Ihram, Tawaf, Sa’i, and other important rites for a meaningful visit.</p>
+                    <a href="servicecard2.html" class="text-green-600 hover:text-green-700 font-medium flex items-center mt-3">
+                        Learn More
+                       <i class="bx bx-right-arrow-alt ml-1"></i>
+                     </a>
+                      </div>
+                </div>
+
+           <!-- Service Card 3 -->
+                 <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col h-full">
+                    <div class="h-80 overflow-hidden">
+                        <img src="images/Meccah Ziayarath.jpg" alt="Umrah Services" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <div class="flex items-center mb-4 ">
+                            <h3 class="text-xl font-bold text-gray-900 mx-auto text-center ">Makkah Ziyarah</h3>
+                        </div>
+                        <p class="text-gray-700">Insights into visiting the sacred sites in Makkah, including the Kaaba, Masjid al-Haram, and other religious landmarks.</p>
+                        <a href="servicecard3.html" class="text-green-600 hover:text-green-700 font-medium flex items-center mt-3">
+                        Learn More
+                       <i class="bx bx-right-arrow-alt ml-1"></i>
+                     </a>
+                      </div>
+                </div>
+        </div>
+
+        <!-- View packages Button -->
+                <div class="text-center mt-10">
+          <a href="Services.html" target="_blank"  class="inline-flex items-center bg-gradient-to-r from-yellow-500 via-yellow-400 to-yellow-500 text-white px-6 py-3 rounded-full font-medium transition-transform hover:scale-105 duration-300">
+            <i class="bx bx-user mr-2 text-xl"></i> 
+             View Other Services
+          </a>
+        </div>
+
+      </div>
+    </section>
+    
+    
+        
+    <!-- Stats Counter Section -->
+    <section id="stats" class="py-16 bg-gradient-to-r from-gray-600 to-gray-600 text-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4">Our Impact in Numbers</h2>
+          <p class="text-lg text-green-100 max-w-3xl mx-auto">
+            For over a decade, we've been helping pilgrims fulfill their spiritual journey with excellence and dedication.
+          </p>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Counter 1: Happy Pilgrims -->
+          <div class="counter-item bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center transform transition-all duration-300 hover:scale-105 hover:bg-white/20">
+            <div class="text-5xl font-bold mb-2 flex justify-center">
+              <span class="counter-value" data-target="4000">0</span>
+              <span>+</span>
+            </div>
+            <div class="counter-icon mb-4 text-4xl">
+              <i class="bx bxs-user-check text-green-300"></i>
+            </div>
+            <h3 class="text-xl font-semibold">Happy Pilgrims</h3>
+            <p class="text-green-100 mt-2">Satisfied travelers who completed their sacred journey with us</p>
+          </div>
+          
+          <!-- Counter 2: Years of Experience -->
+          <div class="counter-item bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center transform transition-all duration-300 hover:scale-105 hover:bg-white/20">
+            <div class="text-5xl font-bold mb-2">
+              <span class="counter-value" data-target="15">0</span>
+            </div>
+            <div class="counter-icon mb-4 text-4xl">
+              <i class="bx bx-calendar-star text-green-300"></i>
+            </div>
+            <h3 class="text-xl font-semibold">Years of Experience</h3>
+            <p class="text-green-100 mt-2">Dedicated to providing exceptional Hajj and Umrah services</p>
+          </div>
+          
+          <!-- Counter 3: Destinations -->
+          <div class="counter-item bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center transform transition-all duration-300 hover:scale-105 hover:bg-white/20">
+            <div class="text-5xl font-bold mb-2">
+              <span class="counter-value" data-target="50">0</span><span>+</span>
+              
+            </div>
+            <div class="counter-icon mb-4 text-4xl">
+              <i class="bx bxs-map text-green-300"></i>
+            </div>
+            <h3 class="text-xl font-semibold">Sacred Sites</h3>
+            <p class="text-green-100 mt-2">Covering all the important religious locations in Meccah and Madinah, Saudi Arabia</p>
+          </div>
+          
+          <!-- Counter 4: Success Rate -->
+          <div class="counter-item bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center transform transition-all duration-300 hover:scale-105 hover:bg-white/20">
+            <div class="text-5xl font-bold mb-2">
+              <span class="counter-value" data-target="99">0</span>
+              <span>%</span>
+            </div>
+            <div class="counter-icon mb-4 text-4xl">
+              <i class="bx bxs-star text-green-300"></i>
+            </div>
+            <h3 class="text-xl font-semibold">Success Rate</h3>
+            <p class="text-green-100 mt-2">Customer satisfaction and successful pilgrimage completion</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <!--About us image moved here-->
+          <div class="rounded-xl overflow-hidden shadow-2xl">
+            <img 
+              src="https://pub-cdn.sider.ai/u/U07GHKZOVKY/web-coder/684ca5920484c40371c95bdf/resource/9073f8de-0f10-47e6-9ad6-8a5fe954db61.jpg" 
+              alt="Masjid-e-Nabawi" 
+              class="w-full h-[500px] object-cover"
+            />
+          </div>
+          <div>
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">About Our Hajj & Umrah Services</h2>
+            <p class="text-lg text-gray-700 mb-6">Al Omar Hajj & Umrah Services is a leading provider of Hajj and Umrah services in India. With over 15 years of experience, we are dedicated to providing exceptional service for pilgrims performing Hajj and Umrah. Our mission is to make your spiritual journey comfortable, meaningful, and hassle-free.</p>
+            <p class="text-lg text-gray-700 mb-8">We handle all aspects of your journey, from visa processing to accommodations and transportation, allowing you to focus entirely on your worship.</p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+              <div class="flex items-center">
+                <i class="bx bx-check-circle text-green-600 mr-2 text-xl"></i>
+                <span class="text-gray-700">Licensed and authorized</span>
+              </div>
+              <div class="flex items-center">
+                <i class="bx bx-check-circle text-green-600 mr-2 text-xl"></i>
+                <span class="text-gray-700">Experienced guides</span>
+              </div>
+              <div class="flex items-center">
+                <i class="bx bx-check-circle text-green-600 mr-2 text-xl"></i>
+                <span class="text-gray-700">Quality accommodations</span>
+              </div>
+              <div class="flex items-center">
+                <i class="bx bx-check-circle text-green-600 mr-2 text-xl"></i>
+                <span class="text-gray-700">24/7 customer support</span>
+              </div>
+            </div>
+            
+            <a href="aboutus.html" class="inline-block">
+              <button class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full font-medium flex items-center  transition-transform hover:scale-105 duration-300 ">
+                Learn More About Us
+                <i class="bx bx-chevron-right ml-2 text-xl"></i>
+              </button>
+            </a>
+          </div>
+                <!--  this code moved near about section 
+                     <div class="rounded-xl overflow-hidden shadow-2xl">
+            <img 
+              src="" 
+              alt="About us image" 
+              class="w-full h-[500px] object-cover"
+            />
+            </div>  --->
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section id="packages" class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Our Packages</h2>
+          <p class="text-lg text-gray-600 max-w-3xl mx-auto">Choose from our carefully designed packages that cater to different needs and preferences.</p>
+          
+          <div class="flex justify-center mt-8 mb-12">
+            <div class="inline-flex rounded-md shadow-sm bg-gray-100 p-1">
+              <button 
+                id="hajj-tab" 
+                class="px-6 py-2 text-sm font-medium rounded-md tab-active"
+                onclick="switchTab('hajj')"
+              >
+                Hajj Packages
+              </button>
+              <button 
+                id="umrah-tab" 
+                class="px-6 py-2 text-sm font-medium rounded-md text-gray-700"
+                onclick="switchTab('umrah')"
+              >
+                Umrah Packages
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Hajj Packages -->
+        <div id="hajj-packages" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Package Card 1 -->
+          <div class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 package-card">
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-xl font-semibold text-gray-900">Budget Hajj Package</h3>
+                <span class="bg-green-100 text-green-800 text-lg font-medium px-2.5 py-0.5 rounded">₹6,00,000</span>
+              </div>
+              <div class="flex items-center text-gray-900 mb-4">
+                <i class="bx bx-time mr-2"></i>
+                <span>38 to 42 days</span>
+              </div>
+              <ul class="mb-6 space-y-2">
+                <li class="flex items-start">
+                  <i class="bx bx-check text-green-600 mt-1 mr-2"></i>
+                  <span> 5 Star Hotel 300 meters </span>
+                </li>
+                <li class="flex items-start">
+                  <i class="bx bx-check text-green-600 mt-1 mr-2"></i>
+                  <span>Best South Indian Food </span>
+                </li>
+                <li class="flex items-start">
+                  <i class="bx bx-check text-green-600 mt-1 mr-2"></i>
+                  <span>Experienced guides</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="bx bx-check text-green-600 mt-1 mr-2"></i>
+                  <span>D category </span>
+                </li>
+                <li class="flex items-start">
+                  <i class="bx bx-check text-green-600 mt-1 mr-2"></i>
+                  <span>Makkah & Medinah Ziyarah</span>
+                </li>
+              </ul>
+              <a href="https://wa.me/919080809330" class="block text-center bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-full font-medium transition-colors duration-300">
+                Book Now
+              </a>
+            </div>
+          </div>
+
+          <!-- Package Card 2 -->
+          <div class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 package-card">
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-xl font-semibold text-gray-900">Premium Hajj Package</h3>
+                <span class="bg-green-100 text-green-800 text-lg font-medium px-2.5 py-0.5 rounded">₹7,50,000</span>
+              </div>
+              <div class="flex items-center text-gray-900 mb-4">
+                <i class="bx bx-time mr-2"></i>
+                <span>38 to 42 days</span>
+              </div>
+              <ul class="mb-6 space-y-2">
+                <li class="flex items-start">
+                  <i class="bx bx-check text-green-600 mt-1 mr-2"></i>
+                  <span>5-star Makkah Clock Tower Rooms </span>
+                </li>
+                <li class="flex items-start">
+                  <i class="bx bx-check text-green-600 mt-1 mr-2"></i>
+                  <span> Group transportation</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="bx bx-check text-green-600 mt-1 mr-2"></i>
+                  <span>Experienced guides</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="bx bx-check text-green-600 mt-1 mr-2"></i>
+                  <span>Best South Indian Food</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="bx bx-check text-green-600 mt-1 mr-2"></i>
+                  <span>Makkah & Medinah Ziyarah</span>
+                </li>
+              </ul>
+              <a href="https://wa.me/919080809330" class="block text-center bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-full font-medium transition-colors duration-300">
+                Book Now
+              </a>
+            </div>
+          </div>
+
+          <!-- Package Card 3 -->
+          <div class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 package-card">
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-xl font-semibold text-gray-900">Short Hajj Package</h3>
+                <span class="bg-green-100 text-green-800 text-lg font-medium px-2.5 py-0.5 rounded">₹7,50,000 per person</span>
+              </div>
+              <div class="flex items-center text-gray-900 mb-4">
+                <i class="bx bx-time mr-2"></i>
+                <span>15 to 18 days</span>
+              </div>
+              <ul class="mb-6 space-y-2">
+                <li class="flex items-start">
+                  <i class="bx bx-check text-green-600 mt-1 mr-2"></i>
+                  <span>5-star Makkah Clock Tower Rooms</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="bx bx-check text-green-600 mt-1 mr-2"></i>
+                  <span>Group transportation</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="bx bx-check text-green-600 mt-1 mr-2"></i>
+                  <span>Experienced guides</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="bx bx-check text-green-600 mt-1 mr-2"></i>
+                  <span>Best South Indian Food</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="bx bx-check text-green-600 mt-1 mr-2"></i>
+                  <span>Makkah & Medinah Ziyarah</span>
+                </li>
+              </ul>
+              <a href="https://wa.me/919080809330" class="block text-center bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-full font-medium transition-colors duration-300">
+                Book Now
+              </a>
+            </div>
+          </div>
+        </div>
+
+         
+
+        <!-- Umrah Packages (hidden by default) -->
+        <div id="umrah-packages" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
+          <!-- Package Card 1 -->
+          <div class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 package-card">
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-xl font-semibold text-gray-900">Basic Umrah Package</h3>
+                <span class="bg-green-100 text-green-800 text-lg font-medium px-2.5 py-0.5 rounded">₹85,000</span>
+              </div>
+              <div class="flex items-center text-gray-900 mb-4">
+                <i class="bx bx-time mr-2"></i>
+                <span>15 days</span>
+              </div>
+              <ul class="mb-6 space-y-2">
+                <li class="flex items-start">
+                  <i class="bx bx-check text-green-600 mt-1 mr-2"></i>
+                  <span>Standard Hotels (1 km from Haram) </span>
+                </li>
+                <li class="flex items-start">
+                  <i class="bx bx-check text-green-600 mt-1 mr-2"></i>
+                  <span>South Indian Food</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="bx bx-check text-green-600 mt-1 mr-2"></i>
+                  <span>Experienced guides </span>
+                </li>
+                <li class="flex items-start">
+                  <i class="bx bx-check text-green-600 mt-1 mr-2"></i>
+                  <span>Group transportation</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="bx bx-check text-green-600 mt-1 mr-2"></i>
+                  <span>Meccah and Madinah Ziyarah</span>
+                </li>
+              </ul>
+              <a href="https://wa.me/919080809330" class="block text-center bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-full font-medium transition-colors duration-300">
+                Book Now
+              </a>
+            </div>
+          </div>
+
+          <!-- Package Card 2 -->
+          <div class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 package-card">
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-xl font-semibold text-gray-900">Deluxe Umrah Package</h3>
+                <span class="bg-green-100 text-green-800 text-lg font-medium px-2.5 py-0.5 rounded">₹105,000</span>
+              </div>
+              <div class="flex items-center text-gray-900 mb-4">
+                <i class="bx bx-time mr-2"></i>
+                <span>15 days</span>
+              </div>
+              <ul class="mb-6 space-y-2">
+                <li class="flex items-start">
+                  <i class="bx bx-check text-green-600 mt-1 mr-2"></i>
+                  <span>Hotel Near haram (150 meters away)</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="bx bx-check text-green-600 mt-1 mr-2"></i>
+                  <span>Private transfers</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="bx bx-check text-green-600 mt-1 mr-2"></i>
+                  <span>Group transportation</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="bx bx-check text-green-600 mt-1 mr-2"></i>
+                  <span>Best South Indian Food</span>
+                </li>
+                </li>
+                <li class="flex items-start">
+                  <i class="bx bx-check text-green-600 mt-1 mr-2"></i>
+                  <span>Makkah & Medinah Ziyarah </span>
+              </ul>
+              <a href="https://wa.me/919080809330" class="block text-center bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-full font-medium transition-colors duration-300">
+                 Book Now
+              </a>
+            </div>
+          </div>
+
+          <!-- Package Card 3 -->
+          <div class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 package-card">
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-xl font-semibold text-gray-900">Premium Umrah Package</h3>
+                <span class="bg-green-100 text-green-800 text-lg font-medium px-2.5 py-0.5 rounded">₹125,000</span>
+              </div>
+              <div class="flex items-center text-gray-900 mb-4">
+                <i class="bx bx-time mr-2"></i>
+                <span>15 days</span>
+              </div>
+              <ul class="mb-6 space-y-2">
+                <li class="flex items-start">
+                  <i class="bx bx-check text-green-600 mt-1 mr-2"></i>
+                  <span>Clock tower Hotel</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="bx bx-check text-green-600 mt-1 mr-2"></i>
+                  <span>Five star accommodation</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="bx bx-check text-green-600 mt-1 mr-2"></i>
+                  <span>Best South Indian food</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="bx bx-check text-green-600 mt-1 mr-2"></i>
+                  <span>Personal Guide</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="bx bx-check text-green-600 mt-1 mr-2"></i>
+                  <span>Makkah & Medinah Ziyarah</span>
+                </li>
+              </ul>
+              <a href="https://wa.me/919080809330" class="block text-center bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-full font-medium transition-colors duration-300">
+                Book Now
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- View packages Button -->
+                <div class="text-center mt-10">
+          <a href="packages.html" target="_blank"  class="inline-flex items-center bg-gradient-to-r from-green-600 via-green-500 to-green-600 text-white px-6 py-3 rounded-full font-medium transition-transform hover:scale-105 duration-300">
+            <i class="bx bx-package mr-2 text-xl"></i> 
+            View  Packages Details
+          </a>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Gallery</h2>
+          <p class="text-lg text-gray-600 max-w-3xl mx-auto">View images of the holy places and our previous tours.</p>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div class="rounded-lg overflow-hidden cursor-pointer gallery-item">
+            <img src="images/gallery1.jpg" alt="Masjid Nabawi" class="w-full h-64 object-cover hover:scale-105 transition-transform duration-300 transform-gpu" loading="lazy" />
+          </div>
+          <div class="rounded-lg overflow-hidden cursor-pointer gallery-item">
+            <img src="images/gallery2.jpg" alt="Mecca" class="w-full h-64 object-cover hover:scale-105 transition-transform duration-300 transform-gpu" loading="lazy" />
+          </div>
+          <div class="rounded-lg overflow-hidden cursor-pointer gallery-item">
+            <img src="images/gallery3.jpg" alt="Mount Arafat" class="w-full h-64 object-cover hover:scale-105 transition-transform duration-300 transform-gpu" loading="lazy" />
+          </div>
+          <div class="rounded-lg overflow-hidden cursor-pointer gallery-item">
+            <img src="images/gallery4.jpg" alt="Pilgrims" class="w-full h-64 object-cover hover:scale-105 transition-transform duration-300 transform-gpu" loading="lazy" />
+          </div>
+          <div class="rounded-lg overflow-hidden cursor-pointer gallery-item">
+            <img src="images/gallery5.jpg" alt="Zamzam Well" class="w-full h-64 object-cover hover:scale-105 transition-transform duration-300 transform-gpu" loading="lazy" />
+          </div>
+          <div class="rounded-lg overflow-hidden cursor-pointer gallery-item">
+            <img src="images/gallery6.jpg" alt="Mina Tents" class="w-full h-64 object-cover hover:scale-105 transition-transform duration-300 transform-gpu" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Image Modal -->
+    <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-90 z-50  items-center justify-center hidden">
+      <div class="relative w-full h-full flex flex-col items-center justify-center p-4">
+        <!-- Close button -->
+        <button id="closeModal" class="absolute top-4 right-4 text-white text-3xl hover:text-gray-300 z-20">
+          <i class="bx bx-x"></i>
+        </button>
+        
+        <!-- Image container with zoom controls -->
+        <div class="relative max-w-5xl max-h-[80vh] overflow-hidden">
+          <img id="modalImage" src="" alt="" class="max-w-full max-h-[80vh] object-contain transition-transform duration-300 transform-gpu" style="image-rendering: auto;" />
+          
+          <!-- Controls overlay -->
+          <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-3 flex justify-between items-center">
+            <!-- Zoom controls -->
+            <div class="flex items-center space-x-3">
+              <button id="zoomOut" class="text-white hover:text-gray-300">
+                <i class="bx bx-zoom-out text-2xl"></i>
+              </button>
+              <button id="zoomReset" class="text-white hover:text-gray-300">
+                <i class="bx bx-reset text-2xl"></i>
+              </button>
+              <button id="zoomIn" class="text-white hover:text-gray-300">
+                <i class="bx bx-zoom-in text-2xl"></i>
+              </button>
+            </div>
+            
+            <!-- Download button -->
+            <a id="downloadImage" href="" download class="bg-green-600 hover:bg-green-700 text-white py-1 px-3 rounded-md flex items-center">
+              <i class="bx bx-download mr-1"></i> Download
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+          <!-- Instagram Feed Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Follow Us on Instagram</h2>
+          <p class="text-lg text-gray-600 max-w-3xl mx-auto">Stay updated with our latest posts, stories, and pilgrim experiences.</p>
+        </div>
+        
+        <!-- Instagram Feed Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mx-auto max-w-7xl">
+          <!-- Instagram Reel 1 -->
+          <div class="instagram-container">
+            <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DGSlMaVzXoE/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14"></blockquote>
+          </div>
+          
+          <!-- Instagram Reel 2 -->
+          <div class="instagram-container">
+            <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DIO5bBdSRnO/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14"></blockquote>
+          </div>
+          
+          <!-- Instagram Reel 3 -->
+          <div class="instagram-container">
+            <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DEFmCRgIm-L/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14"></blockquote>
+          </div>
+          
+          <!-- Instagram Reel 4 -->
+          <div class="instagram-container">
+            <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DA58cOSu4XW/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14"></blockquote>
+          </div>
+          
+          <!-- Instagram Reel 5 -->
+          <div class="instagram-container">
+            <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DALyrSlKyBh/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14"></blockquote>
+          </div>
+          
+          <!-- Instagram Reel 6 -->
+          <div class="instagram-container">
+            <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DKUSqNizXTl/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14"></blockquote>
+          </div>
+        </div>
+         <!-- Instagram Follow Button -->
+                <div class="text-center mt-10">
+          <a href="https://www.instagram.com/alomar_hajjumrah/" target="_blank"  class="inline-flex items-center bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white px-6 py-3 rounded-full font-medium transition-transform hover:scale-105 duration-300">
+            <i class="bx bxl-instagram mr-2 text-xl"></i> 
+            Follow @alomar_hajjumrah
+          </a>
+        </div>
+      
+        
+        
+        <!-- Script to load and process Instagram embeds -->
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            // Function to process Instagram embeds
+            function processInstagramEmbeds() {
+              if (window.instgrm) {
+                window.instgrm.Embeds.process();
+              } else {
+                // If Instagram JS isn't loaded yet, try again after a delay
+                setTimeout(processInstagramEmbeds, 500);
+              }
+            }
+            
+            // Start processing embeds
+            processInstagramEmbeds();
+            
+            // Also process after window load to ensure everything is ready
+            window.addEventListener('load', function() {
+              processInstagramEmbeds();
+            });
+            
+            // Fallback - try again after 3 seconds
+            setTimeout(processInstagramEmbeds, 3000);
+          });
+        </script>
+      </div>
+    </section>
+    
+    <!-- Google reviews container Heading -->
+    <div class="text-center mb-2">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">Customer Reviews</h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">See what our customers are saying about us.</p>
+    </div>
+     <!-- Google Review Section -->
+       <section class="py-8 bg-white-100 ">
+        <div class="container mx-auto px-6">
+         <div class="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
+      <!-- Five-star rating and text -->
+      <div class="flex items-center space-x-2">
+          <img src="images/Google logo.jpg" alt="Google Logo" class="h-10 w-30 mr-2">
+         <span class="ml-2 text-black-900 font-bold text-xl">4.8</span>
+        <div class="flex text-yellow-500">
+          <i class="bx bxs-star"></i>
+          <i class="bx bxs-star"></i>
+          <i class="bx bxs-star"></i>
+          <i class="bx bxs-star"></i>
+          <i class="bx bxs-star"></i>
+        </div>
+      </div>
+      <!-- Button to navigate to Google Reviews -->
+
+      <a href="https://g.co/kgs/syFeGQp" target="_blank" class="bg-blue-600 hover:bg-red-500 text-white px-6 py-3 rounded-full font-medium transition-transform hover:scale-105 duration-300 text-center">
+        Reviews us on Google
+      </a>
+    </div>
+
+    <!-- Reviews Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Review Panels -->
+      <!-- Review Panel 1 -->
+      <div class="bg-gray-100 rounded-lg shadow-md p-6 review-panel">
+        <div class="flex items-center mb-4">
+          <img src="images/unnamed.png" alt="Profile" class="h-12 w-12 rounded-full mr-3">
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900">shaik allaudeen</h3>
+            <div class="flex">
+              <i class="bx bxs-star text-yellow-500"></i>
+              <i class="bx bxs-star text-yellow-500"></i>
+              <i class="bx bxs-star text-yellow-500"></i>
+              <i class="bx bxs-star text-yellow-500"></i>
+              <i class="bx bxs-star text-yellow-500"></i>
+            </div>
+          </div>
+        </div>
+        <p class="text-black-300"> Very good experience with Al- omer travels. Starting from Chennai each and every things were guided perfectly.
+           <span id="dots1">...</span><span id="more1" class="hidden"> 
+           Hotel stay, food was good especially for elder people.Room was very near to haram Sharif it was making us to go all prayer quickly..
+           Not like other travels we stayed very long time in mecca. It was felt like mecca is our home town 
+           Even in ramalan time in tight schedule, they booked the hotel I. Medina and made necessary arrangements and iftar arrangements as well..
+           Who are all planning to perform umrah and Hajj please refer Alomer travels....</span></p>
+        <button onclick="toggleReadMore(1)" class="text-blue-500 hover:underline">Read More</button>
+      </div>
+
+      <!-- Review Panel 2 -->
+      <div class="bg-gray-100 rounded-lg shadow-md p-6 review-panel">
+        <div class="flex items-center mb-4">
+          <img src="images/review 2.png" alt="Profile" class="h-12 w-12 rounded-full mr-3">
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900">Mymoon Nisha</h3>
+            <div class="flex">
+              <i class="bx bxs-star text-yellow-500"></i>
+              <i class="bx bxs-star text-yellow-500"></i>
+              <i class="bx bxs-star text-yellow-500"></i>
+              <i class="bx bxs-star text-yellow-500"></i>
+              <i class="bx bxs-star text-yellow-500"></i>
+            </div>
+          </div>
+        </div>
+        <p class="text-black-300"> Masha allah Tabarakallah... We are much satisfied with your service SADIK brother,We extremely enjoyed 
+           <span id="dots2">...</span><span id="more2" class="hidden"> 
+            our pilgrimage journey. Food is the special mention. I felt blessed with this umrah journey with you.
+             Jiarath journey was absolutely knowledgeable and we learned a lot. Jazakallah kair for the timely help you made.
+              I highly recommend Al OMAR UMRAH & HAJJ service.</span></p>
+        <button onclick="toggleReadMore(2)" class="text-blue-500 hover:underline">Read More</button>
+      </div>
+
+      <!-- Review Panel 3 -->
+      <div class="bg-gray-100 rounded-lg shadow-md p-6 review-panel">
+        <div class="flex items-center mb-4">
+          <img src="images/review 3.png" alt="Profile" class="h-12 w-12 rounded-full mr-3">
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900">Abdul Samath</h3>
+            <div class="flex">
+              <i class="bx bxs-star text-yellow-500"></i>
+              <i class="bx bxs-star text-yellow-500"></i>
+              <i class="bx bxs-star text-yellow-500"></i>
+              <i class="bx bxs-star text-yellow-500"></i>
+              <i class="bx bxs-star text-yellow-500"></i>
+            </div>
+          </div>
+        </div>
+        <p class="text-black-300">Masha allah ..!! Al Omar travels founder & Guide Sadhik Bhai was humble and heart full person. 
+           <span id="dots3">...</span><span id="more3" class="hidden"> 
+           I have performed Umrah. we fully satisfied with his service provider to me and my family with goog Food and Hotel. 
+           Really awesome and near to Masjid al haram I have traveled on September 31. 
+           He showed historical placesmacca and Madinah Ziarat.
+           Alhamdulillah better feel after traveling with al Omar good handling team al Omar perfect management medical backup.</span></p>
+        <button onclick="toggleReadMore(3)" class="text-blue-500 hover:underline">Read More</button>
+      </div>
+
+
+      <!-- Review Panel 4 -->
+      <div class="bg-gray-100 rounded-lg shadow-md p-6 review-panel">
+        <div class="flex items-center mb-4">
+          <img src="images/review 4.png" alt="Profile" class="h-12 w-12 rounded-full mr-3">
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900">Seba Thasneem</h3>
+
+            <div class="flex">
+              <i class="bx bxs-star text-yellow-500"></i>
+              <i class="bx bxs-star text-yellow-500"></i>
+              <i class="bx bxs-star text-yellow-500"></i>
+              <i class="bx bxs-star text-yellow-500"></i>
+              <i class="bx bxs-star text-yellow-500"></i>
+            </div>
+          </div>
+        </div>
+          <p class="text-black-300"> Alhamdulillah did  Umrah with my infant with the help of  "Al Omar Hajj & umrah service" It was a last minute
+           <span id="dots4">...</span><span id="more4" class="hidden"> 
+           plan just 3 days before the date, Alhamdulillah Sadik bro arrange tickets and visa in shot time...
+           he is so friendly and helping everyone in all aspects....
+            takes care of ever individual like his own family members....
+             May Allah bless him and his service to grow more n help many more people around....</span></p>
+        <button onclick="toggleReadMore(4)" class="text-blue-500 hover:underline">Read More</button>
+         </div>
+        </div>
+      </div>
+    </section>
+
+<!-- JavaScript for Read More functionality -->
+<script>
+  function toggleReadMore(panelNumber) {
+    var dots = document.getElementById("dots" + panelNumber);
+    var moreText = document.getElementById("more" + panelNumber);
+    var btnText = event.target;
+
+    if (dots.style.display === "none") {
+      dots.style.display = "inline";
+      btnText.innerHTML = "Read More";
+      moreText.classList.add("hidden");
+    } else {
+      dots.style.display = "none";
+      btnText.innerHTML = "Read Less";
+      moreText.classList.remove("hidden");
+    }
+  }
+</script>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div>
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">Contact Us</h2>
+            <p class="text-lg text-gray-700 mb-8">Have questions or need more information? Contact our team and we'll be happy to assist you.</p>
+            
+            <div class="space-y-6">
+              <div class="flex items-start">
+                <div class="flex-shrink-0 mt-1">
+                  <i class="bx bx-map text-green-600 text-xl"></i>
+                </div>
+                <div class="ml-4">
+                  <h4 class="text-lg font-semibold text-gray-900">Address</h4>
+                  <p class="text-gray-700">No 06 Purasaiwakkam High Road, Chennai - 600007</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="flex-shrink-0 mt-1">
+                  <i class="bx bx-phone text-green-600 text-xl"></i>
+                </div>
+                <div class="ml-4">
+                  <h4 class="text-lg font-semibold text-gray-900">Phone</h4>
+                  <p class="text-gray-700">+91 9080809330</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="flex-shrink-0 mt-1">
+                  <i class="bx bx-time text-green-600 text-xl"></i>
+                </div>
+                <div class="ml-4">
+                  <h4 class="text-lg font-semibold text-gray-900">Working Hours</h4>
+                  <p class="text-gray-700">Monday - Friday: 10:00 AM - 6:00 PM<br/>Saturday: 11:00 AM - 5:00 PM</p>
+                </div>
+              </div>
+            </div>
+          </div>
+             
+          <!-- Contact Form (Home page)-->
+           
+          <div class="bg-gray-50 rounded-lg p-8">
+            <h3 class="text-2xl font-bold text-gray-900 mb-6">Send us a Message</h3>
+            
+            <!-- Success Message (hidden by default) -->
+            <div id="contactSuccessMessage" class="hidden bg-green-50 border border-green-200 rounded-lg p-6 text-center mb-6">
+              <div class="w-16 h-16 bg-green-100 rounded-full mx-auto flex items-center justify-center mb-4">
+                <svg class="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-green-700 mb-2">Message Sent Successfully!</h3>
+              <p class="text-gray-600 mb-4">Thank you for contacting us. Our team will get back to you shortly.</p>
+              <button 
+                class="px-4 py-2 rounded-md font-medium bg-green-600 text-white hover:bg-green-700"
+                onclick="document.getElementById('contactForm').classList.remove('hidden'); document.getElementById('contactSuccessMessage').classList.add('hidden');"
+              >
+                Send Another Message
+              </button>
+            </div>
+            
+            <!-- Contact Form -->
+            <form id="contactForm" class="space-y-6" action="https://api.web3forms.com/submit" method="POST" onsubmit="localStorage.setItem('formSubmitted', 'true');">
+              <!-- Web3Forms Access Key -->
+              <input type="hidden" name="access_key" value="c37eaba2-656a-4236-9e5d-d0536853e3ae">
+              <input type="hidden" name="subject" value="New Contact Form Submission - Al Omar Hajj and Umrah Services">
+              <input type="hidden" name="from_name" value="Al Omar Hajj and Umrah Services Contact Form">
+              <input type="hidden" name="redirect" value="https://web3forms.com/success">
+              
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                  <input 
+                    type="text" 
+                    id="name" 
+                    name="name"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"
+                    placeholder="Your name"
+                    required
+                  />
+                </div>
+                <div>
+                  <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                  <input 
+                    type="email" 
+                    id="email" 
+                    name="email"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"
+                    placeholder="Your email"
+                    required
+                  />
+                </div>
+              </div>
+              
+              <div>
+                <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+                <input 
+                  type="text" 
+                  id="subject" 
+                  name="subject"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"
+                  placeholder="Subject"
+                  required
+                />
+              </div>
+              
+              <div>
+                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                <textarea 
+                  id="message" 
+                  name="message"
+                  rows="5" 
+                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"
+                  placeholder="Your message"
+                  required
+                ></textarea>
+              </div>
+              
+              <!-- Honeypot field to prevent spam -->
+              <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+              
+              <button 
+                type="submit" 
+                class="w-full bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full font-medium transition-colors duration-300"
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="bg-gradient-to-r from-teal-500 to-green-500 py-16">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold text-white mb-4">Ready to Begin Your Spiritual Journey?</h2>
+        <p class="text-xl text-green-100 mb-8 max-w-3xl mx-auto">Contact us today to learn more about our Hajj and Umrah packages or to book your journey.</p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <a href="packages.html" class="inline-block">
+            <button class="bg-white hover:bg-gray-100 text-green-700 px-8 py-3.5 rounded-full font-medium transition-transform hover:scale-105 duration-300">
+              View Packages
+            </button>
+          </a>
+          <a href="contact_new.html" class="inline-block">
+            <button class="bg-transparent hover:bg-emerald-600  text-white border-2 border-white px-8 py-3 rounded-full font-medium transition-transform hover:scale-105 duration-300">
+              Contact Us
+            </button>
+          </a>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <div class="flex items-center space-x-2 mb-4">
+              <img src="images/AL Omar logo nav bar.png" alt="Al Omar logo" class="h-16 w-auto logo-light   " > 
+            </div>
+            <p class="text-gray-400 mb-4">
+              Providing comprehensive Hajj and Umrah services to help you focus on your spiritual journey.
+            </p>
+            <div class="flex space-x-4">
+              <a href="https://www.facebook.com/Sadikahamed85/" class="text-gray-400 hover:text-white">
+                <i class="bx bxl-facebook text-xl"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white">
+                <i class="bx bxl-twitter text-xl"></i>
+              </a>
+              <a href="https://instagram.com/alomar_hajjumrah" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white">
+                <i class="bx bxl-instagram text-xl"></i>
+              </a>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+            <ul class="space-y-2">
+              <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
+              <li><a href="packages.html" class="text-gray-400 hover:text-white">Packages</a></li>
+              <li><a href="Services.html" class="text-gray-400 hover:text-white">Services</a></li>
+              <li><a href="aboutus.html" class="text-gray-400 hover:text-white">About Us</a></li>
+              <li><a href="contact_new.html" class="text-gray-400 hover:text-white">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Our Services</h3>
+            <ul class="space-y-2">
+              <li><a href="packages.html" class="text-gray-400 hover:text-white">Hajj Packages</a></li>
+              <li><a href="packages.html" class="text-gray-400 hover:text-white">Umrah Packages</a></li>
+              <li><a href="Services.html" class="text-gray-400 hover:text-white">Hajj Complete guide</a></li>
+              <li><a href="Services.html" class="text-gray-400 hover:text-white">Umrah Guide</a></li>
+              <li><a href="Services.html" class="text-gray-400 hover:text-white">Ziyarah Services</a></li>
+            </ul>
+          </div>
+           <div>
+            <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+            <ul class="space-y-2">
+              <li class="flex items-start">
+                <i class="bx bx-map text-green-500 mr-3 text-xl mt-1"></i>
+                <a href="contact_new.html" class="text-gray-400 hover:text-white">No 06 Purasaiwakkam High Road,<br/> Chennai - 600007 </a></li>
+              <li class="flex items-start">
+                <i class="bx bx-phone text-green-500 mr-3 text-xl mt-1"></i>
+                <a href="contact_new.html" class="text-gray-400 hover:text-white">+91 908080330</a></li>
+              <li class="flex items-start">
+                <i class="bx bx-envelope text-green-500 mr-3 text-xl mt-1"></i>
+                <a href="contact_new.html" class="text-gray-400 hover:text-white">alomaroffice1@gmail.com</a></li>
+              <li class="flex items-center">
+                <i class="bx bx-time text-green-500 mr-3 text-xl mt-1"></i>
+                <a href="contact_new.html" class="text-gray-400 hover:text-white">Mon - Fri: 10:00 AM - 6:00 PM <br/>Sat: 11:00 AM - 5:00 PM</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
+          <p>© <script>document.write(new Date().getFullYear())</script> Al Omar Hajj & Umrah Services. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Function to toggle FAQ items
+    function toggleFaq(button) {
+      const faqItem = button.parentElement;
+      faqItem.classList.toggle('active');
+    }
+
+    // Function to switch between Hajj and Umrah tabs
+    function switchTab(tabName) {
+      // Update tab buttons
+      document.getElementById('hajj-tab').classList.toggle('tab-active', tabName === 'hajj');
+      document.getElementById('umrah-tab').classList.toggle('tab-active', tabName === 'umrah');
+      
+      // Show/hide package sections
+      document.getElementById('hajj-packages').classList.toggle('hidden', tabName !== 'hajj');
+      document.getElementById('umrah-packages').classList.toggle('hidden', tabName !== 'umrah');
+    }
+    
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+    
+    // Initialize navbar state on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      const navbar = document.querySelector('.navbar');
+      // Check if dark logo file exists, if not, create a fallback
+      const darkLogo = document.querySelector('.logo-dark');      
+     // Preload the dark logo to ensure smooth transition
+      const preloadDarkLogo = new Image();
+      preloadDarkLogo.src = 'images/Al Omar Website logo-dark.png';
+     
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      }
+      
+      // Mobile menu toggle
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('hidden');
+        
+        // Change icon based on menu state
+        const menuIcon = mobileMenuBtn.querySelector('i');
+        if (mobileMenu.classList.contains('hidden')) {
+          menuIcon.classList.remove('bx-x');
+          menuIcon.classList.add('bx-menu');
+        } else {
+          menuIcon.classList.remove('bx-menu');
+          menuIcon.classList.add('bx-x');
+        }
+      });
+      
+      // Close mobile menu when clicking outside
+      document.addEventListener('click', function(event) {
+        if (!mobileMenuBtn.contains(event.target) && !mobileMenu.contains(event.target)) {
+          if (!mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+            const menuIcon = mobileMenuBtn.querySelector('i');
+            menuIcon.classList.remove('bx-x');
+            menuIcon.classList.add('bx-menu');
+          }
+        }
+      });
+    });
+  </script>
+  <!-- Script to reload Instagram embeds -->
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            // Check if Instagram embed script has loaded
+            if (window.instgrm) {
+              window.instgrm.Embeds.process();
+            } else {
+              // If not loaded yet, try again after a delay
+              setTimeout(function() {
+                if (window.instgrm) {
+                  window.instgrm.Embeds.process();
+                }
+              }, 2000);
+            }
+          });
+        </script>
+        
+        <!-- Popup Script -->
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            const popup = document.getElementById('offerPopup');
+            const closeBtn = document.getElementById('popupClose');
+            const dontShowCheckbox = document.getElementById('dontShowAgain');
+            const viewPackagesBtn = document.getElementById('popupBtn');
+            
+            // Check if we should show the popup
+            const lastShown = localStorage.getItem('popupLastShown');
+            const currentTime = new Date().getTime();
+            
+            // Show popup if it hasn't been shown in the last 7 days
+            if (!lastShown || (currentTime - parseInt(lastShown)) > 7 * 24 * 60 * 60 * 1000) {
+              // Delay popup appearance for better user experience
+              setTimeout(function() {
+                popup.classList.add('active');
+              }, 2000);
+            }
+            
+            // Close popup when clicking the close button
+            closeBtn.addEventListener('click', function() {
+              popup.classList.remove('active');
+              
+              // If "don't show again" is checked, store the current time
+              if (dontShowCheckbox.checked) {
+                localStorage.setItem('popupLastShown', currentTime.toString());
+              }
+            });
+            
+            // Close popup when clicking outside the content
+            popup.addEventListener('click', function(e) {
+              if (e.target === popup) {
+                popup.classList.remove('active');
+                
+                // If "don't show again" is checked, store the current time
+                if (dontShowCheckbox.checked) {
+                  localStorage.setItem('popupLastShown', currentTime.toString());
+                }
+              }
+            });
+            
+            // Navigate to packages page when clicking the button
+            viewPackagesBtn.addEventListener('click', function() {
+              window.location.href = 'packages.html';
+            });
+          });
+        </script>
+        
+        <!-- Contact Form Script -->
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contactForm');
+            
+            if (contactForm) {
+              // Check if returning from successful form submission
+              if (document.referrer.includes('web3forms.com/success')) {
+                showContactSuccessMessage();
+              }
+              
+              contactForm.addEventListener('submit', function(e) {
+                // Store that the form was submitted in localStorage
+                localStorage.setItem('formSubmitted', 'true');
+                
+                // Form will submit normally to Web3Forms
+                // The redirect will happen automatically
+              });
+            }
+            
+            // Function to show success message
+            function showContactSuccessMessage() {
+              document.getElementById('contactForm').classList.add('hidden');
+              document.getElementById('contactSuccessMessage').classList.remove('hidden');
+              
+              // Reset form
+              contactForm.reset();
+              
+              // Clear the submission flag
+              localStorage.removeItem('formSubmitted');
+            }
+            
+            // Make the function available globally
+            window.showContactSuccessMessage = showContactSuccessMessage;
+            
+            // Floating Contact Icons Behavior
+            const floatingContact = document.querySelector('.floating-contact');
+            let lastScrollTop = 0;
+            let areIconsVisible = true;
+            
+            // Show/hide contact icons based on scroll direction
+            window.addEventListener('scroll', function() {
+              const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+              
+              // Don't do anything if we're at the top of the page
+              if (scrollTop <= 100) {
+                floatingContact.style.transform = 'translateY(0)';
+                floatingContact.style.opacity = '1';
+                areIconsVisible = true;
+                return;
+              }
+              
+              // Hide when scrolling down, show when scrolling up
+              if (scrollTop > lastScrollTop && areIconsVisible) {
+                // Scrolling down
+                floatingContact.style.transform = 'translateY(100px)';
+                floatingContact.style.opacity = '0';
+                areIconsVisible = false;
+              } else if (scrollTop < lastScrollTop && !areIconsVisible) {
+                // Scrolling up
+                floatingContact.style.transform = 'translateY(0)';
+                floatingContact.style.opacity = '1';
+                areIconsVisible = true;
+              }
+              
+              lastScrollTop = scrollTop;
+            });
+            
+            // Add transition to the floating contact container for smooth animations
+            floatingContact.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+          });
+          
+          // Gallery Modal Functionality
+          document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const closeModal = document.getElementById('closeModal');
+            const downloadImage = document.getElementById('downloadImage');
+            const zoomIn = document.getElementById('zoomIn');
+            const zoomOut = document.getElementById('zoomOut');
+            const zoomReset = document.getElementById('zoomReset');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            let currentZoom = 1;
+            const zoomStep = 0.25;
+            const maxZoom = 3;
+            const minZoom = 0.5;
+            
+            // Open modal when clicking on a gallery item
+            galleryItems.forEach(item => {
+              item.addEventListener('click', function() {
+                const img = this.querySelector('img');
+                const imgSrc = img.getAttribute('src');
+                const imgAlt = img.getAttribute('alt');
+                
+                // Show loading state
+                modal.classList.remove('hidden');
+                modal.classList.add('active');
+                
+                // Create a new image object to preload the high-quality version
+                const highQualityImg = new Image();
+                highQualityImg.onload = function() {
+                  // Once loaded, update the modal image
+                  modalImage.setAttribute('src', imgSrc);
+                  modalImage.setAttribute('alt', imgAlt);
+                  modalImage.style.imageRendering = 'auto';
+                };
+                highQualityImg.src = imgSrc;
+                
+                downloadImage.setAttribute('href', imgSrc);
+                downloadImage.setAttribute('download', imgAlt || 'image');
+                
+                // Reset zoom level
+                currentZoom = 1;
+                modalImage.style.transform = `scale(${currentZoom})`;
+                
+                // Prevent scrolling on body
+                document.body.style.overflow = 'hidden';
+              });
+            });
+            
+            // Close modal
+            closeModal.addEventListener('click', function() {
+              modal.classList.add('hidden');
+              modal.classList.remove('active');
+              
+              // Re-enable scrolling
+              document.body.style.overflow = '';
+            });
+            
+            // Close modal when clicking outside the image
+            modal.addEventListener('click', function(e) {
+              if (e.target === modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+              }
+            });
+            
+            // Zoom in
+            zoomIn.addEventListener('click', function() {
+              if (currentZoom < maxZoom) {
+                currentZoom += zoomStep;
+                modalImage.style.transform = `scale(${currentZoom})`;
+              }
+            });
+            
+            // Zoom out
+            zoomOut.addEventListener('click', function() {
+              if (currentZoom > minZoom) {
+                currentZoom -= zoomStep;
+                modalImage.style.transform = `scale(${currentZoom})`;
+              }
+            });
+            
+            // Reset zoom
+            zoomReset.addEventListener('click', function() {
+              currentZoom = 1;
+              modalImage.style.transform = `scale(${currentZoom})`;
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+              if (!modal.classList.contains('hidden')) {
+                if (e.key === 'Escape') {
+                  // Close modal on ESC key
+                  modal.classList.add('hidden');
+                  modal.classList.remove('active');
+                  document.body.style.overflow = '';
+                } else if (e.key === '+' || e.key === '=') {
+                  // Zoom in on + key
+                  if (currentZoom < maxZoom) {
+                    currentZoom += zoomStep;
+                    modalImage.style.transform = `scale(${currentZoom})`;
+                  }
+                } else if (e.key === '-') {
+                  // Zoom out on - key
+                  if (currentZoom > minZoom) {
+                    currentZoom -= zoomStep;
+                    modalImage.style.transform = `scale(${currentZoom})`;
+                  }
+                } else if (e.key === '0') {
+                  // Reset zoom on 0 key
+                  currentZoom = 1;
+                  modalImage.style.transform = `scale(${currentZoom})`;
+                }
+              }
+            });
+          });
+        </script>
+
+        <!-- Counter Animation Script -->
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            // Get all counter elements
+            const counters = document.querySelectorAll('.counter-value');
+            
+            // Function to check if an element is in viewport
+            function isInViewport(element) {
+              const rect = element.getBoundingClientRect();
+              return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+              );
+            }
+            
+            // Function to animate counter
+            function animateCounter(counter) {
+              // Get target value from data attribute
+              const target = parseInt(counter.getAttribute('data-target'));
+              // Get current value
+              let current = parseInt(counter.innerText);
+              
+              // Calculate increment
+              const increment = target / 100;
+              
+              // If current is less than target, increment it
+              if (current < target) {
+                // Increase by increment and round to nearest integer
+                current += Math.ceil(increment);
+                // Update counter text
+                counter.innerText = current;
+                
+                // If not reached target yet, call function again after a short delay
+                if (current < target) {
+                  setTimeout(() => animateCounter(counter), 20);
+                } else {
+                  // Ensure we end with the exact target value
+                  counter.innerText = target;
+                }
+              }
+            }
+            
+            // Function to start animation if counter is in viewport
+            function checkCounters() {
+              counters.forEach(counter => {
+                if (isInViewport(counter) && counter.innerText === '0') {
+                  animateCounter(counter);
+                }
+              });
+            }
+            
+            // Check counters on scroll
+            window.addEventListener('scroll', checkCounters);
+            
+            // Check counters on initial load
+            checkCounters();
+            
+            // Add hover effects for counter items
+            const counterItems = document.querySelectorAll('.counter-item');
+            counterItems.forEach(item => {
+              item.addEventListener('mouseenter', function() {
+                this.querySelector('.counter-icon i').classList.add('animate-bounce');
+              });
+              
+              item.addEventListener('mouseleave', function() {
+                this.querySelector('.counter-icon i').classList.remove('animate-bounce');
+              });
+            });
+          });
+        </script>
+
+</body>
+</html>

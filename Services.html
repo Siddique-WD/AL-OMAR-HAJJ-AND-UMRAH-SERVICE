@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - AL OMAR HAJJ AND UMRAH SERVICES</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          aspectRatio: {
+            'w-16': '16',
+            'h-9': '9',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+   .tab-active {
+     background-color: white;
+      color: #047857;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+    .faq-item.active .faq-icon {
+      transform: rotate(180deg);
+    }
+    
+    /* Navbar transition styles */
+    .navbar {
+      transition: all 0.3s ease;
+      background-color: transparent;
+    }
+    
+    .navbar.scrolled {
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    
+    .navbar-link {
+      color: white;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    
+    .navbar-link:hover {
+      color: rgba(134, 239, 172, 1); /* green-300 */
+    }
+    
+    .navbar.scrolled .navbar-link {
+      color: #1F2937; /* gray-800 */
+    }
+    
+    .navbar.scrolled .navbar-link:hover {
+      color: #047857; /* green-700 */
+    }
+    
+    .navbar-brand {
+      color: white;
+      font-weight: 700;
+      transition: color 0.3s ease;
+    }
+    
+    .navbar.scrolled .navbar-brand {
+      color: #047857; /* green-800 */
+    }
+    
+    .mobile-menu-button {
+      border-color: white;
+      color: white;
+      transition: all 0.3s ease;
+    }
+    
+    .navbar.scrolled .mobile-menu-button {
+      border-color: #047857;
+      color: #047857;
+    }
+    
+     
+    /* Mobile menu styles */
+    #mobile-menu {
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(-10px);
+      max-height: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Center align items */
+      position: absolute;
+      width: 100%;
+      left: 0;
+      right: 0;
+      z-index: 1000; /* Much higher z-index to ensure it's above all content */
+      background-color: white; /* Solid white background */
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    
+    #mobile-menu:not(.hidden) {
+      opacity: 1;
+      transform: translateY(0);
+      max-height: 300px;
+    }
+    
+    /* Mobile menu links styling */
+    #mobile-menu a {
+      color: #1F2937; /* Dark text for better readability on white */
+      width: 100%; /* Make links take full width */
+      text-align: center; /* Center text */
+      font-weight: 500;
+    }
+    
+    #mobile-menu a:hover {
+      background-color: #F3F4F6; /* Light gray background on hover */
+      color: #047857; /* Green text on hover */
+    }
+    
+    /* Ensure the mobile menu container has proper width */
+    #mobile-menu > div {
+      width: 100%;
+      background-color: white;
+    }
+         
+      /* Logo transition styles */
+    .logo-container {
+      height: 80px;
+      width: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    
+    .logo-light {
+     display: block;
+      max-height: 100%;
+      width: auto;
+      transition: opacity 0.3s ease;
+    }
+    
+    .logo-dark {
+      display: none;
+      max-height: 100%;
+      width: auto;
+     transition: opacity 0.3s ease;
+   }
+    
+    .navbar.scrolled .logo-light {
+      display: none;
+    }
+    
+  .navbar.scrolled .logo-dark {
+      display: block;
+     }
+
+  </style>
+</head>
+<body>
+ <div class="min-h-screen flex flex-col">
+    <!-- Header/Navbar -->
+    <header class="navbar fixed w-full top-0 z-50">
+      <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <a href="index.html" class="flex items-center space-x-2">
+        <div class="logo-container ">
+                 <img src="images/AL Omar logo nav bar 3.png" alt="Al Omar logo" class="h-18 w-auto logo-light   " > <!-- Logo Image --->
+                  <img src="images/AL Omar logo nav bar 2.png" alt="Al Omar logo" class="h-18 w-auto logo-dark   " > <!-- Logo Image --->
+          </div>
+        </a>
+        <nav class="hidden md:flex space-x-8">
+          <a href="index.html" class="navbar-link">Home</a>
+          <a href="packages.html" class="navbar-link">Packages</a>
+          <a href="Services.html" class="navbar-link">Services</a>
+          <a href="aboutus.html" class="navbar-link">About Us</a>
+          <a href="contact_new.html" class="navbar-link">Contact</a>
+        </nav>
+        <button class="md:hidden mobile-menu-button px-4 py-2 rounded" id="mobile-menu-btn">
+          <i class="bx bx-menu text-xl"></i>
+        </button>
+      </div>
+      
+      <!-- Mobile menu, hidden by default -->
+      <div class="md:hidden hidden" id="mobile-menu">
+        <div class="px-2 pt-2 pb-4 shadow-lg rounded-b-lg w-full bg-white">
+          <a href="index.html" class="block px-4 py-3 my-1 font-medium hover:bg-green-50 rounded transition-colors duration-300 text-gray-800">Home</a>
+          <a href="packages.html" class="block px-4 py-3 my-1 font-medium hover:bg-green-50 rounded transition-colors duration-300 text-gray-800">Packages</a>
+          <a href="Services.html" class="block px-4 py-3 my-1 font-medium hover:bg-green-50 rounded transition-colors duration-300 text-gray-800">Services</a>
+          <a href="aboutus.html" class="block px-4 py-3 my-1 font-medium hover:bg-green-50 rounded transition-colors duration-300 text-gray-800">About Us</a>
+          <a href="contact_new.html" class="block px-4 py-3 my-1 font-medium hover:bg-green-50 rounded transition-colors duration-300 text-gray-800">Contact</a>
+        </div>
+      </div>
+    </header>
+
+
+    <!-- Hero Section -->
+     <section class="relative  pt-28 pb-20 bg-green-700">
+      <div class="absolute inset-0 z-0 opacity-20">
+        <img
+          src="images/Our services BG image.jpg"
+          alt="Contact background"
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-3xl mx-auto text-center mt-10">
+         
+          <h1 class="text-3xl font-bold text-white mb-4">Our Services</h1>
+          <p class="text-xl text-white mb-0">
+            Discover our comprehensive range of Hajj and Umrah services designed to make your sacred journey comfortable and spiritually fulfilling.
+        </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Breadcrumb Navigation -->
+    <nav class="container mx-auto px-4 mt-8 mb-4" aria-label="Breadcrumb">
+      <ol class="flex items-center space-x-2 text-sm text-gray-600">
+        <li>
+          <a href="index.html" class="flex items-center font-bold text-lg hover:text-green-700 transition-colors">
+            <i class="bx bx-home mr-2 font-bold "></i> Home
+          </a>
+        </li>
+        <li>
+          <span class="mx-2 text-gray-400">/</span>
+        </li>
+        <li class="text-green-700 font-bold text-lg">
+          Services
+        </li>
+      </ol>
+      <button onclick="window.history.back()" class="mt-3 flex items-center text-green-700 font-bold text-lg hover:underline focus:outline-none">
+        <i class="bx bx-arrow-back mr-1 font-bold"></i> Back
+      </button>
+    </nav>
+
+
+    <!-- Services Overview -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Comprehensive Pilgrimage Services</h2>
+                <p class="text-lg text-gray-700">
+                    We offer a wide range of services to ensure that your pilgrimage is comfortable, meaningful, and hassle-free. Our team handles all aspects of your journey, allowing you to focus entirely on your spiritual experience.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Service Card 1 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col h-full ">
+                    <div class="h-80 overflow-hidden">
+                      <a href="servicecard1.html">
+                        <img src="images/hajj.jpg" alt="Complete Hajj Packages" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                        </a>
+                    </div>
+                    <div class="p-6 flex-grow ">
+                        <div class="flex items-center mb-4 ">
+                           
+                            <h3 class="text-xl font-bold text-gray-900 mx-auto text-center">Complete Hajj Guide</h3>
+                        </div>
+                        <p class="text-gray-700">A detailed overview of the rituals, preparations, and essential steps to perform Hajj, ensuring a smooth and spiritually rewarding pilgrimage.</p>
+                      <a href="servicecard1.html" class="text-green-600 hover:text-green-700 font-medium flex items-center mt-3">
+                        Learn More
+                       <i class="bx bx-right-arrow-alt ml-1"></i>
+                     </a>
+                    </div>
+                </div>
+                <!-- Service Card 2 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col h-full">
+                    <div class="h-80 overflow-hidden">
+                        <a href="servicecard2.html">
+                        <img src="images/umrah.jpg" alt="Umrah Services" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                        </a>
+                      </div>
+                    <div class="p-6 flex-grow">
+                        <div class="flex items-center mb-4">
+                            <h3 class="text-xl font-bold text-gray-900 mx-auto text-center ">Umrah Pilgrimage Guide </h3>
+                        </div>
+                        <p class="text-gray-700">Step-by-step instructions and tips for performing Umrah, including Ihram, Tawaf, Sa’i, and other important rites for a meaningful visit.</p>
+                    <a href="servicecard2.html" class="text-green-600 hover:text-green-700 font-medium flex items-center mt-3">
+                        Learn More
+                       <i class="bx bx-right-arrow-alt ml-1"></i>
+                     </a>
+                      </div>
+                </div>
+                 <!-- Service Card 3 -->
+                 <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col h-full">
+                    <div class="h-80 overflow-hidden">
+                        <a href="servicecard3.html">
+                        <img src="images/Meccah Ziayarath.jpg" alt="Umrah Services" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                        </a>
+                      </div>
+                    <div class="p-6 flex-grow">
+                        <div class="flex items-center mb-4 ">
+                            <h3 class="text-xl font-bold text-gray-900 mx-auto text-center ">Makkah Ziyarah</h3>
+                        </div>
+                        <p class="text-gray-700">Insights into visiting the sacred sites in Makkah, including the Kaaba, Masjid al-Haram, and other religious landmarks.</p>
+                        <a href="servicecard3.html" class="text-green-600 hover:text-green-700 font-medium flex items-center mt-3">
+                        Learn More
+                       <i class="bx bx-right-arrow-alt ml-1"></i>
+                     </a>
+                      </div>
+                </div>
+                   <!-- Service Card 4 -->
+                   <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col h-full">
+                    <div class="h-80 overflow-hidden">
+                        <a href="servicecard4.html">
+                        <img src="images/Medinah Ziyarath.jpg" alt="Umrah Services" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                        </a>
+                      </div>
+                    <div class="p-6 flex-grow">
+                        <div class="flex items-center mb-4">                            
+                            <h3 class="text-xl font-bold text-gray-900 mx-auto text-center ">Madinah Ziyarah</h3>
+                        </div>
+                        <p class="text-gray-700">Guidance on exploring the holy sites in Madinah such as the Prophet’s Mosque and historic places associated with Islam’s early history.</p>
+                         <a href="servicecard4.html" class="text-green-600 hover:text-green-700 font-medium flex items-center mt-3">
+                        Learn More
+                       <i class="bx bx-right-arrow-alt ml-1"></i>
+                     </a>
+                      </div>
+                </div>
+                  <!-- Service Card 5 -->
+                  <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col h-full">
+                    <div class="h-80 overflow-hidden">
+                        <a href="servicecard5.html">
+                        <img src="images/kaaba Haram ziyarath.jpg" alt="Umrah Services" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                        </a>
+                      </div>
+                    <div class="p-6 flex-grow">
+                        <div class="flex items-center mb-4">  
+                            <h3 class="text-xl font-bold text-gray-900 mx-auto text-center ">Masjid Al-Mukarramah Ziyarah</h3>
+                        </div>
+                        <p class="text-gray-700">Focused information on visiting and respecting the sacred precincts of Masjid al-Haram, emphasizing the spiritual significance and etiquettes.</p>
+                    <a href="servicecard5.html" class="text-green-600 hover:text-green-700 font-medium flex items-center mt-3">
+                        Learn More
+                       <i class="bx bx-right-arrow-alt ml-1"></i>
+                     </a>
+                      </div>
+                </div>
+                  <!-- Service Card 6 -->
+                  <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col h-full">
+                    <div class="h-80 overflow-hidden">
+                         <a href="servicecard6.html">  
+                      <img src="images/Madinah Haram ziyarath.jpg" alt="Umrah Services" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                        </a>
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <div class="flex items-center mb-4">                           
+                            <h3 class="text-xl font-bold text-gray-900 mx-auto text-center ">Al-Madinah Al-Munawwarah Ziyarah</h3>
+                        </div>
+                        <p class="text-gray-700">A comprehensive guide to the radiant city of Madinah, highlighting key religious sites beyond the Prophet’s Mosque that deepen and enhance the pilgrim’s spiritual experience.</p>
+                    <a href="servicecard6.html" class="text-green-600 hover:text-green-700 font-medium flex items-center mt-3">
+                        Learn More
+                       <i class="bx bx-right-arrow-alt ml-1"></i>
+                     </a>
+                      </div>
+                </div>
+
+                 <!-- Service Card 7 -->
+                   <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col h-full">
+                    <div class="h-80 overflow-hidden">
+                        <a href="servicecard7.html">
+                        <img src="images/Taif ziyarath.jpg" alt="Umrah Services" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                        </a>
+                      </div>
+                    <div class="p-6 flex-grow">
+                        <div class="flex items-center mb-4">                           
+                            <h3 class="text-xl font-bold text-gray-900 mx-auto text-center ">Taif Ziyarah</h3>
+                        </div>
+                        <p class="text-gray-700">Details on visiting Taif, known for its scenic beauty and historical importance, including religious sites and cultural experiences.</p>
+                   <a href="servicecard7.html" class="text-green-600 hover:text-green-700 font-medium flex items-center mt-3">
+                        Learn More
+                       <i class="bx bx-right-arrow-alt ml-1"></i>
+                     </a>
+                      </div>
+                </div>
+                  <!-- Service Card 8 -->
+                  <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col h-full">
+                    <div class="h-80 overflow-hidden">
+                        <a href="servicecard8.html">
+                        <img src="images/Jeddah city.jpg" alt="Umrah Services" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                        </a>
+                      </div>
+                    <div class="p-6 flex-grow">
+                        <div class="flex items-center mb-4">                           
+                            <h3 class="text-xl font-bold text-gray-900 mx-auto text-center ">Jeddah Ziyarah</h3>
+                        </div>
+                        <p class="text-gray-700">An introduction to key places in Jeddah, the gateway to Makkah, including historical, cultural, and religious points of interest.</p>
+                   <a href="servicecard8.html" class="text-green-600 hover:text-green-700 font-medium flex items-center mt-3">
+                        Learn More
+                       <i class="bx bx-right-arrow-alt ml-1"></i>
+                     </a>
+                      </div>
+                </div>
+                  <!-- Service Card 9 -->
+                  <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col h-full">
+                    <div class="h-80 overflow-hidden">
+                        <a href="servicecard9.html">
+                        <img src="images/Badr tour.jpg" alt="Umrah Services" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                        </a>
+                      </div>
+                    <div class="p-6 flex-grow">
+                        <div class="flex items-center mb-4">                           
+                            <h3 class="text-xl font-bold text-gray-900 mx-auto text-center ">Badr Ziyarah</h3>
+                        </div>
+                        <p class="text-gray-700">A brief on visiting the historic battlefield of Badr, significant for its association with a pivotal moment in early Islamic history.</p>
+                    <a href="servicecard9.html" class="text-green-600 hover:text-green-700 font-medium flex items-center mt-3">
+                        Learn More
+                       <i class="bx bx-right-arrow-alt ml-1"></i>
+                     </a>
+                      </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="rounded-xl overflow-hidden shadow-xl ">
+                    <img src="images/why choose us bg.jpg" alt="Happy Pilgrims" class="w-full h-[500px] object-cover transition-transform duration-500 hover:scale-110">
+                </div>
+                
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-950 mb-6">Why Choose Our Services?</h2>
+                    <p class="text-lg text-gray-700 mb-8">
+                        With over 15 years of experience in organizing Hajj and Umrah trips, we provide exceptional service and attention to detail that ensures a smooth and spiritually fulfilling journey.
+                    </p>
+                     <!-- Feature Cards -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                        <div class="flex items-start bg-white p-4 rounded-lg shadow-sm transition-transform duration-300 hover:scale-110">
+                            <i class="bx bx-check  text-green-600 h-5 w-5 mr-3 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <h4 class="font-semibold text-green-600 mb-1">Experienced Guides</h4>
+                                <p class="text-gray-900 text-sm">Our guides have extensive knowledge of the rituals and historical sites.</p>
+                            </div>
+                        </div>
+                        <!-- Additional feature cards can be added here following the same structure -->
+                           <div class="flex items-start bg-white p-4 rounded-lg shadow-sm transition-transform duration-500 hover:scale-110 ">
+                            <i class="bx bx-check text-green-600 h-5 w-5 mr-3 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <h4 class="font-semibold text-green-600 mb-1">24/7 Support</h4>
+                                <p class="text-gray-900 text-sm">Round-the-clock assistance throughout your journey for peace of mind.</p>
+                            </div>
+                        </div>
+                        <!-- Additional feature cards can be added here following the same structure -->
+                           <div class="flex items-start bg-white p-4 rounded-lg shadow-sm transition-transform duration-500 hover:scale-110 ">
+                            <i class="bx bx-check text-green-600 h-5 w-5 mr-3 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <h4 class="font-semibold text-green-600 mb-1">Premium Accommodations</h4>
+                                <p class="text-gray-900 text-sm">Comfortable stays in hotels close to the holy sites.</p>
+                            </div>
+                        </div>
+                        <!-- Additional feature cards can be added here following the same structure -->
+                           <div class="flex items-start bg-white p-4 rounded-lg shadow-sm transition-transform duration-500 hover:scale-110">
+                            <i class="bx bx-check text-green-600 h-5 w-5 mr-3 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <h4 class="font-semibold text-green-600 mb-1">Reliable Transportation</h4>
+                                <p class="text-gray-900 text-sm">Enjoy hassle-free and reliable transportation services that ensure a smooth and comfortable Umrah journey.</p>
+                            </div>
+                        </div>
+                        <!-- Additional feature cards can be added here following the same structure -->
+                           <div class="flex items-start bg-white p-4 rounded-lg shadow-sm transition-transform duration-500 hover:scale-110">
+                            <i class="bx bx-check text-green-600 h-5 w-5 mr-3 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <h4 class="font-semibold text-green-600 mb-1">Best South Indian Food</h4>
+                                <p class="text-gray-900 text-sm">Experience authentic South Indian flavors with top-quality Umrah service catering that delights your spiritual journey.</p>
+                            </div>
+                        </div>
+                        <!-- Additional feature cards can be added here following the same structure -->
+                           <div class="flex items-start bg-white p-4 rounded-lg shadow-sm transition-transform duration-500 hover:scale-110 ">
+                            <i class="bx bx-check text-green-600 h-5 w-5 mr-3 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <h4 class="font-semibold text-green-600 mb-1">Pre-Trip Preparation</h4>
+                                <p class="text-gray-900 text-sm">Comprehensive orientation sessions before departure..</p>
+                            </div>
+                        </div>
+                        <!-- Additional feature cards can be added here following the same structure -->
+                         
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="bg-gradient-to-r from-teal-500 to-green-500 py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-white mb-4">Ready to Plan Your Pilgrimage?</h2>
+            <p class="text-xl text-green-100 mb-8 max-w-3xl mx-auto">
+                Contact us today to discuss your Hajj or Umrah plans and discover how our services can make your journey spiritually fulfilling.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+              <a href="packages.html">
+                <button class="bg-white hover:bg-gray-100 text-green-700 px-8 py-3.5 rounded-full font-medium transition-transform hover:scale-105 duration-300">
+                    View Packages
+                </button>
+                </a>
+                <a href="contact_new.html">
+                <button class="bg-transparent hover:bg-emerald-600 text-white border-2 border-white px-8 py-3 rounded-full font-medium transition-transform hover:scale-105 duration-300">
+                    Contact Us
+                </button>
+                </a>
+            </div>
+        </div>
+    </section>
+
+   <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <div class="flex items-center space-x-2 mb-4">
+              <img src="images/AL Omar logo nav bar.png" alt="Al Omar logo" class="h-16 w-auto logo-light   " > 
+            </div>
+            <p class="text-gray-400 mb-4">
+              Providing comprehensive Hajj and Umrah services to help you focus on your spiritual journey.
+            </p>
+            <div class="flex space-x-4">
+              <a href="#" class="text-gray-400 hover:text-white">
+                <i class="bx bxl-facebook text-xl"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white">
+                <i class="bx bxl-twitter text-xl"></i>
+              </a>
+              <a href="https://instagram.com/alomar_hajjumrah" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white">
+                <i class="bx bxl-instagram text-xl"></i>
+              </a>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+            <ul class="space-y-2">
+              <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
+              <li><a href="packages.html" class="text-gray-400 hover:text-white">Packages</a></li>
+              <li><a href="Services.html" class="text-gray-400 hover:text-white">Services</a></li>
+              <li><a href="aboutus.html" class="text-gray-400 hover:text-white">About Us</a></li>
+              <li><a href="contact_new.html" class="text-gray-400 hover:text-white">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Our Services</h3>
+            <ul class="space-y-2">
+              <li><a href="packages.html" class="text-gray-400 hover:text-white">Hajj Packages</a></li>
+              <li><a href="packages.html" class="text-gray-400 hover:text-white">Umrah Packages</a></li>
+              <li><a href="Services.html" class="text-gray-400 hover:text-white">Hajj Complete guide </a></li>
+              <li><a href="Services.html" class="text-gray-400 hover:text-white">Umrah Guide </a></li>
+              <li><a href="Services.html" class="text-gray-400 hover:text-white"> Ziyarah Services</a></li>
+            </ul>
+          </div>
+           <div>
+            <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+            <ul class="space-y-2">
+              <li class="flex items-start">
+                <i class="bx bx-map text-green-500 mr-3 text-xl mt-1"></i>
+                <a href="contact_new.html" class="text-gray-400 hover:text-white">No 06 Purasaiwakkam High Road,<br/> Chennai - 600007 </a></li>
+              <li class="flex items-start">
+                <i class="bx bx-phone text-green-500 mr-3 text-xl mt-1"></i>
+                <a href="contact_new.html" class="text-gray-400 hover:text-white">+91 908080330</a></li>
+              <li class="flex items-start">
+                <i class="bx bx-envelope text-green-500 mr-3 text-xl mt-1"></i>
+                <a href="contact_new.html" class="text-gray-400 hover:text-white">alomaroffice1@gmail.com</a></li>
+              <li class="flex items-center">
+                <i class="bx bx-time text-green-500 mr-3 text-xl mt-1"></i>
+                <a href="contact_new.html" class="text-gray-400 hover:text-white">Mon - Fri: 10:00 AM - 6:00 PM <br/>Sat: 11:00 AM - 5:00 PM</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
+          <p>© <script>document.write(new Date().getFullYear())</script> Al Omar Hajj & Umrah Services. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+    <script>
+    // Initialize Lucide icons
+    document.addEventListener('DOMContentLoaded', function() {
+      lucide.createIcons();
+      
+      // Function to show success message
+      window.showSuccessMessage = function() {
+        document.getElementById('contactForm').classList.add('hidden');
+        document.getElementById('successMessage').classList.remove('hidden');
+      };
+    });
+    
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+    
+    // Initialize navbar state and mobile menu on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      }
+      
+      // Mobile menu toggle
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      
+      // Add event listeners to all mobile menu links
+      const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+      mobileMenuLinks.forEach(link => {
+        // Make sure links are clickable by stopping propagation
+        link.addEventListener('click', function(e) {
+          e.stopPropagation();
+        });
+      });
+      
+      mobileMenuBtn.addEventListener('click', function(e) {
+        e.stopPropagation(); // Prevent event from bubbling up
+        mobileMenu.classList.toggle('hidden');
+        
+        // Change icon based on menu state
+        const menuIcon = mobileMenuBtn.querySelector('i');
+        if (mobileMenu.classList.contains('hidden')) {
+          menuIcon.classList.remove('bx-x');
+          menuIcon.classList.add('bx-menu');
+        } else {
+          menuIcon.classList.remove('bx-menu');
+          menuIcon.classList.add('bx-x');
+        }
+      });
+      
+      // Prevent menu from closing when clicking inside it
+      mobileMenu.addEventListener('click', function(e) {
+        e.stopPropagation();
+      });
+      
+      // Close mobile menu when clicking outside
+      document.addEventListener('click', function(event) {
+        if (!mobileMenuBtn.contains(event.target) && !mobileMenu.contains(event.target)) {
+          if (!mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+            const menuIcon = mobileMenuBtn.querySelector('i');
+            menuIcon.classList.remove('bx-x');
+            menuIcon.classList.add('bx-menu');
+          }
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

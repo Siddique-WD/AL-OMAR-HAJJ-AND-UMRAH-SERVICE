@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Packages - AL OMAR HAJJ AND UMRAH SERVICES</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          aspectRatio: {
+            'w-16': '16',
+            'h-9': '9',
+          },
+          animation: {
+            'marquee': 'marquee 30s linear infinite',
+            'marquee2': 'marquee2 30s linear infinite',
+          },
+          keyframes: {
+            marquee: {
+              '0%': { transform: 'translateX(0%)' },
+              '100%': { transform: 'translateX(-100%)' }
+            },
+            marquee2: {
+              '0%': { transform: 'translateX(100%)' },
+              '100%': { transform: 'translateX(0%)' }
+            },
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+   .tab-active {
+     background-color: white;
+      color: #047857;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+    .faq-item.active .faq-icon {
+      transform: rotate(180deg);
+    }
+    
+    /* Navbar transition styles */
+    .navbar {
+      transition: all 0.3s ease;
+      background-color: transparent;
+    }
+    
+    .navbar.scrolled {
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    
+    .navbar-link {
+      color: white;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    
+    .navbar-link:hover {
+      color: rgba(134, 239, 172, 1); /* green-300 */
+    }
+    
+    .navbar.scrolled .navbar-link {
+      color: #1F2937; /* gray-800 */
+    }
+    
+    .navbar.scrolled .navbar-link:hover {
+      color: #047857; /* green-700 */
+    }
+    
+    .navbar-brand {
+      color: white;
+      font-weight: 700;
+      transition: color 0.3s ease;
+    }
+    
+    .navbar.scrolled .navbar-brand {
+      color: #047857; /* green-800 */
+    }
+    
+    .mobile-menu-button {
+      border-color: white;
+      color: white;
+      transition: all 0.3s ease;
+    }
+    
+    .navbar.scrolled .mobile-menu-button {
+      border-color: #047857;
+      color: #047857;
+    }
+    
+    /* Mobile menu styles */
+    #mobile-menu {
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(-10px);
+      max-height: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Center align items */
+      position: absolute;
+      width: 100%;
+      left: 0;
+      right: 0;
+      z-index: 1000; /* Much higher z-index to ensure it's above all content */
+      background-color: white; /* Solid white background */
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    
+    #mobile-menu:not(.hidden) {
+      opacity: 1;
+      transform: translateY(0);
+      max-height: 300px;
+    }
+    
+    /* Mobile menu links styling */
+    #mobile-menu a {
+      color: #1F2937; /* Dark text for better readability on white */
+      width: 100%; /* Make links take full width */
+      text-align: center; /* Center text */
+      font-weight: 500;
+    }
+    
+    #mobile-menu a:hover {
+      background-color: #F3F4F6; /* Light gray background on hover */
+      color: #047857; /* Green text on hover */
+    }
+    
+    /* Ensure the mobile menu container has proper width */
+    #mobile-menu > div {
+      width: 100%;
+      background-color: white;
+    }
+    
+    /* Best Value Tag Styles */
+    .best-value-tag {
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      background: linear-gradient(45deg, #ffd700, #ffed4a, #ffd700);
+      color: #8b4513;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+      box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+      animation: goldenShine 2s ease-in-out infinite;
+      z-index: 10;
+      border: 2px solid #ffd700;
+    }
+    
+    @keyframes goldenShine {
+      0% { 
+        box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+        transform: scale(1);
+      }
+      50% { 
+        box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6), 0 0 25px rgba(255, 215, 0, 0.3);
+        transform: scale(1.05);
+      }
+      100% { 
+        box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+        transform: scale(1);
+      }
+    }
+    
+    /* Make sure the package card has relative positioning for the absolute tag */
+    .package-card {
+      position: relative;
+      overflow: visible;
+    }
+     
+    /* Logo transition styles */
+    .logo-container {
+      height: 80px;
+      width: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    
+    .logo-light {
+     display: block;
+      max-height: 100%;
+      width: auto;
+      transition: opacity 0.3s ease;
+    }
+    
+    .logo-dark {
+      display: none;
+      max-height: 100%;
+      width: auto;
+     transition: opacity 0.3s ease;
+   }
+    
+    .navbar.scrolled .logo-light {
+      display: none;
+    }
+    
+  .navbar.scrolled .logo-dark {
+      display: block;
+     }
+   
+  
+  </style>
+</head>
+<body>
+  <div class="min-h-screen flex flex-col">
+    <!-- Header/Navbar -->
+    <header class="navbar fixed w-full top-0 z-50">
+      <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <a href="index.html" class="flex items-center space-x-2">
+          <div class="logo-container ">
+                 <img src="images/AL Omar logo nav bar 3.png" alt="Al Omar logo" class="h-18 w-auto logo-light   " > <!-- Logo Image --->
+                  <img src="images/AL Omar logo nav bar 2.png" alt="Al Omar logo" class="h-18 w-auto logo-dark   " > <!-- Logo Image --->
+          </div>
+        </a>
+        <nav class="hidden md:flex space-x-8">
+          <a href="index.html" class="navbar-link">Home</a>
+          <a href="packages.html" class="navbar-link">Packages</a>
+          <a href="Services.html" class="navbar-link">Services</a>
+          <a href="aboutus.html" class="navbar-link">About Us</a>
+          <a href="contact_new.html" class="navbar-link">Contact</a>
+        </nav>
+        <button class="md:hidden mobile-menu-button px-4 py-2 rounded" id="mobile-menu-btn">
+          <i class="bx bx-menu text-xl"></i>
+        </button>
+      </div>
+      
+      <!-- Mobile menu, hidden by default -->
+      <div class="md:hidden hidden" id="mobile-menu">
+        <div class="px-2 pt-2 pb-4 shadow-lg rounded-b-lg w-full bg-white">
+          <a href="index.html" class="block px-4 py-3 my-1 font-medium hover:bg-green-50 rounded transition-colors duration-300 text-gray-800">Home</a>
+          <a href="packages.html" class="block px-4 py-3 my-1 font-medium hover:bg-green-50 rounded transition-colors duration-300 text-gray-800">Packages</a>
+          <a href="Services.html" class="block px-4 py-3 my-1 font-medium hover:bg-green-50 rounded transition-colors duration-300 text-gray-800">Services</a>
+          <a href="aboutus.html" class="block px-4 py-3 my-1 font-medium hover:bg-green-50 rounded transition-colors duration-300 text-gray-800">About Us</a>
+          <a href="contact_new.html" class="block px-4 py-3 my-1 font-medium hover:bg-green-50 rounded transition-colors duration-300 text-gray-800">Contact</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- hero section -->
+     <section class="relative  pt-28 pb-20 bg-green-700">
+      <div class="absolute inset-0 z-0 opacity-20">
+        <img
+          src="images/package bg.jpg"
+          alt="Contact background"
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-3xl mx-auto text-center mt-10">
+          
+          <h1 class="text-3xl font-bold text-white mb-4">Our Packages</h1>
+          <p class="text-xl text-white mb-0"> 
+              Choose from our carefully designed Hajj and Umrah packages tailored to meet different needs and preferences.
+          </p>
+        </div>
+      </div>
+    </section>
+
+      <!-- Breadcrumb Navigation -->
+    <nav class="container mx-auto px-4 mt-8 mb-4" aria-label="Breadcrumb">
+      <ol class="flex items-center space-x-2 text-sm text-gray-600">
+        <li>
+          <a href="index.html" class="flex items-center font-bold text-lg hover:text-green-700 transition-colors">
+            <i class="bx bx-home mr-2 font-bold "></i> Home
+          </a>
+        </li>
+        <li>
+          <span class="mx-2 text-gray-400">/</span>
+        </li>
+        <li class="text-green-700 font-bold text-lg">
+           Packages
+        </li>
+      </ol>
+      <button onclick="window.history.back()" class="mt-3 flex items-center text-green-700 font-bold text-lg hover:underline focus:outline-none">
+        <i class="bx bx-arrow-back mr-1 font-bold"></i> Back
+      </button>
+    </nav>
+
+
+
+    <!-- Package Selection -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="mb-12">
+          <div class="flex justify-center mb-8">
+            <div class="inline-flex rounded-md shadow-sm bg-gray-100 p-1">
+              <button 
+                id="hajj-tab"
+                class="px-8 py-3 text-sm font-medium rounded-md tab-active"
+                onclick="switchPackageType('hajj')"
+              >
+                Hajj Packages
+              </button>
+              <button 
+                id="umrah-tab"
+                class="px-8 py-3 text-sm font-medium rounded-md text-gray-700"
+                onclick="switchPackageType('umrah')"
+              >
+                Umrah Packages
+              </button>
+            </div>
+          </div>
+
+          <div class="bg-gray-50 rounded-lg p-6 mb-8">
+            <div class="flex items-center mb-4">
+              <i class="bx bx-filter mr-2 h-5 w-5 text-green-600"></i>
+              <h3 class="text-lg font-semibold text-gray-900">Filter Packages</h3>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Price Range:</label>
+                <select 
+                  id="price-filter"
+                  class="w-full border-gray-300 rounded-md shadow-sm focus:border-green-500 focus:ring-green-500 p-2"
+                  onchange="applyFilters()"
+                >
+                  <option value="all">All Prices</option>
+                  <option value="low" id="low-price-option">Economy</option>
+                  <option value="mid" id="mid-price-option">Standard</option>
+                  <option value="high" id="high-price-option">Premium</option>
+                </select>
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Duration:</label>
+                <select 
+                  id="duration-filter"
+                  class="w-full border-gray-300 rounded-md shadow-sm focus:border-green-500 focus:ring-green-500 p-2"
+                  onchange="applyFilters()"
+                >
+                  <option value="all">All Durations</option>
+                  <option value="short">Short (10 days or less)</option>
+                  <option value="medium">Medium (11-17 days)</option>
+                  <option value="long">Long (18+ days)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Package Cards Container -->
+        <div id="packages-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Package cards will be inserted here by JavaScript -->
+        </div>
+
+        <!-- No Results Message -->
+        <div id="no-results" class="text-center py-12 hidden">
+          <h3 class="text-xl font-semibold text-gray-700">No packages match your criteria.</h3>
+          <p class="text-gray-600 mt-2">Please try adjusting your filters or contact us for a custom package.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Package Inclusions -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">What's Included in Our Packages?</h2>
+          <p class="text-lg text-gray-700">
+            All our packages include essential services to ensure a smooth and fulfilling pilgrimage experience.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
+          <!-- Accommodation -->
+       
+            <div class=" hover:bg-emerald-500  rounded-lg shadow-md p-6 transition-all duration-300 group hover:shadow-lg relative">
+                <div class="flex items-center mb-4">
+                   <div class="bg-green-100  w-12 h-12 rounded-full mr-4 group-hover:bg-emerald-500 transition-colors duration-300 flex items-center justify-center">
+                    <i class="bx bx-map text-green-500 text-3xl  group-hover:text-white transition-colors duration-300   "></i>
+                  </div>
+                   <h3 class="text-lg font-semibold text-gray-900 group-hover:text-white transition-colors duration-300">Accommodation</h3>
+               </div>
+                   <p class="text-gray-700 group-hover:text-white transition-colors duration-300">
+                   Quality hotels at varying distances from Haram to suit different preferences and budgets.
+                    </p>
+            </div>
+          <!-- Transportation -->
+          <div class=" hover:bg-emerald-500  rounded-lg shadow-md p-6 transition-all duration-300 group hover:shadow-lg relative ">
+            <div class="flex items-center mb-4">
+              <div class="bg-green-100  w-12 h-12 rounded-full mr-4 group-hover:bg-emerald-500 transition-colors duration-300 flex items-center justify-center">
+                <i class="bx bx-bus text-green-500  text-3xl  group-hover:text-white transition-colors duration-300 "></i>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 group-hover:text-white transition-colors duration-300">Transportation</h3>
+            </div>
+            <p class="text-gray-700 group-hover:text-white transition-colors duration-300">Reliable transportation between airports, hotels, and all holy sites throughout your journey.</p>
+             
+          </div>
+
+          <!-- Visa Processing -->
+            <div class=" hover:bg-emerald-500  rounded-lg shadow-md p-6 transition-all duration-300 group hover:shadow-lg relative ">
+            <div class="flex items-center mb-4">
+                   <div class="bg-green-100  w-12 h-12 rounded-full mr-4 group-hover:bg-emerald-500 transition-colors duration-300 flex items-center justify-center">
+                    <i class="bx bx-calendar text-green-500  text-3xl  group-hover:text-white transition-colors duration-300   "></i>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 group-hover:text-white transition-colors duration-300">Visa Processing</h3>
+            </div>
+            <p class="text-gray-700 group-hover:text-white transition-colors duration-300">Complete assistance with visa applications and processing to ensure smooth entry into Saudi Arabia.</p>
+          </div>
+
+          <!-- Religious Guidance -->
+            <div class=" hover:bg-emerald-500  rounded-lg shadow-md p-6 transition-all duration-300 group hover:shadow-lg relative ">
+            <div class="flex items-center mb-4">
+                   <div class="bg-green-100  w-12 h-12 rounded-full mr-4 group-hover:bg-emerald-500 transition-colors duration-300 flex items-center justify-center">
+                    <i class="bx bx-check text-green-500  text-3xl  group-hover:text-white transition-colors duration-300   "></i>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 group-hover:text-white transition-colors duration-300">Religious Guidance</h3>
+            </div>
+            <p class="text-gray-700 group-hover:text-white transition-colors duration-300">Knowledgeable guides to assist with rituals and provide spiritual insights during your pilgrimage.</p>
+          </div>
+
+          <!-- Meals -->
+            <div class=" hover:bg-emerald-500  rounded-lg shadow-md p-6 transition-all duration-300 group hover:shadow-lg relative ">
+            <div class="flex items-center mb-4">
+                   <div class="bg-green-100  w-12 h-12 rounded-full mr-4 group-hover:bg-emerald-500 transition-colors duration-300 flex items-center justify-center">
+                    <i class="bx bx-bowl-hot text-green-500  text-3xl  group-hover:text-white transition-colors duration-300   "></i>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 group-hover:text-white transition-colors duration-300">Meals</h3>
+            </div>
+            <p class="text-gray-700 group-hover:text-white transition-colors duration-300">Quality halal meals with options varying by package level, from basic to premium dining experiences.</p>
+          </div>
+
+          <!-- Support Services -->
+            <div class=" hover:bg-emerald-500  rounded-lg shadow-md p-6 transition-all duration-300 group hover:shadow-lg relative ">
+            <div class="flex items-center mb-4 ">
+                   <div class="bg-green-100  w-12 h-12 rounded-full mr-4 group-hover:bg-emerald-500 transition-colors duration-300 flex items-center justify-center">
+                    <i class="bx bx-phone text-green-500  text-3xl  group-hover:text-white transition-colors duration-300   "></i>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 group-hover:text-white transition-colors duration-300">Support Services</h3>
+            </div>
+            <p class="text-gray-700 group-hover:text-white transition-colors duration-300">24/7 customer support, assistance with luggage, and other services to ensure your comfort.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+     <!-- Our Complements -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Our Complements</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto ">
+            Enhance your pilgrimage experience with these essential items and services.
+          </p>
+        </div>
+
+        <!-- Single Row Products Container -->
+        <div class="relative overflow-x-auto pb-4 text-center">
+          <div class="flex flex-nowrap space-x-6 px-4">
+            <!-- Product 1 -->
+            <div class="flex-shrink-0 w-64 group cursor-pointer">
+              <div class="bg-gray-100 rounded-lg p-4 mb-3 w-full h-48 flex items-center justify-center overflow-hidden transition-all duration-300 group-hover:shadow-lg">
+                <img src="images/Safari hand trolly 1.png" alt="Safari Hand Trolly" class="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-110">
+              </div>
+              <h3 class="font-semibold text-lg text-gray-900 group-hover:text-green-700 transition-colors duration-300">Safari Hand Trolly</h3>
+             
+            </div>
+            
+            <!-- Product 2 -->
+            <div class="flex-shrink-0 w-64 group cursor-pointer">
+              <div class="bg-gray-100 rounded-lg p-4 mb-3 w-full h-48 flex items-center justify-center overflow-hidden transition-all duration-300 group-hover:shadow-lg">
+                <img src="images/ihram cloth.png" alt="Ihram Clothing" class="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-110">
+              </div>
+              <h3 class="font-semibold text-lg text-gray-900 group-hover:text-green-700 transition-colors duration-300">Ihram Clothing Set</h3>
+              
+            </div>
+            
+            <!-- Product 3 -->
+            <div class="flex-shrink-0 w-64 group cursor-pointer">
+              <div class="bg-gray-100 rounded-lg p-4 mb-3 w-full h-48 flex items-center justify-center overflow-hidden transition-all duration-300 group-hover:shadow-lg">
+                <img src="images/Side bag.png" alt="Travel Essentials" class="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-110">
+              </div>
+              <h3 class="font-semibold text-lg text-gray-900 group-hover:text-green-700 transition-colors duration-300">Side Bag</h3>
+              
+            </div>
+            
+            <!-- Product 4 -->
+            <div class="flex-shrink-0 w-64 group cursor-pointer">
+              <div class="bg-gray-100 rounded-lg p-4 mb-3 w-full h-48 flex items-center justify-center overflow-hidden transition-all duration-300 group-hover:shadow-lg">
+                <img src="images/zamzam.png" alt="Hajj Guide Book" class="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-110">
+              </div>
+              <h3 class="font-semibold text-lg text-gray-900 group-hover:text-green-700 transition-colors duration-300">Zamzam Water</h3>
+              
+            </div>
+            
+            <!-- Product 5 -->
+            <div class="flex-shrink-0 w-64 group cursor-pointer">
+              <div class="bg-gray-100 rounded-lg p-4 mb-3 w-full h-48 flex items-center justify-center overflow-hidden transition-all duration-300 group-hover:shadow-lg">
+                <img src="images/Makhna.png" alt="Digital Tasbeeh" class="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-110">
+              </div>
+              <h3 class="font-semibold text-lg text-gray-900 group-hover:text-green-700 transition-colors duration-300">Women's Makhna</h3>
+             
+            </div>
+            
+            <!-- Product 6 -->
+            <div class="flex-shrink-0 w-64 group cursor-pointer">
+              <div class="bg-gray-100 rounded-lg p-4 mb-3 w-full h-48 flex items-center justify-center overflow-hidden transition-all duration-300 group-hover:shadow-lg">
+                <img src="images/Shoe bag.png" alt="Wireless Headphones" class="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-110">
+              </div>
+              <h3 class="font-semibold text-lg text-gray-900 group-hover:text-green-700 transition-colors duration-300">Shoe Bag</h3>
+         
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Custom Packages -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="bg-white rounded-lg shadow-xl overflow-hidden">
+          <div class="grid grid-cols-1 lg:grid-cols-2">
+            <div class="p-8 lg:p-12">
+              <h2 class="text-3xl font-bold text-gray-900 mb-6">Need a Custom Package?</h2>
+              <p class="text-lg text-gray-700 mb-6">
+                We understand that every pilgrim has unique needs. If our standard packages don't meet your requirements, we can create a customized package tailored specifically for you.
+              </p>
+              <p class="text-lg text-gray-700 mb-8">
+                Whether you need special accommodations, have specific dietary requirements, or want to extend your stay, our team can design a package that's perfect for you.
+              </p>
+              <a href="contact_new.html" class="inline-block">
+                <button class="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-full font-medium transition-transform hover:scale-105 duration-300 flex items-center">
+                  Contact Us for a Custom Package
+                  <i class="bx bx-right-arrow-alt ml-2 h-5 w-5 inline-flex items-center align-middle -mt-05"></i>
+                </button>
+              </a>
+            </div>
+            <div class="hidden lg:block">
+              <img 
+                src="images/custom pack.jpg" 
+                alt="Custom Travel Planning" 
+                class="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+          
+          <div class="space-y-4">
+            <!-- FAQ Item 1 -->
+            <div class="bg-white rounded-lg shadow-sm p-6 hover:shadow-lg transition-all duration-300 hover:bg-green-50 cursor-pointer group">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-green-700">When should I book my Hajj package?</h3>
+              <p class="text-gray-700 group-hover:text-gray-800">We recommend booking your Hajj package 8-12 months in advance to ensure availability, as spots fill up quickly due to country quotas.</p>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <div class="bg-white rounded-lg shadow-sm p-6 hover:shadow-lg transition-all duration-300 hover:bg-green-50 cursor-pointer group">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-green-700">Can I customize my package after booking?</h3>
+              <p class="text-gray-700 group-hover:text-gray-800">Yes, certain aspects of your package can be modified after booking, depending on availability. Please contact our team for specific requests.</p>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div class="bg-white rounded-lg shadow-sm p-6 hover:shadow-lg transition-all duration-300 hover:bg-green-50 cursor-pointer group">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-green-700">What payment options do you offer?</h3>
+              <p class="text-gray-700 group-hover:text-gray-800">We offer flexible payment plans including installment options. Typically, a deposit is required at booking with full payment due 2-3 months before departure.</p>
+            </div>
+
+            <!-- FAQ Item 4 -->
+            <div class="bg-white rounded-lg shadow-sm p-6 hover:shadow-lg transition-all duration-300 hover:bg-green-50 cursor-pointer group">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-green-700">Are flights included in your packages?</h3>
+              <p class="text-gray-700 group-hover:text-gray-800">Yes, All the packages include flights to Jeddah and return flight to India. This is clearly indicated in the package description. We can also arrange Seperate Business Class flights upon request but not economy class.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+   
+
+    <!-- CTA -->
+    <section class="bg-gradient-to-r from-teal-500 to-green-500 py-16">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold text-white mb-4">Ready to Book Your Spiritual Journey?</h2>
+        <p class="text-xl text-green-100 mb-8 max-w-3xl mx-auto">
+          Contact us today to secure your spot for Hajj or Umrah and begin your preparations for this sacred journey.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <a href="contact_new.html" class="inline-block">
+            <button class="bg-white hover:bg-gray-100 text-green-700 px-8 py-3.5 rounded-full font-medium transition-transform hover:scale-105 duration-300">
+              Book Now
+            </button>
+          </a>
+          <a href="contact_new.html" class="inline-block">
+            <button class="bg-transparent hover:bg-emerald-600 text-white border-2 border-white px-8 py-3 rounded-full font-medium transition-transform hover:scale-105 duration-300">
+              Request Information
+            </button>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <div class="flex items-center space-x-2 mb-4">
+              <img src="images/AL Omar logo nav bar.png" alt="Al Omar logo" class="h-16 w-auto logo-light   " > 
+            </div>
+            <p class="text-gray-400 mb-4">
+              Providing comprehensive Hajj and Umrah services to help you focus on your spiritual journey.
+            </p>
+            <div class="flex space-x-4">
+              <a href="#" class="text-gray-400 hover:text-white">
+                <i class="bx bxl-facebook text-xl"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white">
+                <i class="bx bxl-twitter text-xl"></i>
+              </a>
+              <a href="https://instagram.com/alomar_hajjumrah" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white">
+                <i class="bx bxl-instagram text-xl"></i>
+              </a>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+            <ul class="space-y-2">
+              <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
+              <li><a href="packages.html" class="text-gray-400 hover:text-white">Packages</a></li>
+              <li><a href="Services.html" class="text-gray-400 hover:text-white">Services</a></li>
+              <li><a href="aboutus.html" class="text-gray-400 hover:text-white">About Us</a></li>
+              <li><a href="contact_new.html" class="text-gray-400 hover:text-white">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Our Services</h3>
+            <ul class="space-y-2">
+              <li><a href="packages.html" class="text-gray-400 hover:text-white">Hajj Packages</a></li>
+              <li><a href="packages.html" class="text-gray-400 hover:text-white">Umrah Packages</a></li>
+              <li><a href="Services.html" class="text-gray-400 hover:text-white">Hajj Complete guide</a></li>
+              <li><a href="Services.html" class="text-gray-400 hover:text-white">Umrah guide</a></li>
+              <li><a href="Services.html" class="text-gray-400 hover:text-white">Ziyarah Services</a></li>
+            </ul>
+          </div>
+           <div>
+            <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+            <ul class="space-y-2">
+              <li class="flex items-start">
+                <i class="bx bx-map text-green-500 mr-3 text-xl mt-1"></i>
+                <a href="contact_new.html" class="text-gray-400 hover:text-white">No 06 Purasaiwakkam High Road,<br/> Chennai - 600007 </a></li>
+              <li class="flex items-start">
+                <i class="bx bx-phone text-green-500 mr-3 text-xl mt-1"></i>
+                <a href="contact_new.html" class="text-gray-400 hover:text-white">+91 908080330</a></li>
+              <li class="flex items-start">
+                <i class="bx bx-envelope text-green-500 mr-3 text-xl mt-1"></i>
+                <a href="contact_new.html" class="text-gray-400 hover:text-white">alomaroffice1@gmail.com</a></li>
+              <li class="flex items-center">
+                <i class="bx bx-time text-green-500 mr-3 text-xl mt-1"></i>
+                <a href="contact_new.html" class="text-gray-400 hover:text-white">Mon - Fri: 10:00 AM - 6:00 PM <br/>Sat: 11:00 AM - 5:00 PM</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
+          <p>© <script>document.write(new Date().getFullYear())</script> Al Omar Hajj & Umrah Services. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Package data
+    const hajjPackages = [
+      {
+        id: 1,
+        title: "Economy Hajj Package",
+        duration: "38 to 42 days",
+        price: "₹6,00,000",
+        features: [
+          "5 Star Hotel 300 meters (300m from Haram)",
+          "Best South Indian Food",
+          "Experienced guides",
+          "D category ",
+          "Makkah & Medinah Ziyarah"
+        ]
+      },
+      {
+        id: 2,
+        title: "Premium Hajj Package",
+        duration: "38 to 42 days",
+        price: "₹7,00,000",
+        features: [
+          "5-star Makkah Clock Tower Rooms",
+          "All transportation included",
+          "Experienced guides",
+          "Best South Indian Food",
+          "Makkah & Medinah Ziyarah"
+        ]
+      },
+      {
+        id: 3,
+         title: "Deluxe Hajj Package",
+        duration: "38 to 42 days",
+        price: "₹7,20,000",
+        features: [
+          "5-star accommodations (closest to Haram)",
+          "All transportation included",
+          "Experienced guides",
+          "Premium dining experience",
+          "Makkah & Medinah Ziyarah"
+        ]
+      },
+      {
+        id: 4,
+        title: "Short Hajj Package ",
+        duration: "15 to 18 days",
+        price: "₹7,50,000 per person",
+        features: [
+          "5-star  Makkah Clock Tower Rooms",
+          "Experienced guides",
+          "Group transportation",
+          "Best South Indian Food",
+          "Premium dining experience",
+        ]
+      },
+      {
+        id: 5,
+        title: "Family Hajj Package",
+        duration: "18 days",
+        price: "₹7,60,000 ",
+        features: [
+          "Family-suitable accommodations",
+          "Group transportation",
+          "Family-oriented guidance",
+          "Child-friendly South Indian meal options",
+          "Experienced guides"
+        ]
+      },
+      {
+        id: 6,
+        title: "Senior Comfort Hajj Package",
+        duration: "20 days",
+        price: "₹7,60,000 ",
+        features: [
+          "Accessible accommodations near Haram",
+          "Special wheelchair transportation",
+          "Medical assistance available",
+          "Special dietary accommodations",
+          "Minimal walking routes planned"
+        ]
+      }
+    ];
+
+    const umrahPackages = [
+      {
+        id: 1,
+        title: "Basic Umrah Package",
+        duration: "15 days",
+        price: "₹85,000",
+        features: [
+          "Standard hotel (1 km from Haram)",
+          "Best South Indian Food",
+          "Experienced guides ",
+          "Makkah & Medinah Ziyarah",
+          "Group transportation"
+        ]
+      },
+      {
+        id: 2,
+        title: "Deluxe Umrah Package",
+        duration: "15 days",
+        price: "₹1,05,000",
+        features: [
+          "Hotel Near haram (200 meters away)",
+          "Best South Indian Food",
+           "Experienced guides ",
+          "Makkah & Medinah Ziyarah",
+          "Group transportation"
+        ]
+      },
+      {
+        id: 3,
+        title: "Premium Umrah Package",
+        duration: "15 days",
+        price: "₹1,25,000",
+        features: [
+          "5-star Makkah Clock Tower hotel ",
+          "Best South Indian Food",
+         "Experienced guides ",
+         "Makkah & Medinah Ziyarah",
+          "Premium dining experience"
+        ]
+      },
+      {
+        id: 4,
+        title: "Weekend Umrah Package",
+        duration: "7 days",
+        price: "₹95,000",
+        features: [
+          "Convenient hotel location (500 meters from Haram)",
+          "Experienced guides ",
+          "Efficient guided rituals",
+          "Best South Indian Food",
+          "Makkah & Medinah Ziyarah",
+        ]
+      },
+      {
+        id: 5,
+        title: "Luxury Umrah Package",
+        duration: "15 days",
+        price: "₹1,50,000",
+        features: [
+         "5-star Makkah Clock Tower hotel ",
+          "Married couple rooms",
+          "Experienced guides ",
+          "Premium dining experience",
+          "Makkah & Medinah Ziyarah",
+        ]
+      },
+      {
+        id: 6,
+        title: "Ramadan Umrah Package",
+        duration: "30 days",
+        price: "₹1,95,000",
+        features: [
+           "5-star Makkah Clock Tower hotel ",
+          "Experienced guides ",
+          "Premium dining experience",
+          "Best South Indian Food",
+          "Dedicated support during peak season"
+        ]
+      }
+    ];
+
+    // Current state
+    let currentPackageType = 'hajj';
+    let currentPriceFilter = 'all';
+    let currentDurationFilter = 'all';
+
+    // Function to update price filter options based on package type
+    function updatePriceFilterOptions() {
+      const lowOption = document.getElementById('low-price-option');
+      const midOption = document.getElementById('mid-price-option');
+      const highOption = document.getElementById('high-price-option');
+      
+      if (currentPackageType === 'hajj') {
+        lowOption.textContent = 'Economy (Under ₹6,00,000)';
+        midOption.textContent = 'Standard (₹6,00,000 - ₹7,00,000)';
+        highOption.textContent = 'Premium (Above ₹7,00,000)';
+      } else {
+        lowOption.textContent = 'Economy (Under ₹1,00,000)';
+        midOption.textContent = 'Standard (₹1,00,000 - ₹1,50,000)';
+        highOption.textContent = 'Premium (Above ₹1,50,000)';
+      }
+    }
+
+    // Function to switch between package types
+    function switchPackageType(type) {
+      currentPackageType = type;
+      
+      // Update tab styling
+      document.getElementById('hajj-tab').classList.toggle('tab-active', type === 'hajj');
+      document.getElementById('hajj-tab').classList.toggle('text-gray-700', type !== 'hajj');
+      document.getElementById('umrah-tab').classList.toggle('tab-active', type === 'umrah');
+      document.getElementById('umrah-tab').classList.toggle('text-gray-700', type !== 'umrah');
+      
+      // Update price filter options
+      updatePriceFilterOptions();
+      
+      // Apply filters with the new package type
+      applyFilters();
+    }
+
+    // Function to filter packages
+    function filterPackages() {
+      let filteredPackages = currentPackageType === 'hajj' ? hajjPackages : umrahPackages;
+
+      if (currentPriceFilter !== 'all') {
+        if (currentPriceFilter === 'low') {
+          filteredPackages = filteredPackages.filter(pkg => {
+            // Clean price string: remove ₹, commas, and any text like "per person"
+            const priceStr = pkg.price.replace('₹', '').replace(/,/g, '').replace(/\s*per\s*person/i, '').trim();
+            const price = parseInt(priceStr);
+            
+            if (currentPackageType === 'hajj') {
+              return price < 600000; // Under ₹6,00,000 for Hajj
+            } else {
+              return price < 100000; // Under ₹1,00,000 for Umrah
+            }
+          });
+        } else if (currentPriceFilter === 'mid') {
+          filteredPackages = filteredPackages.filter(pkg => {
+            // Clean price string: remove ₹, commas, and any text like "per person"
+            const priceStr = pkg.price.replace('₹', '').replace(/,/g, '').replace(/\s*per\s*person/i, '').trim();
+            const price = parseInt(priceStr);
+            
+            if (currentPackageType === 'hajj') {
+              return price >= 600000 && price < 700000; // ₹6,00,000 - ₹7,00,000 for Hajj
+            } else {
+              return price >= 100000 && price < 150000; // ₹1,00,000 - ₹1,50,000 for Umrah
+            }
+          });
+        } else if (currentPriceFilter === 'high') {
+          filteredPackages = filteredPackages.filter(pkg => {
+            // Clean price string: remove ₹, commas, and any text like "per person"
+            const priceStr = pkg.price.replace('₹', '').replace(/,/g, '').replace(/\s*per\s*person/i, '').trim();
+            const price = parseInt(priceStr);
+            
+            if (currentPackageType === 'hajj') {
+              return price >= 700000; // Above ₹7,00,000 for Hajj
+            } else {
+              return price >= 150000; // Above ₹1,50,000 for Umrah
+            }
+          });
+        }
+      }
+
+      if (currentDurationFilter !== 'all') {
+        if (currentDurationFilter === 'short') {
+          filteredPackages = filteredPackages.filter(pkg => {
+            const duration = parseInt(pkg.duration.split(' ')[0]);
+            return duration <= 10;
+          });
+        } else if (currentDurationFilter === 'medium') {
+          filteredPackages = filteredPackages.filter(pkg => {
+            const duration = parseInt(pkg.duration.split(' ')[0]);
+            return duration > 10 && duration < 18;
+          });
+        } else if (currentDurationFilter === 'long') {
+          filteredPackages = filteredPackages.filter(pkg => {
+            const duration = parseInt(pkg.duration.split(' ')[0]);
+            return duration >= 18;
+          });
+        }
+      }
+
+      return filteredPackages;
+    }
+
+    // Function to apply filters and update UI
+    function applyFilters() {
+      currentPriceFilter = document.getElementById('price-filter').value;
+      currentDurationFilter = document.getElementById('duration-filter').value;
+      
+      const filteredPackages = filterPackages();
+      renderPackages(filteredPackages);
+    }
+
+    // Function to render package cards
+    function renderPackages(packages) {
+      const container = document.getElementById('packages-container');
+      const noResults = document.getElementById('no-results');
+      
+      // Clear container
+      container.innerHTML = '';
+      
+      if (packages.length === 0) {
+        container.classList.add('hidden');
+        noResults.classList.remove('hidden');
+        return;
+      }
+      
+      container.classList.remove('hidden');
+      noResults.classList.add('hidden');
+      
+      // Create and append package cards
+      packages.forEach(pkg => {
+        const card = document.createElement('div');
+        card.className = 'bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 package-card';
+        
+        let featuresHTML = '';
+        pkg.features.forEach(feature => {
+          featuresHTML += `
+            <li class="flex items-start">
+              <i class="bx bx-check text-green-600 mt-1 mr-2"></i>
+              <span>${feature}</span>
+            </li>
+          `;
+        });
+        
+        // Add best value tag for Premium Hajj Package (ID: 2) when displaying hajj packages
+        let bestValueTag = '';
+        if (currentPackageType === 'hajj' && pkg.id === 2) {
+          bestValueTag = `<div class="best-value-tag">✨ Best Value</div>`;
+        }
+        
+        card.innerHTML = `
+          ${bestValueTag}
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="text-xl font-semibold text-gray-900">${pkg.title}</h3>
+              <span class="bg-green-100 text-green-800 text-sm font-medium px-2.5 py-0.5 rounded">${pkg.price}</span>
+            </div>
+            <div class="flex items-center text-gray-500 mb-4">
+              <i class="bx bx-time mr-2"></i>
+              <span>${pkg.duration}</span>
+            </div>
+            <ul class="mb-6 space-y-2">
+              ${featuresHTML}
+            </ul>
+            <a href="contact_new.html" class="block text-center bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-full font-medium transition-colors duration-300">
+              Book Now
+            </a>
+          </div>
+        `;
+        
+        container.appendChild(card);
+      });
+    }
+
+    // Initialize page
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize price filter options
+      updatePriceFilterOptions();
+      
+      // Initial render
+      applyFilters();
+    });
+
+     // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+    
+    
+    // Initialize navbar state and mobile menu on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      }
+
+      
+      
+      // Mobile menu toggle
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      
+      // Add event listeners to all mobile menu links
+      const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+      mobileMenuLinks.forEach(link => {
+        // Make sure links are clickable by stopping propagation
+        link.addEventListener('click', function(e) {
+          e.stopPropagation();
+        });
+      });
+      
+      mobileMenuBtn.addEventListener('click', function(e) {
+        e.stopPropagation(); // Prevent event from bubbling up
+        mobileMenu.classList.toggle('hidden');
+        
+        // Change icon based on menu state
+        const menuIcon = mobileMenuBtn.querySelector('i');
+        if (mobileMenu.classList.contains('hidden')) {
+          menuIcon.classList.remove('bx-x');
+          menuIcon.classList.add('bx-menu');
+        } else {
+          menuIcon.classList.remove('bx-menu');
+          menuIcon.classList.add('bx-x');
+        }
+      });
+      
+      // Prevent menu from closing when clicking inside it
+      mobileMenu.addEventListener('click', function(e) {
+        e.stopPropagation();
+      });
+      
+      // Close mobile menu when clicking outside
+      document.addEventListener('click', function(event) {
+        if (!mobileMenuBtn.contains(event.target) && !mobileMenu.contains(event.target)) {
+          if (!mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+            const menuIcon = mobileMenuBtn.querySelector('i');
+            menuIcon.classList.remove('bx-x');
+            menuIcon.classList.add('bx-menu');
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

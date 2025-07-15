@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Al-Madinah Al-Munawwarah Ziyarah</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          aspectRatio: {
+            'w-16': '16',
+            'h-9': '9',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+   .tab-active {
+     background-color: white;
+      color: #047857;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+    .faq-item.active .faq-icon {
+      transform: rotate(180deg);
+    }
+    
+    /* Navbar transition styles */
+    .navbar {
+      transition: all 0.3s ease;
+      background-color: transparent;
+    }
+    
+    .navbar.scrolled {
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    
+    .navbar-link {
+      color: white;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    
+    .navbar-link:hover {
+      color: rgba(134, 239, 172, 1); /* green-300 */
+    }
+    
+    .navbar.scrolled .navbar-link {
+      color: #1F2937; /* gray-800 */
+    }
+    
+    .navbar.scrolled .navbar-link:hover {
+      color: #047857; /* green-700 */
+    }
+    
+    .navbar-brand {
+      color: white;
+      font-weight: 700;
+      transition: color 0.3s ease;
+    }
+    
+    .navbar.scrolled .navbar-brand {
+      color: #047857; /* green-800 */
+    }
+    
+    .mobile-menu-button {
+      border-color: white;
+      color: white;
+      transition: all 0.3s ease;
+    }
+    
+    .navbar.scrolled .mobile-menu-button {
+      border-color: #047857;
+      color: #047857;
+    }
+    
+    /* Mobile menu styles */
+      
+    /* Mobile menu styles */
+    #mobile-menu {
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(-10px);
+      max-height: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Center align items */
+      position: absolute;
+      width: 100%;
+      left: 0;
+      right: 0;
+      z-index: 1000; /* Much higher z-index to ensure it's above all content */
+      background-color: white; /* Solid white background */
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    
+    #mobile-menu:not(.hidden) {
+      opacity: 1;
+      transform: translateY(0);
+      max-height: 300px;
+    }
+    
+    /* Mobile menu links styling */
+    #mobile-menu a {
+      color: #1F2937; /* Dark text for better readability on white */
+      width: 100%; /* Make links take full width */
+      text-align: center; /* Center text */
+      font-weight: 500;
+    }
+    
+    #mobile-menu a:hover {
+      background-color: #F3F4F6; /* Light gray background on hover */
+      color: #047857; /* Green text on hover */
+    }
+    
+    /* Ensure the mobile menu container has proper width */
+    #mobile-menu > div {
+      width: 100%;
+      background-color: white;
+    }
+    
+    /* Download button styles */
+    .download-btn {
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border: 2px solid transparent;
+    }
+    
+    .download-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.7s ease;
+    }
+    
+    .download-btn:hover::before {
+      left: 100%;
+    }
+    
+    .download-btn:hover {
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+    
+    .download-btn:active {
+      transform: translateY(2px) scale(0.98) !important;
+    }
+    
+    /* Pulse animation for download button */
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(5, 150, 105, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(5, 150, 105, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(5, 150, 105, 0); }
+    }
+    
+    .download-btn:hover {
+      animation: pulse 1.5s infinite;
+    }
+    
+    /* Responsive adjustments for download button */
+    @media (max-width: 640px) {
+      .download-btn {
+        font-size: 0.9rem;
+        padding: 0.75rem 1rem;
+      }
+    }
+    
+    /* Toast notification animations */
+    .animate-fade-in-up {
+      animation: fadeInUp 0.5s ease forwards;
+    }
+    
+    .animate-fade-out {
+      animation: fadeOut 0.5s ease forwards;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeOut {
+      from {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+      }
+    }
+   
+  .poppins-font {
+    font-family: 'Poppins', sans-serif;
+  }
+
+  /* Logo transition styles */
+    .logo-container {
+      height: 80px;
+      width: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    
+    .logo-light {
+     display: block;
+      max-height: 100%;
+      width: auto;
+      transition: opacity 0.3s ease;
+    }
+    
+    .logo-dark {
+      display: none;
+      max-height: 100%;
+      width: auto;
+     transition: opacity 0.3s ease;
+   }
+    
+    .navbar.scrolled .logo-light {
+      display: none;
+    }
+    
+  .navbar.scrolled .logo-dark {
+      display: block;
+     }
+
+  </style>
+
+</head>
+  <body>
+<div class="min-h-screen flex flex-col">
+  <!-- Main Content -->
+
+
+    <!-- Header/Navbar -->
+    <header class="navbar fixed w-full top-0 z-50">
+      <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <a href="index.html" class="flex items-center space-x-2">
+         <div class="logo-container ">
+                 <img src="images/AL Omar logo nav bar 3.png" alt="Al Omar logo" class="h-18 w-auto logo-light   " > <!-- Logo Image --->
+                  <img src="images/AL Omar logo nav bar 2.png" alt="Al Omar logo" class="h-18 w-auto logo-dark   " > <!-- Logo Image --->
+          </div>
+        </a>
+        <nav class="hidden md:flex space-x-8">
+          <a href="index.html" class="navbar-link">Home</a>
+          <a href="packages.html" class="navbar-link">Packages</a>
+          <a href="Services.html" class="navbar-link">Services</a>
+          <a href="aboutus.html" class="navbar-link">About Us</a>
+          <a href="contact_new.html" class="navbar-link">Contact</a>
+        </nav>
+        <button class="md:hidden mobile-menu-button px-4 py-2 rounded" id="mobile-menu-btn">
+          <i class="bx bx-menu text-xl"></i>
+        </button>
+      </div>
+      
+      <!-- Mobile menu, hidden by default -->
+      <div class="md:hidden hidden" id="mobile-menu">
+        <div class="px-2 pt-2 pb-4 shadow-lg rounded-b-lg w-full">
+          <a href="index.html" class="block px-4 py-3 my-1 font-medium hover:bg-green-50 rounded transition-colors duration-300">Home</a>
+          <a href="packages.html" class="block px-4 py-3 my-1 font-medium hover:bg-green-50 rounded transition-colors duration-300">Packages</a>
+          <a href="Services.html" class="block px-4 py-3 my-1 font-medium hover:bg-green-50 rounded transition-colors duration-300">Services</a>
+          <a href="aboutus.html" class="block px-4 py-3 my-1 font-medium hover:bg-green-50 rounded transition-colors duration-300">About Us</a>
+          <a href="contact_new.html" class="block px-4 py-3 my-1 font-medium hover:bg-green-50 rounded transition-colors duration-300">Contact</a>
+        </div>
+      </div>
+    </header>
+    
+    <!-- Hero Section -->
+     <section class="relative  pt-28 pb-20 bg-green-700">
+      <div class="absolute inset-0 z-0 opacity-20 ">
+        <img
+          src="images/madina haram bg.jpg"
+          alt="service card background"
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-3xl mx-auto text-center mt-10">
+        
+          <h1 class="text-3xl font-bold text-white mb-4">Comprehensive Pilgrimage Services</h1>
+          <p class="text-xl text-white mb-0">
+            We're here to answer your questions and help you plan your sacred journey.
+          </p>
+        </div>
+      </div>
+    </section> 
+
+       <!-- Breadcrumb Navigation -->
+    <nav class="container mx-auto px-4 mt-8 mb-4" aria-label="Breadcrumb">
+      <ol class="flex items-center space-x-2 text-sm text-gray-600">
+        <li>
+          <a href="index.html" class="flex items-center font-bold text-lg hover:text-green-700 transition-colors">
+            <i class="bx bx-home mr-2 font-bold"></i> Home
+          </a>
+        </li>
+        <li>
+          <span class="mx-2 text-gray-400">/</span>
+        </li>
+        <li>
+          <a href="Services.html" class="hover:text-green-700 font-bold text-lg transition-colors">
+            Services
+          </a>
+        </li>
+        <li>
+          <span class="mx-2 text-gray-400">/</span>
+        </li>
+        <li class="text-green-700 font-bold text-lg">
+          Al-Madinah Al-Munawwarah Ziyarah
+        </li>
+      </ol>
+      <button onclick="window.history.back()" class="mt-3 flex items-center text-green-700 font-bold  text-lg hover:underline focus:outline-none">
+        <i class="bx bx-arrow-back mr-1 font-bold"></i> Back
+      </button>
+    </nav>
+
+      <main class="max-w-7xl mx-auto px-6 sm:px-8 py-10 flex flex-col items-center ">
+    <!-- Centered Image Section -->
+    <section class="w-full md:w-3/4 lg:w-2/3 space-y-4 mx-auto">
+      <div class="rounded-lg overflow-hidden shadow-lg relative transition-transform hover:scale-105 duration-300">
+        <img src="images/Madinah Haram ziyarath.jpg" alt="Meccah Ziyarah"
+          class="w-full h-[420px] object-cover rounded-lg" />
+      </div>
+    </section>
+    
+    <!-- Content Section Below Image -->
+    <section class="w-full md:w-4/5 mt-12 poppins-font   ">
+      <p class="text-sm text-gray-700 mb-1 text-center">AL OMAR HAJJ AND UMRAH SERVICES</p>
+      <h1 class="text-3xl font-extrabold mb-2 text-center">Al-Madinah Al-Munawwarah Ziyarah</h1>
+
+      <p class="text-gray-700 mb-6 max-w-3xl mx-auto text-center">
+     This document provides a guide to performing Ziyarah (visitation) in Al-Madinah Al-Munawwarah, the second holiest city in Islam. It outlines the significance of visiting the city, the etiquette to observe, and the important sites to visit, including the Prophet's Mosque (Masjid an-Nabawi), the Rawdah ash-Sharifah, and other historical locations. 
+     This guide aims to help pilgrims maximize their spiritual experience and gain a deeper connection with the Prophet Muhammad (peace be upon him) and the rich history of Islam.
+      </p>
+      
+      <!-- Download Button -->
+      <div class="flex justify-center mb-8">
+        <a href="Madinah al Munawwarah Ziyarah- Complete Guide.pdf" download="Al-Omar-Makkah-Ziyarah-Guide.pdf" class="download-btn flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+          <i class="bx bx-download text-xl"></i>
+          <span class="hidden sm:inline">Download Complete Guide PDF</span>
+          <span class="sm:hidden">Download PDF</span>
+          <div class="absolute top-0 right-0 bg-green-800 text-xs text-white px-2 py-1 rounded-bl-lg">Free</div>
+        </a>
+      </div>
+
+      <hr class="border-gray-300 mb-6 max-w-4xl mx-auto" />
+
+      <h2 class="font-bold text-xl mb-4 text-center ">Significance of Visiting in Al-Madinah</h2>
+      <ul class="space-y-4 max-w-3xl mx-auto text-gray-900 text-sm">
+       
+
+         <!--Significance of Visiting  section-->
+
+               <ul class="list-none pl-5 space-y-5">
+                 <li class="italic text-gray-600 ">
+                          Visiting Al-Madinah Al-Munawwarah holds immense significance for Muslims. It is the city that welcomed the Prophet Muhammad (peace be upon him) and his companions after their migration (Hijrah) from Makkah. 
+                          Al-Madinah became the center from which Islam spread, and it is the final resting place of the Prophet Muhammad (peace be upon him).        
+                     </li>
+
+                    <li class="italic text-gray-600 ">
+                          The Prophet Muhammad (peace be upon him) himself emphasized the importance of visiting his mosque in Al-Madinah.
+                           He said: "A prayer in my mosque is better than a thousand prayers in any other mosque except al-Masjid al-Haram (in Makkah)."
+                   </li>
+                         
+                   <li>
+                    <strong> Hadith Reference :  </strong> <span class=" italic text-gray-600"> ( Sahih al-Bukhari 649  and Sahih Muslim 1394a ).  </span>
+                   </li>
+
+                    <li class="italic text-gray-600 ">
+                          This profound hadith emphasizes the unparalleled spiritual significance and reward of performing prayers in Makkah,
+                           encouraging Muslims to visit and offer their worship in this holy city during their Ziyarah (visitation).
+                    </li>
+
+                    <li class="italic text-gray-600 ">
+                        Visiting Al-Madinah allows Muslims to:
+                    </li>
+
+                     <li class="list-disc"> 
+                      <strong>
+                               Express love and respect for Our Prophet Mohammed صَلَّى ٱللَّٰهُ عَلَيْهِ وَسَلَّمَ : 
+                      </strong>
+                     It is a way to show devotion and gratitude to the Prophet for his teachings and sacrifices. 
+                    </li>
+
+                     <li class="list-disc"> 
+                      <strong>
+                               Gain spiritual blessings:  
+                      </strong>
+                     Praying in Masjid an-Nabawi and visiting the Rawdah ash-Sharifah are considered acts of great virtue. 
+                    </li>
+
+                     <li class="list-disc"> 
+                      <strong>
+                              Connect with Islamic history:
+                      </strong>
+                     Al-Madinah is filled with historical sites that bear witness to the early days of Islam. 
+                    </li>
+
+                     <li class="list-disc"> 
+                      <strong>
+                               Reflect and rejuvenate: 
+                      </strong>
+                     The peaceful atmosphere of Al-Madinah provides an opportunity for reflection and spiritual renewal.  
+                    </li>
+              </ul> 
+               <!--Important Sites for Ziyarah section-->
+
+              <h2 class="font-bold text-xl mb-4 text-center ">Important Sites for Ziyarah</h2>
+              <ul class="list-none pl-5 space-y-3">
+                <li class="italic text-gray-600 ">
+                        Al-Madinah Al-Munawwarah is home to numerous historical and religious sites. Some of the most important places to visit include:
+                </li>
+             </ul>   
+         <!--1st item-->
+       <li>
+          <strong class="text-lg">Masjid an-Nabawi (The Prophet's Mosque) –</strong> 
+           <li class="italic text-gray-600">
+            The Prophet's Mosque is the heart of Al-Madinah and the second holiest mosque in Islam. 
+            It was originally built by our  Our Prophet Mohammed صَلَّى ٱللَّٰهُ عَلَيْهِ وَسَلَّمَ  and has been expanded and renovated throughout history. Key features of the mosque include
+            </li>
+       </li>
+       <!--2nd item-->
+      <li>
+          <strong class="text-lg">The Green Dome  –</strong> 
+           <li class="italic text-gray-600">Located above the Prophet's tomb, it is a prominent landmark of Al-Madinah.
+          </li>
+       </li>
+        <!--3rd item-->
+      <li>
+          <strong class="text-lg">Rawdah ash-Sharifah (The Noble Garden) –</strong>
+            <li class="italic text-gray-600">This area, located between the Prophet's tomb and his pulpit (Minbar), is considered one of the most sacred spots in the mosque. It is believed to be a part of Paradise.
+               Praying in Ar-Rawdah is highly recommended, but access is often limited due to the large number of visitors. Men are typically given priority access, and specific times are allocated for women.
+            </li>
+        </li>
+        <!--4th item-->
+      <li>
+          <strong class="text-lg">The Mihrab an-Nabawi –</strong>
+            <li class="italic text-gray-600">The niche in the wall that indicates the direction of the Qibla (direction of prayer).
+            </li>
+        </li>
+        <!--5th item-->
+      <li>
+          <strong class="text-lg">The Minbar (Pulpit) –</strong>
+            <li class="italic text-gray-600">The Minbar is where the Prophet (peace be upon him) used to deliver his sermons.
+               The current Minbar is a replacement of the original, but it holds historical and spiritual significance.
+            </li>
+        </li>
+
+         <!--6th item-->
+      <li>
+          <strong class="text-lg">The Pillars  –</strong>
+            <li class="italic text-gray-600">Several pillars within the mosque are associated with specific events in the Prophet's life. 
+              These include the Pillar of Repentance (Ustuwanat al-Tawbah) and the Pillar of Aisha (Ustuwanat Aisha).
+            </li>
+        </li>
+        <!--7th item-->
+        <li>
+          <strong class="text-lg">Jannat al-Baqi' (The Garden of Baqi')  –</strong>
+            <li class="italic text-gray-600">Several pillars within the mosque are associated with specific events in the Prophet's life. 
+              These include the Pillar of Repentance (Ustuwanat al-Tawbah) and the Pillar of Aisha (Ustuwanat Aisha).
+            </li>
+        </li>
+      
+
+
+      
+              <!--Etiquette of Ziyarah section -->
+
+                  <li class="text-center ">
+                   <strong class="text-xl ">Etiquette of Visiting Al-Madinah –</strong> 
+                </li>
+              <ul class="list-none pl-5 space-y-5">
+                       <li class=" text-gray-600 text-center ">
+                          Observing proper etiquette is essential when visiting Al-Madinah, demonstrating respect for the sanctity of the city and  Our Prophet Mohammed صَلَّى ٱللَّٰهُ عَلَيْهِ وَسَلَّمَ . Some important points of etiquette include:   
+                      </li>
+                    <li class="list-disc"> 
+                      <strong>
+                              Entering with humility and reverence: 
+                      </strong>
+                     Approach Al-Madinah with a sense of humility and respect. 
+                    </li>
+                     
+                    <li class="list-disc">
+                      <strong>
+                           Maintaining cleanliness: 
+                      </strong>
+                     Keep the city and the mosque clean. 
+                    </li>
+
+                      <li class="list-disc">
+                      <strong>
+                           Lowering your voice:  
+                      </strong>
+                      Avoid loud talking or unnecessary noise, especially within the mosque.
+                    </li>
+
+                      <li class="list-disc">
+                      <strong>
+                            Avoiding worldly distractions: 
+                      </strong>
+                         Focus on prayer, remembrance of Allah, and reflection.
+                    </li>
+
+                    <li class="list-disc">
+                      <strong>
+                            Respecting other visitors:  
+                      </strong>
+                     Be considerate of other pilgrims and avoid causing them any inconvenience.  
+                    </li>
+
+                    <li class="list-disc">
+                      <strong>
+                            Dressing modestly: 
+                      </strong>
+                     Wear appropriate attire that covers the body modestly. 
+                    </li>
+
+                    <li class="list-disc">
+                      <strong>
+                           Seeking permission before entering the Rawdah:
+                      </strong>
+                    Access to the Rawdah is often regulated, so follow the instructions of the authorities. 
+                    </li>
+
+                     <li class="list-disc">
+                      <strong>
+                           Avoiding pushing and shoving:
+                      </strong>
+                     Maintain order and avoid pushing or shoving, especially when visiting popular sites. 
+                    </li>
+
+                    
+                     <li class="list-disc">
+                      <strong>
+                           Making sincere supplications: 
+                      </strong>
+                     Use the opportunity to make heartfelt prayers and supplications to Allah. 
+                    </li>
+
+                    
+                     <li class="list-disc">
+                      <strong>
+                           Sending blessings upon the Prophet (peace be upon him): 
+                      </strong>
+                     Recite blessings (Salawat) upon the Prophet Muhammad (peace be upon him) frequently. 
+                    </li>
+
+            </ul> 
+
+            <!--Preparing for Ziyarah section-->
+
+            <li class="text-center">
+                   <strong class="text-xl "> Preparing for Ziyarah –</strong> 
+                </li>
+            <ul class="list-none pl-5 space-y-5">      
+                <li class=" text-gray-600 text-center ">
+                     Before embarking on the Ziyarah, it is important to prepare both physically and spiritually. This includes:
+                   </li>
+                    <li class="list-disc"> 
+                      <strong>
+                              Learning about the rituals and sites:
+                      </strong>
+                       Familiarize yourself with the rituals of Umrah and the history and significance of the sites you plan to visit. 
+                       Please checkout our website, we provide complete umrah guide
+                    </li>
+                     
+                    <li class="list-disc">
+                      <strong>
+                                 Packing appropriately:
+                      </strong>
+                       Pack comfortable and modest clothing, as well as any necessary medications.
+                    </li>
+                      <li class="list-disc">
+                      <strong>
+                                   Making intentions:
+                      </strong>
+                     Make a sincere intention to perform the Ziyarah for the sake of Allah and to seek His pleasure.
+                    </li>
+
+                     <li class="list-disc">
+                      <strong>
+                                   Repenting for sins: 
+                      </strong>
+                   Seek forgiveness for any sins you may have committed and resolve to live a better life.
+                    </li>
+                     <li class="list-disc">
+                      <strong>
+                                Learning basic Arabic phrases: 
+                      </strong>
+                     Knowing some basic Arabic phrases can be helpful for communication.
+                    </li>
+                     <li class="list-disc">
+                      <strong>
+                          Stay Hydrated: 
+                      </strong>
+                   Drink plenty of water, especially when visiting outdoor sites during hot weather.
+
+                   <li class="list-disc">
+                      <strong>
+                          Wear Comfortable Shoes: 
+                      </strong>
+                   Wear comfortable shoes suitable for walking and climbing.
+            </ul> 
+
+            <!--Conclusion -->
+
+                  <li class="text-center ">
+                   <strong class="text-xl "> Conclusion</strong> 
+                </li>
+            <ul class="list-none pl-5 space-y-2">
+                    <li class="italic text-gray-600 ">
+                    By following this guide and approaching your Ziyarah with sincerity and devotion, 
+                    you can have a truly transformative and spiritually enriching experience in the blessed city of Madinah.
+                     May Allah accept your Ziyarah and grant you His blessings.
+                 </li>
+            </ul> 
+    </section>
+    </main>
+
+
+        <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <div class="flex items-center space-x-2 mb-4">
+               <img src="images/AL Omar logo nav bar.png" alt="Al Omar logo" class="h-16 w-auto logo-light   " > <!-- Logo Image --->
+            </div>
+            <p class="text-gray-400 mb-4">
+              Providing comprehensive Hajj and Umrah services to help you focus on your spiritual journey.
+            </p>
+            <div class="flex space-x-4">
+              <a href="#" class="text-gray-400 hover:text-white">
+                <i class="bx bxl-facebook text-xl"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white">
+                <i class="bx bxl-twitter text-xl"></i>
+              </a>
+              <a href="https://instagram.com/alomar_hajjumrah" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white">
+                <i class="bx bxl-instagram text-xl"></i>
+              </a>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+            <ul class="space-y-2">
+              <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
+              <li><a href="packages.html" class="text-gray-400 hover:text-white">Packages</a></li>
+              <li><a href="Services.html" class="text-gray-400 hover:text-white">Services</a></li>
+              <li><a href="aboutus.html" class="text-gray-400 hover:text-white">About Us</a></li>
+              <li><a href="contact_new.html" class="text-gray-400 hover:text-white">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Our Services</h3>
+            <ul class="space-y-2">
+               <li><a href="packages.html" class="text-gray-400 hover:text-white">Hajj Packages</a></li>
+              <li><a href="packages.html" class="text-gray-400 hover:text-white">Umrah Packages</a></li>
+              <li><a href="Services.html" class="text-gray-400 hover:text-white">Hajj Complete guide</a></li>
+              <li><a href="Services.html" class="text-gray-400 hover:text-white">Umrah guide</a></li>
+              <li><a href="Services.html" class="text-gray-400 hover:text-white">Ziyarah Services</a></li>
+            </ul>
+          </div>
+           <div>
+            <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+            <ul class="space-y-2">
+              <li class="flex items-start">
+                <i class="bx bx-map text-green-500 mr-3 text-xl mt-1"></i>
+                <a href="contact_new.html" class="text-gray-400 hover:text-white">No 06 Purasaiwakkam High Road,<br/> Chennai - 600007 </a></li>
+              <li class="flex items-start">
+                <i class="bx bx-phone text-green-500 mr-3 text-xl mt-1"></i>
+                <a href="contact_new.html" class="text-gray-400 hover:text-white">+91 908080330</a></li>
+              <li class="flex items-start">
+                <i class="bx bx-envelope text-green-500 mr-3 text-xl mt-1"></i>
+                <a href="contact_new.html" class="text-gray-400 hover:text-white">alomaroffice1@gmail.com</a></li>
+              <li class="flex items-center">
+                <i class="bx bx-time text-green-500 mr-3 text-xl mt-1"></i>
+                <a href="contact_new.html" class="text-gray-400 hover:text-white">Mon - Fri: 10:00 AM - 6:00 PM <br/>Sat: 11:00 AM - 5:00 PM</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
+          <p>© <script>document.write(new Date().getFullYear())</script> Al Omar Hajj & Umrah Services. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+   </div>
+  
+
+<script>
+    // Function to show success message
+    function showSuccessMessage() {
+      document.getElementById('contactForm').classList.add('hidden');
+      document.getElementById('successMessage').classList.remove('hidden');
+      
+      // Reset form after successful submission
+      setTimeout(function() {
+        document.getElementById('contactForm').reset();
+      }, 500);
+    }
+    
+    // Initialize Lucide icons
+    document.addEventListener('DOMContentLoaded', function() {
+      lucide.createIcons();
+      
+      // Add form submission handling
+      const form = document.getElementById('contactForm');
+      form.addEventListener('submit', function(e) {
+        // Form will submit normally to Web3Forms
+        // The success message will be shown after a short delay
+        // This allows time for the form to be submitted
+      });
+    });
+    
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+    
+    // Initialize navbar state and mobile menu on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      }
+      
+      // Download button interaction
+      const downloadBtn = document.querySelector('.download-btn');
+      if (downloadBtn) {
+        downloadBtn.addEventListener('mouseenter', function() {
+          this.querySelector('i').classList.add('bx-tada');
+        });
+        
+        downloadBtn.addEventListener('mouseleave', function() {
+          this.querySelector('i').classList.remove('bx-tada');
+        });
+        
+        downloadBtn.addEventListener('click', function() {
+          // Optional: Add analytics tracking or show a thank you message
+          setTimeout(() => {
+            const thankYouToast = document.createElement('div');
+            thankYouToast.className = 'fixed bottom-4 right-4 bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg z-50 animate-fade-in-up';
+            thankYouToast.innerHTML = 'Thank you for downloading our guide!';
+            document.body.appendChild(thankYouToast);
+            
+            setTimeout(() => {
+              thankYouToast.classList.add('animate-fade-out');
+              setTimeout(() => {
+                document.body.removeChild(thankYouToast);
+              }, 500);
+            }, 3000);
+          }, 1000);
+        });
+      }
+      
+      // Mobile menu toggle
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      
+      // Add event listeners to all mobile menu links
+      const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+      mobileMenuLinks.forEach(link => {
+        // Make sure links are clickable by stopping propagation
+        link.addEventListener('click', function(e) {
+          e.stopPropagation();
+        });
+      });
+      
+      mobileMenuBtn.addEventListener('click', function(e) {
+        e.stopPropagation(); // Prevent event from bubbling up
+        mobileMenu.classList.toggle('hidden');
+        
+        // Change icon based on menu state
+        const menuIcon = mobileMenuBtn.querySelector('i');
+        if (mobileMenu.classList.contains('hidden')) {
+          menuIcon.classList.remove('bx-x');
+          menuIcon.classList.add('bx-menu');
+        } else {
+          menuIcon.classList.remove('bx-menu');
+          menuIcon.classList.add('bx-x');
+        }
+      });
+      
+      // Prevent menu from closing when clicking inside it
+      mobileMenu.addEventListener('click', function(e) {
+        e.stopPropagation();
+      });
+      
+      // Close mobile menu when clicking outside
+      document.addEventListener('click', function(event) {
+        if (!mobileMenuBtn.contains(event.target) && !mobileMenu.contains(event.target)) {
+          if (!mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+            const menuIcon = mobileMenuBtn.querySelector('i');
+            menuIcon.classList.remove('bx-x');
+            menuIcon.classList.add('bx-menu');
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
